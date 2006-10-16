@@ -8,8 +8,8 @@
 //  $Id$
 //
 
-#import "STNPostgreSQLConnection.h"
+// load libpq header file
+#import "libpq-fe.h"
 
-@implementation STNPostgreSQLConnection
-
-@end
+// load framework header files
+#import <STNPostgreSQLConnection.h>
