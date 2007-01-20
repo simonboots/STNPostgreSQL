@@ -8,7 +8,10 @@
 //  $Id$
 //
 
+#import "STNPostgreSQLConnectionSSLMode.h"
+
 #import <Cocoa/Cocoa.h>
+#import "libpq-fe.h"
 
 /*!
     @class       STNPostgreSQLConnection 
@@ -19,13 +22,13 @@
 @interface STNPostgreSQLConnection : NSObject {
 
     /*! @var *_pgconn PGconn object (libpg native) */
-    PGconn          *_pgconn;
+    PGconn *_pgconn;
     
     /*! @var *_connectionattributes connection string attributes */
-    NSDictionary    *_connectionattributes; // keys and default values by PGconndefaults
+    NSMutableDictionary *_connectionattributes; // keys and default values by PGconndefaults
     
     /*! @var delegate delegate object to receive connection information */
-    id              delegate;
+    id _delegate;
     
     /*NSString    *_host;
     NSString    *_hostaddress;  // see PostgreSQL docs chapter 28.1
@@ -275,7 +278,7 @@
     @param      error pointer to error object. Will contain useful information if the connection failes.
     @result     YES if connection was successfully established, NO if connection could not be established
 */
-- (BOOL)reconnect:(NSError *)error;
+- (BOOL)reconnect:(NSError **)error;
 
 
 /*!
@@ -322,13 +325,14 @@
 - (NSString *)recentErrorMessage;
 
 @end
+
 @interface NSObject (STNPostgreSQLConnectionDelegateMethods)
 // connection methods
 - (BOOL)connectionAttemptShouldStart;
 - (void)connectionAttemptWillStart;
 - (void)connectionAttemptEnded:(BOOL)success error:(NSError *)error;
 // disconnection methods
-- (BOOL)disconnectionAttemptShouldStart;
-- (void)disconnectionAttemptWillStart;
-- (void)disconnectionAttemptEnded;
+// - (BOOL)disconnectionAttemptShouldStart;
+// - (void)disconnectionAttemptWillStart;
+// - (void)disconnectionAttemptEnded;
 @end

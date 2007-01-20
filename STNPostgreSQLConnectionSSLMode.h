@@ -16,9 +16,9 @@
     @constant   STNPostgreSQLConnectionSSLModePrefer Prefer SSL for connection
     @constant   STNPostgreSQLConnectionSSLModeRequire Require SSL for connection
  */
-enum {
+typedef enum {
     STNPostgreSQLConnectionSSLModeDisable = 0,
     STNPostgreSQLConnectionSSLModeAllow = 1,
     STNPostgreSQLConnectionSSLModePrefer = 2,
     STNPostgreSQLConnectionSSLModeRequire = 3
-};
+} STNPostgreSQLConnectionSSLMode;
