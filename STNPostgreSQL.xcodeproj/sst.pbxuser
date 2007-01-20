@@ -8,7 +8,7 @@
 			8DC2EF4F0486A6940098B216 /* STNPostgreSQL */,
 		);
 		breakpoints = (
-			1C8131EB0B629AAC001F2041 /* STNPostgreSQLConnection.m:231 */,
+			1C8131EB0B629AAC001F2041 /* STNPostgreSQLConnection.m:234 */,
 		);
 		breakpointsGroup = 1CE4BB330AE4095300853614 /* XCBreakpointsBucket */;
 		codeSenseManager = 1CE4BB310AE4093600853614 /* Code sense */;
@@ -233,6 +233,67 @@
 			1C771B430B62BBEF003CD21C /* PBXTextBookmark */ = 1C771B430B62BBEF003CD21C /* PBXTextBookmark */;
 			1C771B440B62BC3E003CD21C /* PBXTextBookmark */ = 1C771B440B62BC3E003CD21C /* PBXTextBookmark */;
 			1C771B450B62BC3E003CD21C /* PBXTextBookmark */ = 1C771B450B62BC3E003CD21C /* PBXTextBookmark */;
+			1C771B4A0B62BD5D003CD21C /* PBXTextBookmark */ = 1C771B4A0B62BD5D003CD21C /* PBXTextBookmark */;
+			1C771B4B0B62BD5D003CD21C /* PBXTextBookmark */ = 1C771B4B0B62BD5D003CD21C /* PBXTextBookmark */;
+			1C771B4C0B62BD5D003CD21C /* PBXTextBookmark */ = 1C771B4C0B62BD5D003CD21C /* PBXTextBookmark */;
+			1C771B4D0B62BD5D003CD21C /* PBXTextBookmark */ = 1C771B4D0B62BD5D003CD21C /* PBXTextBookmark */;
+			1C771B4E0B62BD5D003CD21C /* PBXTextBookmark */ = 1C771B4E0B62BD5D003CD21C /* PBXTextBookmark */;
+			1C771B4F0B62BD5D003CD21C /* PBXTextBookmark */ = 1C771B4F0B62BD5D003CD21C /* PBXTextBookmark */;
+			1C771B500B62BD5D003CD21C /* PBXTextBookmark */ = 1C771B500B62BD5D003CD21C /* PBXTextBookmark */;
+			1C771B510B62BD5D003CD21C /* PBXTextBookmark */ = 1C771B510B62BD5D003CD21C /* PBXTextBookmark */;
+			1C771B520B62BD5D003CD21C /* PBXTextBookmark */ = 1C771B520B62BD5D003CD21C /* PBXTextBookmark */;
+			1C771B530B62BD5D003CD21C /* PBXTextBookmark */ = 1C771B530B62BD5D003CD21C /* PBXTextBookmark */;
+			1C771B630B62BE9D003CD21C /* PBXTextBookmark */ = 1C771B630B62BE9D003CD21C /* PBXTextBookmark */;
+			1C771B640B62BE9D003CD21C /* PBXTextBookmark */ = 1C771B640B62BE9D003CD21C /* PBXTextBookmark */;
+			1C771B650B62BE9D003CD21C /* PBXTextBookmark */ = 1C771B650B62BE9D003CD21C /* PBXTextBookmark */;
+			1C771B660B62BE9D003CD21C /* PBXTextBookmark */ = 1C771B660B62BE9D003CD21C /* PBXTextBookmark */;
+			1C771B670B62BE9D003CD21C /* PBXTextBookmark */ = 1C771B670B62BE9D003CD21C /* PBXTextBookmark */;
+			1C771B690B62BEA6003CD21C /* PBXTextBookmark */ = 1C771B690B62BEA6003CD21C /* PBXTextBookmark */;
+			1C771B6A0B62BEA6003CD21C /* PBXTextBookmark */ = 1C771B6A0B62BEA6003CD21C /* PBXTextBookmark */;
+			1C771B6B0B62BEA6003CD21C /* PBXTextBookmark */ = 1C771B6B0B62BEA6003CD21C /* PBXTextBookmark */;
+			1C771B700B62BEB9003CD21C /* PBXTextBookmark */ = 1C771B700B62BEB9003CD21C /* PBXTextBookmark */;
+			1C771B710B62BEBA003CD21C /* PBXTextBookmark */ = 1C771B710B62BEBA003CD21C /* PBXTextBookmark */;
+			1C771B730B62BEDD003CD21C /* PBXTextBookmark */ = 1C771B730B62BEDD003CD21C /* PBXTextBookmark */;
+			1C771B740B62BEDD003CD21C /* PBXTextBookmark */ = 1C771B740B62BEDD003CD21C /* PBXTextBookmark */;
+			1C771B750B62BEDD003CD21C /* PBXTextBookmark */ = 1C771B750B62BEDD003CD21C /* PBXTextBookmark */;
+			1C771B760B62BEDD003CD21C /* PBXTextBookmark */ = 1C771B760B62BEDD003CD21C /* PBXTextBookmark */;
+			1C771B7B0B62BFE6003CD21C /* PBXTextBookmark */ = 1C771B7B0B62BFE6003CD21C /* PBXTextBookmark */;
+			1C771B7C0B62BFE6003CD21C /* PBXTextBookmark */ = 1C771B7C0B62BFE6003CD21C /* PBXTextBookmark */;
+			1C771B7D0B62BFE6003CD21C /* PBXTextBookmark */ = 1C771B7D0B62BFE6003CD21C /* PBXTextBookmark */;
+			1C771B7E0B62BFE6003CD21C /* PBXTextBookmark */ = 1C771B7E0B62BFE6003CD21C /* PBXTextBookmark */;
+			1C771B7F0B62BFE6003CD21C /* PBXTextBookmark */ = 1C771B7F0B62BFE6003CD21C /* PBXTextBookmark */;
+			1C771B800B62BFE6003CD21C /* PBXTextBookmark */ = 1C771B800B62BFE6003CD21C /* PBXTextBookmark */;
+			1C771B810B62BFF1003CD21C /* PBXTextBookmark */ = 1C771B810B62BFF1003CD21C /* PBXTextBookmark */;
+			1C771B820B62BFF1003CD21C /* PBXTextBookmark */ = 1C771B820B62BFF1003CD21C /* PBXTextBookmark */;
+			1C771B830B62BFF1003CD21C /* PBXTextBookmark */ = 1C771B830B62BFF1003CD21C /* PBXTextBookmark */;
+			1C771B840B62C026003CD21C /* PBXTextBookmark */ = 1C771B840B62C026003CD21C /* PBXTextBookmark */;
+			1C771B880B62C02F003CD21C /* PBXTextBookmark */ = 1C771B880B62C02F003CD21C /* PBXTextBookmark */;
+			1C771B890B62C02F003CD21C /* PBXTextBookmark */ = 1C771B890B62C02F003CD21C /* PBXTextBookmark */;
+			1C771B8A0B62C02F003CD21C /* PBXTextBookmark */ = 1C771B8A0B62C02F003CD21C /* PBXTextBookmark */;
+			1C771B8B0B62C02F003CD21C /* PBXTextBookmark */ = 1C771B8B0B62C02F003CD21C /* PBXTextBookmark */;
+			1C771B8C0B62C035003CD21C /* PBXTextBookmark */ = 1C771B8C0B62C035003CD21C /* PBXTextBookmark */;
+			1C771B8D0B62C035003CD21C /* PBXTextBookmark */ = 1C771B8D0B62C035003CD21C /* PBXTextBookmark */;
+			1C771B910B62C062003CD21C /* PBXTextBookmark */ = 1C771B910B62C062003CD21C /* PBXTextBookmark */;
+			1C771B950B62C13D003CD21C /* PBXTextBookmark */ = 1C771B950B62C13D003CD21C /* PBXTextBookmark */;
+			1C771B960B62C13D003CD21C /* PBXTextBookmark */ = 1C771B960B62C13D003CD21C /* PBXTextBookmark */;
+			1C771BA30B62C1A1003CD21C /* PBXTextBookmark */ = 1C771BA30B62C1A1003CD21C /* PBXTextBookmark */;
+			1C771BA90B62C26F003CD21C /* PBXTextBookmark */ = 1C771BA90B62C26F003CD21C /* PBXTextBookmark */;
+			1C771BAA0B62C26F003CD21C /* PBXTextBookmark */ = 1C771BAA0B62C26F003CD21C /* PBXTextBookmark */;
+			1C771BAB0B62C26F003CD21C /* PBXTextBookmark */ = 1C771BAB0B62C26F003CD21C /* PBXTextBookmark */;
+			1C771BAC0B62C26F003CD21C /* PBXTextBookmark */ = 1C771BAC0B62C26F003CD21C /* PBXTextBookmark */;
+			1C771BAD0B62C26F003CD21C /* PBXTextBookmark */ = 1C771BAD0B62C26F003CD21C /* PBXTextBookmark */;
+			1C771BAE0B62C274003CD21C /* PBXTextBookmark */ = 1C771BAE0B62C274003CD21C /* PBXTextBookmark */;
+			1C771BB10B62C27C003CD21C /* PBXTextBookmark */ = 1C771BB10B62C27C003CD21C /* PBXTextBookmark */;
+			1C771BB20B62C27C003CD21C /* PBXTextBookmark */ = 1C771BB20B62C27C003CD21C /* PBXTextBookmark */;
+			1C771BB60B62C288003CD21C /* PBXTextBookmark */ = 1C771BB60B62C288003CD21C /* PBXTextBookmark */;
+			1C771BB70B62C292003CD21C /* PBXTextBookmark */ = 1C771BB70B62C292003CD21C /* PBXTextBookmark */;
+			1C771BB80B62C292003CD21C /* PBXTextBookmark */ = 1C771BB80B62C292003CD21C /* PBXTextBookmark */;
+			1C771BB90B62C29A003CD21C /* PBXTextBookmark */ = 1C771BB90B62C29A003CD21C /* PBXTextBookmark */;
+			1C771BBC0B62C2AC003CD21C /* PBXTextBookmark */ = 1C771BBC0B62C2AC003CD21C /* PBXTextBookmark */;
+			1C771BBD0B62C2AC003CD21C /* PBXTextBookmark */ = 1C771BBD0B62C2AC003CD21C /* PBXTextBookmark */;
+			1C771BBE0B62C2AC003CD21C /* PBXTextBookmark */ = 1C771BBE0B62C2AC003CD21C /* PBXTextBookmark */;
+			1C771BBF0B62C2AC003CD21C /* PBXTextBookmark */ = 1C771BBF0B62C2AC003CD21C /* PBXTextBookmark */;
+			1C771BC00B62C2AC003CD21C /* PBXTextBookmark */ = 1C771BC00B62C2AC003CD21C /* PBXTextBookmark */;
 			1C8130750B627830001F2041 = 1C8130750B627830001F2041 /* PBXTextBookmark */;
 			1C81309C0B627AA7001F2041 = 1C81309C0B627AA7001F2041 /* PBXTextBookmark */;
 			1C8130A50B627B2D001F2041 = 1C8130A50B627B2D001F2041 /* PBXTextBookmark */;
@@ -522,7 +583,7 @@
 		);
 		executableSystemSymbolLevel = 0;
 		executableUserSymbolLevel = 0;
-		libgmallocEnabled = 0;
+		libgmallocEnabled = 1;
 		name = Playground;
 		savedGlobals = {
 		};
@@ -533,9 +594,9 @@
 	};
 	1C3A359C0B4C5E6A0063ADDC /* main.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {977, 382}}";
-			sepNavSelRange = "{316, 0}";
-			sepNavVisRect = "{{0, 0}, {977, 382}}";
+			sepNavIntBoundsRect = "{{0, 0}, {977, 504}}";
+			sepNavSelRange = "{470, 0}";
+			sepNavVisRect = "{{0, 2}, {977, 382}}";
 		};
 	};
 	1C3A35A50B4C5EE20063ADDC /* PBXTextBookmark */ = {
@@ -570,7 +631,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 370";
 		rLen = 0;
-		rLoc = 10740;
+		rLoc = 10742;
 		rType = 0;
 		vrLen = 840;
 		vrLoc = 4473;
@@ -590,7 +651,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 370";
 		rLen = 0;
-		rLoc = 10740;
+		rLoc = 10742;
 		rType = 0;
 		vrLen = 840;
 		vrLoc = 4473;
@@ -600,7 +661,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 370";
 		rLen = 0;
-		rLoc = 10740;
+		rLoc = 10742;
 		rType = 0;
 		vrLen = 840;
 		vrLoc = 4473;
@@ -620,7 +681,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 243";
 		rLen = 0;
-		rLoc = 6492;
+		rLoc = 6601;
 		rType = 0;
 		vrLen = 797;
 		vrLoc = 5978;
@@ -630,7 +691,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 243";
 		rLen = 0;
-		rLoc = 6492;
+		rLoc = 6601;
 		rType = 0;
 		vrLen = 214;
 		vrLoc = 6323;
@@ -640,7 +701,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 243";
 		rLen = 0;
-		rLoc = 6492;
+		rLoc = 6601;
 		rType = 0;
 		vrLen = 377;
 		vrLoc = 6216;
@@ -650,7 +711,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 243";
 		rLen = 0;
-		rLoc = 6492;
+		rLoc = 6601;
 		rType = 0;
 		vrLen = 377;
 		vrLoc = 6216;
@@ -660,7 +721,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 263";
 		rLen = 0;
-		rLoc = 7028;
+		rLoc = 7137;
 		rType = 0;
 		vrLen = 687;
 		vrLoc = 6495;
@@ -670,7 +731,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 263";
 		rLen = 0;
-		rLoc = 7028;
+		rLoc = 7137;
 		rType = 0;
 		vrLen = 136;
 		vrLoc = 6495;
@@ -680,7 +741,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 263";
 		rLen = 0;
-		rLoc = 7028;
+		rLoc = 7137;
 		rType = 0;
 		vrLen = 422;
 		vrLoc = 6358;
@@ -690,7 +751,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 263";
 		rLen = 0;
-		rLoc = 7028;
+		rLoc = 7137;
 		rType = 0;
 		vrLen = 395;
 		vrLoc = 6385;
@@ -700,7 +761,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 263";
 		rLen = 0;
-		rLoc = 7052;
+		rLoc = 7161;
 		rType = 0;
 		vrLen = 739;
 		vrLoc = 6385;
@@ -710,7 +771,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 263";
 		rLen = 0;
-		rLoc = 7052;
+		rLoc = 7161;
 		rType = 0;
 		vrLen = 136;
 		vrLoc = 6495;
@@ -720,7 +781,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 243";
 		rLen = 0;
-		rLoc = 6492;
+		rLoc = 6601;
 		rType = 0;
 		vrLen = 795;
 		vrLoc = 5980;
@@ -730,7 +791,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 243";
 		rLen = 0;
-		rLoc = 6492;
+		rLoc = 6601;
 		rType = 0;
 		vrLen = 136;
 		vrLoc = 6495;
@@ -740,7 +801,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 243";
 		rLen = 0;
-		rLoc = 6492;
+		rLoc = 6601;
 		rType = 0;
 		vrLen = 859;
 		vrLoc = 6012;
@@ -750,7 +811,7 @@
 		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
 		name = "main.m: 19";
 		rLen = 0;
-		rLoc = 494;
+		rLoc = 572;
 		rType = 0;
 		vrLen = 580;
 		vrLoc = 0;
@@ -760,7 +821,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 243";
 		rLen = 0;
-		rLoc = 6492;
+		rLoc = 6601;
 		rType = 0;
 		vrLen = 859;
 		vrLoc = 6012;
@@ -770,7 +831,7 @@
 		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
 		name = "main.m: 17";
 		rLen = 0;
-		rLoc = 368;
+		rLoc = 390;
 		rType = 0;
 		vrLen = 581;
 		vrLoc = 0;
@@ -780,7 +841,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 243";
 		rLen = 0;
-		rLoc = 6492;
+		rLoc = 6601;
 		rType = 0;
 		vrLen = 136;
 		vrLoc = 6495;
@@ -790,10 +851,617 @@
 		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
 		name = "main.m: 17";
 		rLen = 0;
-		rLoc = 368;
+		rLoc = 390;
 		rType = 0;
 		vrLen = 348;
 		vrLoc = 188;
+	};
+	1C771B4A0B62BD5D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 16";
+		rLen = 0;
+		rLoc = 316;
+		rType = 0;
+		vrLen = 581;
+		vrLoc = 0;
+	};
+	1C771B4B0B62BD5D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB350AE409EE00853614 /* STNPostgreSQLConnection.h */;
+		name = "STNPostgreSQLConnection.h: 359";
+		rLen = 0;
+		rLoc = 11699;
+		rType = 0;
+		vrLen = 838;
+		vrLoc = 315;
+	};
+	1C771B4C0B62BD5D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 243";
+		rLen = 0;
+		rLoc = 6601;
+		rType = 0;
+		vrLen = 859;
+		vrLoc = 6012;
+	};
+	1C771B4D0B62BD5D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 16";
+		rLen = 0;
+		rLoc = 316;
+		rType = 0;
+		vrLen = 581;
+		vrLoc = 0;
+	};
+	1C771B4E0B62BD5D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB350AE409EE00853614 /* STNPostgreSQLConnection.h */;
+		name = "STNPostgreSQLConnection.h: 264";
+		rLen = 0;
+		rLoc = 8004;
+		rType = 0;
+		vrLen = 1082;
+		vrLoc = 7595;
+	};
+	1C771B4F0B62BD5D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 243";
+		rLen = 0;
+		rLoc = 6601;
+		rType = 0;
+		vrLen = 859;
+		vrLoc = 6012;
+	};
+	1C771B500B62BD5D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 16";
+		rLen = 0;
+		rLoc = 316;
+		rType = 0;
+		vrLen = 581;
+		vrLoc = 0;
+	};
+	1C771B510B62BD5D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB350AE409EE00853614 /* STNPostgreSQLConnection.h */;
+		name = "STNPostgreSQLConnection.h: 359";
+		rLen = 0;
+		rLoc = 11699;
+		rType = 0;
+		vrLen = 838;
+		vrLoc = 315;
+	};
+	1C771B520B62BD5D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 265";
+		rLen = 0;
+		rLoc = 7173;
+		rType = 0;
+		vrLen = 669;
+		vrLoc = 6535;
+	};
+	1C771B530B62BD5D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 17";
+		rLen = 0;
+		rLoc = 390;
+		rType = 0;
+		vrLen = 348;
+		vrLoc = 188;
+	};
+	1C771B630B62BE9D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "- (BOOL)connect:(NSError **)error";
+		rLen = 34;
+		rLoc = 7217;
+		rType = 0;
+		vrLen = 806;
+		vrLoc = 7060;
+	};
+	1C771B640B62BE9D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 16";
+		rLen = 0;
+		rLoc = 316;
+		rType = 0;
+		vrLen = 581;
+		vrLoc = 0;
+	};
+	1C771B650B62BE9D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "- (BOOL)connect:(NSError **)error";
+		rLen = 34;
+		rLoc = 7217;
+		rType = 0;
+		vrLen = 806;
+		vrLoc = 7060;
+	};
+	1C771B660B62BE9D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 28";
+		rLen = 0;
+		rLoc = 781;
+		rType = 0;
+		vrLen = 633;
+		vrLoc = 3;
+	};
+	1C771B670B62BE9D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 28";
+		rLen = 0;
+		rLoc = 781;
+		rType = 0;
+		vrLen = 296;
+		vrLoc = 205;
+	};
+	1C771B690B62BEA6003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 391";
+		rLen = 0;
+		rLoc = 10742;
+		rType = 0;
+		vrLen = 367;
+		vrLoc = 6413;
+	};
+	1C771B6A0B62BEA6003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 28";
+		rLen = 0;
+		rLoc = 781;
+		rType = 0;
+		vrLen = 401;
+		vrLoc = 187;
+	};
+	1C771B6B0B62BEA6003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 28";
+		rLen = 0;
+		rLoc = 781;
+		rType = 0;
+		vrLen = 401;
+		vrLoc = 187;
+	};
+	1C771B700B62BEB9003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 24";
+		rLen = 0;
+		rLoc = 601;
+		rType = 0;
+		vrLen = 587;
+		vrLoc = 90;
+	};
+	1C771B710B62BEBA003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 24";
+		rLen = 0;
+		rLoc = 601;
+		rType = 0;
+		vrLen = 291;
+		vrLoc = 205;
+	};
+	1C771B730B62BEDD003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 24";
+		rLen = 0;
+		rLoc = 601;
+		rType = 0;
+		vrLen = 402;
+		vrLoc = 187;
+	};
+	1C771B740B62BEDD003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		rLen = 0;
+		rLoc = 281;
+		rType = 1;
+	};
+	1C771B750B62BEDD003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 24";
+		rLen = 0;
+		rLoc = 601;
+		rType = 0;
+		vrLen = 402;
+		vrLoc = 187;
+	};
+	1C771B760B62BEDD003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 279";
+		rLen = 0;
+		rLoc = 7482;
+		rType = 0;
+		vrLen = 522;
+		vrLoc = 7142;
+	};
+	1C771B7B0B62BFE6003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 24";
+		rLen = 0;
+		rLoc = 601;
+		rType = 0;
+		vrLen = 587;
+		vrLoc = 90;
+	};
+	1C771B7C0B62BFE6003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB350AE409EE00853614 /* STNPostgreSQLConnection.h */;
+		name = "STNPostgreSQLConnection.h: 5";
+		rLen = 0;
+		rLoc = 54;
+		rType = 0;
+		vrLen = 778;
+		vrLoc = 0;
+	};
+	1C771B7D0B62BFE6003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 384";
+		rLen = 0;
+		rLoc = 10699;
+		rType = 0;
+		vrLen = 1184;
+		vrLoc = 9445;
+	};
+	1C771B7E0B62BFE6003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB350AE409EE00853614 /* STNPostgreSQLConnection.h */;
+		name = "- (NSString *)recentErrorMessage";
+		rLen = 32;
+		rLoc = 11278;
+		rType = 0;
+		vrLen = 996;
+		vrLoc = 10703;
+	};
+	1C771B7F0B62BFE6003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB350AE409EE00853614 /* STNPostgreSQLConnection.h */;
+		name = "STNPostgreSQLConnection.h: 5";
+		rLen = 0;
+		rLoc = 54;
+		rType = 0;
+		vrLen = 778;
+		vrLoc = 0;
+	};
+	1C771B800B62BFE6003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 384";
+		rLen = 0;
+		rLoc = 10733;
+		rType = 0;
+		vrLen = 1045;
+		vrLoc = 9588;
+	};
+	1C771B810B62BFF1003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 384";
+		rLen = 0;
+		rLoc = 10733;
+		rType = 0;
+		vrLen = 1045;
+		vrLoc = 9588;
+	};
+	1C771B820B62BFF1003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 24";
+		rLen = 0;
+		rLoc = 601;
+		rType = 0;
+		vrLen = 291;
+		vrLoc = 205;
+	};
+	1C771B830B62BFF1003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 384";
+		rLen = 0;
+		rLoc = 10733;
+		rType = 0;
+		vrLen = 179;
+		vrLoc = 10454;
+	};
+	1C771B840B62C026003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 384";
+		rLen = 0;
+		rLoc = 10733;
+		rType = 0;
+		vrLen = 179;
+		vrLoc = 10454;
+	};
+	1C771B880B62C02F003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 384";
+		rLen = 0;
+		rLoc = 10733;
+		rType = 0;
+		vrLen = 1045;
+		vrLoc = 9588;
+	};
+	1C771B890B62C02F003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 24";
+		rLen = 0;
+		rLoc = 601;
+		rType = 0;
+		vrLen = 629;
+		vrLoc = 48;
+	};
+	1C771B8A0B62C02F003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 384";
+		rLen = 0;
+		rLoc = 10733;
+		rType = 0;
+		vrLen = 1045;
+		vrLoc = 9588;
+	};
+	1C771B8B0B62C02F003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 19";
+		rLen = 0;
+		rLoc = 393;
+		rType = 0;
+		vrLen = 626;
+		vrLoc = 48;
+	};
+	1C771B8C0B62C035003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 384";
+		rLen = 0;
+		rLoc = 10733;
+		rType = 0;
+		vrLen = 179;
+		vrLoc = 10454;
+	};
+	1C771B8D0B62C035003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 19";
+		rLen = 0;
+		rLoc = 393;
+		rType = 0;
+		vrLen = 294;
+		vrLoc = 205;
+	};
+	1C771B910B62C062003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 28";
+		rLen = 0;
+		rLoc = 775;
+		rType = 0;
+		vrLen = 704;
+		vrLoc = 48;
+	};
+	1C771B950B62C13D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 29";
+		rLen = 0;
+		rLoc = 775;
+		rType = 0;
+		vrLen = 641;
+		vrLoc = 144;
+	};
+	1C771B960B62C13D003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 20";
+		rLen = 0;
+		rLoc = 470;
+		rType = 0;
+		vrLen = 322;
+		vrLoc = 205;
+	};
+	1C771BA30B62C1A1003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 22";
+		rLen = 0;
+		rLoc = 470;
+		rType = 0;
+		vrLen = 230;
+		vrLoc = 365;
+	};
+	1C771BA90B62C26F003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 49";
+		rLen = 0;
+		rLoc = 1590;
+		rType = 0;
+		vrLen = 983;
+		vrLoc = 700;
+	};
+	1C771BAA0B62C26F003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 22";
+		rLen = 0;
+		rLoc = 470;
+		rType = 0;
+		vrLen = 698;
+		vrLoc = 156;
+	};
+	1C771BAB0B62C26F003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 22";
+		rLen = 0;
+		rLoc = 470;
+		rType = 0;
+		vrLen = 695;
+		vrLoc = 159;
+	};
+	1C771BAC0B62C26F003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 49";
+		rLen = 0;
+		rLoc = 1590;
+		rType = 0;
+		vrLen = 983;
+		vrLoc = 700;
+	};
+	1C771BAD0B62C26F003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 22";
+		rLen = 0;
+		rLoc = 470;
+		rType = 0;
+		vrLen = 699;
+		vrLoc = 159;
+	};
+	1C771BAE0B62C274003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 22";
+		rLen = 0;
+		rLoc = 470;
+		rType = 0;
+		vrLen = 239;
+		vrLoc = 365;
+	};
+	1C771BB10B62C27C003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 21";
+		rLen = 0;
+		rLoc = 470;
+		rType = 0;
+		vrLen = 680;
+		vrLoc = 147;
+	};
+	1C771BB20B62C27C003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 21";
+		rLen = 0;
+		rLoc = 470;
+		rType = 0;
+		vrLen = 241;
+		vrLoc = 365;
+	};
+	1C771BB60B62C288003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 21";
+		rLen = 0;
+		rLoc = 470;
+		rType = 0;
+		vrLen = 680;
+		vrLoc = 147;
+	};
+	1C771BB70B62C292003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 21";
+		rLen = 0;
+		rLoc = 470;
+		rType = 0;
+		vrLen = 682;
+		vrLoc = 144;
+	};
+	1C771BB80B62C292003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 21";
+		rLen = 0;
+		rLoc = 470;
+		rType = 0;
+		vrLen = 228;
+		vrLoc = 345;
+	};
+	1C771BB90B62C29A003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 21";
+		rLen = 0;
+		rLoc = 470;
+		rType = 0;
+		vrLen = 228;
+		vrLoc = 345;
+	};
+	1C771BBC0B62C2AC003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 21";
+		rLen = 0;
+		rLoc = 470;
+		rType = 0;
+		vrLen = 661;
+		vrLoc = 0;
+	};
+	1C771BBD0B62C2AC003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 49";
+		rLen = 0;
+		rLoc = 1590;
+		rType = 0;
+		vrLen = 983;
+		vrLoc = 700;
+	};
+	1C771BBE0B62C2AC003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 21";
+		rLen = 0;
+		rLoc = 470;
+		rType = 0;
+		vrLen = 661;
+		vrLoc = 0;
+	};
+	1C771BBF0B62C2AC003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
+		name = "STNPostgreSQLConnection.m: 49";
+		rLen = 0;
+		rLoc = 1590;
+		rType = 0;
+		vrLen = 983;
+		vrLoc = 700;
+	};
+	1C771BC00B62C2AC003CD21C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
+		name = "main.m: 21";
+		rLen = 0;
+		rLoc = 470;
+		rType = 0;
+		vrLen = 228;
+		vrLoc = 345;
 	};
 	1C8130750B627830001F2041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1008,7 +1676,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "- (void)setSSLMode:(STNPostgreSQLConnectionSSLMode)sslmode";
 		rLen = 59;
-		rLoc = 3949;
+		rLoc = 4058;
 		rType = 0;
 		vrLen = 856;
 		vrLoc = 3599;
@@ -1038,7 +1706,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "- (void)setService:(NSString *)service";
 		rLen = 39;
-		rLoc = 5583;
+		rLoc = 5692;
 		rType = 0;
 		vrLen = 770;
 		vrLoc = 4147;
@@ -1058,7 +1726,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: SSLMode";
 		rLen = 330;
-		rLoc = 5252;
+		rLoc = 5361;
 		rType = 0;
 		vrLen = 241;
 		vrLoc = 4253;
@@ -1078,7 +1746,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 163";
 		rLen = 0;
-		rLoc = 5461;
+		rLoc = 5570;
 		rType = 0;
 		vrLen = 836;
 		vrLoc = 3943;
@@ -1098,7 +1766,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 108";
 		rLen = 0;
-		rLoc = 3003;
+		rLoc = 3112;
 		rType = 0;
 		vrLen = 877;
 		vrLoc = 4936;
@@ -1118,7 +1786,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 203";
 		rLen = 0;
-		rLoc = 6431;
+		rLoc = 6540;
 		rType = 0;
 		vrLen = 843;
 		vrLoc = 4977;
@@ -1138,7 +1806,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "- (void)setSSLMode:(STNPostgreSQLConnectionSSLMode)sslmode";
 		rLen = 59;
-		rLoc = 3949;
+		rLoc = 4058;
 		rType = 0;
 		vrLen = 932;
 		vrLoc = 3527;
@@ -1158,7 +1826,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 238";
 		rLen = 0;
-		rLoc = 7249;
+		rLoc = 7340;
 		rType = 0;
 		vrLen = 820;
 		vrLoc = 6214;
@@ -1178,12 +1846,12 @@
 		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
 		name = "main.m: 19";
 		rLen = 0;
-		rLoc = 535;
+		rLoc = 782;
 		rType = 0;
 		vrLen = 253;
 		vrLoc = 205;
 	};
-	1C8131EB0B629AAC001F2041 /* STNPostgreSQLConnection.m:231 */ = {
+	1C8131EB0B629AAC001F2041 /* STNPostgreSQLConnection.m:234 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -1193,9 +1861,9 @@
 		fileReference = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		functionName = "-connectionString";
 		hitCount = 1;
-		lineNumber = 231;
+		lineNumber = 234;
 		location = STNPostgreSQL;
-		modificationTime = 191019883.767487;
+		modificationTime = 191020730.730594;
 		state = 2;
 	};
 	1C81324D0B62A0CE001F2041 /* PBXTextBookmark */ = {
@@ -1233,7 +1901,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "- (STNPostgreSQLConnectionSSLMode)SSLMode";
 		rLen = 42;
-		rLoc = 4627;
+		rLoc = 4736;
 		rType = 0;
 		vrLen = 866;
 		vrLoc = 3989;
@@ -1253,7 +1921,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 190";
 		rLen = 0;
-		rLoc = 5189;
+		rLoc = 5298;
 		rType = 0;
 		vrLen = 851;
 		vrLoc = 4456;
@@ -1263,7 +1931,7 @@
 		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
 		name = "main.m: 22";
 		rLen = 0;
-		rLoc = 541;
+		rLoc = 787;
 		rType = 0;
 		vrLen = 519;
 		vrLoc = 0;
@@ -1273,7 +1941,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 238";
 		rLen = 0;
-		rLoc = 6350;
+		rLoc = 6459;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 5934;
@@ -1283,7 +1951,7 @@
 		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
 		name = "main.m: 22";
 		rLen = 0;
-		rLoc = 541;
+		rLoc = 787;
 		rType = 0;
 		vrLen = 519;
 		vrLoc = 0;
@@ -1293,7 +1961,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 175";
 		rLen = 0;
-		rLoc = 4603;
+		rLoc = 4712;
 		rType = 0;
 		vrLen = 912;
 		vrLoc = 4253;
@@ -1303,7 +1971,7 @@
 		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
 		name = "main.m: 19";
 		rLen = 0;
-		rLoc = 494;
+		rLoc = 572;
 		rType = 0;
 		vrLen = 580;
 		vrLoc = 0;
@@ -1313,7 +1981,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 175";
 		rLen = 0;
-		rLoc = 4603;
+		rLoc = 4712;
 		rType = 0;
 		vrLen = 216;
 		vrLoc = 4295;
@@ -1323,7 +1991,7 @@
 		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
 		name = "main.m: 19";
 		rLen = 0;
-		rLoc = 494;
+		rLoc = 572;
 		rType = 0;
 		vrLen = 580;
 		vrLoc = 0;
@@ -1333,7 +2001,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 175";
 		rLen = 0;
-		rLoc = 4603;
+		rLoc = 4712;
 		rType = 0;
 		vrLen = 912;
 		vrLoc = 4253;
@@ -1343,7 +2011,7 @@
 		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
 		name = "main.m: 19";
 		rLen = 0;
-		rLoc = 494;
+		rLoc = 572;
 		rType = 0;
 		vrLen = 580;
 		vrLoc = 0;
@@ -1353,7 +2021,7 @@
 		fRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */;
 		name = "STNPostgreSQLConnection.m: 370";
 		rLen = 0;
-		rLoc = 10740;
+		rLoc = 10742;
 		rType = 0;
 		vrLen = 840;
 		vrLoc = 4473;
@@ -1363,7 +2031,7 @@
 		fRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */;
 		name = "main.m: 19";
 		rLen = 0;
-		rLoc = 494;
+		rLoc = 572;
 		rType = 0;
 		vrLen = 355;
 		vrLoc = 205;
@@ -1526,23 +2194,23 @@
 		isa = XCBreakpointsBucket;
 		name = STNPostgreSQL;
 		objects = (
-			1C8131EB0B629AAC001F2041 /* STNPostgreSQLConnection.m:231 */,
+			1C8131EB0B629AAC001F2041 /* STNPostgreSQLConnection.m:234 */,
 		);
 	};
 	1CE4BB350AE409EE00853614 /* STNPostgreSQLConnection.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1172, 5026}}";
-			sepNavSelRange = "{7995, 0}";
-			sepNavVisRect = "{{0, 3482}, {977, 382}}";
+			sepNavSelRange = "{54, 0}";
+			sepNavVisRect = "{{0, 0}, {977, 382}}";
 			sepNavWindowFrame = "{{1318, 974}, {999, 652}}";
 		};
 	};
 	1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1298, 5488}}";
-			sepNavSelRange = "{6492, 0}";
-			sepNavVisRect = "{{0, 3204}, {977, 382}}";
-			sepNavWindowFrame = "{{1341, 953}, {999, 652}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1298, 5474}}";
+			sepNavSelRange = "{1590, 0}";
+			sepNavVisRect = "{{0, 346}, {977, 382}}";
+			sepNavWindowFrame = "{{1240, 126}, {999, 652}}";
 		};
 	};
 	32DBCF5E0370ADEE00C91783 /* STNPostgreSQL_Prefix.pch */ = {

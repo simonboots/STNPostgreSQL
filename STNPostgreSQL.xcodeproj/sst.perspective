@@ -273,8 +273,9 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>3</integer>
-									<integer>1</integer>
+									<integer>8</integer>
+									<integer>7</integer>
+									<integer>6</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -324,7 +325,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>1C771B150B62B662003CD21C</string>
+										<string>1C771BBF0B62C2AC003CD21C</string>
 										<key>history</key>
 										<array>
 											<string>1C3A34CD0B4C4FB00063ADDC</string>
@@ -335,9 +336,9 @@
 											<string>1C8131020B628002001F2041</string>
 											<string>1C8131140B628062001F2041</string>
 											<string>1C81319D0B629135001F2041</string>
-											<string>1C8132530B62A1FA001F2041</string>
-											<string>1C8132BC0B62A5D3001F2041</string>
-											<string>1C8132BF0B62A5D3001F2041</string>
+											<string>1C771B7C0B62BFE6003CD21C</string>
+											<string>1C771BBC0B62C2AC003CD21C</string>
+											<string>1C771BBD0B62C2AC003CD21C</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -351,7 +352,17 @@
 											<string>1C3A351F0B4C558D0063ADDC</string>
 											<string>1C3A358A0B4C5DFD0063ADDC</string>
 											<string>1C8130750B627830001F2041</string>
+											<string>1C771B230B62BB27003CD21C</string>
+											<string>1C771B4D0B62BD5D003CD21C</string>
+											<string>1C771B4E0B62BD5D003CD21C</string>
+											<string>1C771B500B62BD5D003CD21C</string>
+											<string>1C771B510B62BD5D003CD21C</string>
+											<string>1C771B7E0B62BFE6003CD21C</string>
 											<string>1C361ECC0B49BA8400AB9817</string>
+											<string>1C771B8A0B62C02F003CD21C</string>
+											<string>1C771BAB0B62C26F003CD21C</string>
+											<string>1C771BAC0B62C26F003CD21C</string>
+											<string>1C771BBE0B62C2AC003CD21C</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -567,7 +578,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>1C8132C00B62A5D3001F2041</string>
+										<string>1C771BC00B62C2AC003CD21C</string>
 										<key>history</key>
 										<array>
 											<string>1C3A34CD0B4C4FB00063ADDC</string>
@@ -579,8 +590,12 @@
 											<string>1C3A353F0B4C588B0063ADDC</string>
 											<string>1C3A35A50B4C5EE20063ADDC</string>
 											<string>1C8131DB0B629A40001F2041</string>
-											<string>1C8132BA0B62A49C001F2041</string>
-											<string>1C8132B90B62A486001F2041</string>
+											<string>1C771B8C0B62C035003CD21C</string>
+											<string>1C771BB60B62C288003CD21C</string>
+										</array>
+										<key>nextStack</key>
+										<array>
+											<string>1C771B7F0B62BFE6003CD21C</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -595,10 +610,6 @@
 											<string>1C3A351F0B4C558D0063ADDC</string>
 											<string>1C3A358A0B4C5DFD0063ADDC</string>
 											<string>1C3A35A90B4C5EE20063ADDC</string>
-											<string>1C81309C0B627AA7001F2041</string>
-											<string>1C81311B0B6280A8001F2041</string>
-											<string>1C8131B50B6293EC001F2041</string>
-											<string>1C8131DE0B629A40001F2041</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -628,7 +639,7 @@
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXBuildLogShowsTranscriptDefaultKey</key>
-										<string>{{0, 5}, {1122, 468}}</string>
+										<string>{{0, 5}, {25, 45}}</string>
 										<key>PBXProjectModuleGUID</key>
 										<string>XCMainBuildResultsModuleGUID</string>
 										<key>PBXProjectModuleLabel</key>
@@ -641,7 +652,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1122, 473}}</string>
+										<string>{{10, 27}, {0, -27}}</string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -721,14 +732,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>1C8130F30B627ECC001F2041</string>
+				<string>1C771B540B62BD5D003CD21C</string>
 				<string>1CA23EE50692099D00951B8B</string>
-				<string>1C8130F40B627ECC001F2041</string>
+				<string>1C771B550B62BD5D003CD21C</string>
 				<string>1CE4BB3E0AE40C5000853614</string>
-				<string>1C8130F50B627ECC001F2041</string>
+				<string>1C771B560B62BD5D003CD21C</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 				<string>1CA23EE80692099D00951B8B</string>
-				<string>1C8130F60B627ECC001F2041</string>
+				<string>1C771B570B62BD5D003CD21C</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.buildAndRun</string>
@@ -859,15 +870,15 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>1C8130F70B627ECC001F2041</string>
+				<string>1C771B580B62BD5D003CD21C</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>1C8130F80B627ECC001F2041</string>
-				<string>1C8130F90B627ECC001F2041</string>
-				<string>1C8130FA0B627ECC001F2041</string>
-				<string>1C8130FB0B627ECC001F2041</string>
-				<string>1C8130580B62763B001F2041</string>
-				<string>1C8130FC0B627ECC001F2041</string>
+				<string>1C771B590B62BD5D003CD21C</string>
+				<string>1C771B5A0B62BD5D003CD21C</string>
+				<string>1C771B5B0B62BD5D003CD21C</string>
+				<string>1C771B5C0B62BD5D003CD21C</string>
+				<string>1CE4BB3E0AE40C5000853614</string>
+				<string>1C771B5D0B62BD5D003CD21C</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debug</string>
@@ -897,6 +908,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C771B5E0B62BD5D003CD21C</string>
+		<string>1C771B5F0B62BD5D003CD21C</string>
+		<string>1C771B5D0B62BD5D003CD21C</string>
 		<string>/Users/sst/Xcode Projects/STNPostgreSQL/STNPostgreSQL.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
