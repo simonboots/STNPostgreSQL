@@ -253,10 +253,19 @@
 /*!
     @method     connectionString
     @abstract   Builds connection string out of _connectionattributes
-    @discussion Builds and returns connection string
+    @discussion Builds, escapes and returns connection string
     @result     connection string
 */
 - (NSString *)connectionString;
+
+/*!
+    @method     escapeParameterValue:
+    @abstract   escapes parameter string
+    @discussion escapes backslahes and single quotes
+    @param      value unescaped parameter value
+    @result     escaped parameter value
+*/
+- (NSString *)escapeParameterValue:(NSString *)value;
 
 /*!
     @method     connect:

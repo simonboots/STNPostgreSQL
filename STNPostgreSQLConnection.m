@@ -234,7 +234,7 @@
     
     csenum = [_connectionattributes keyEnumerator];
     while (key = [csenum nextObject]) {
-        value = [_connectionattributes objectForKey:key];
+        value = [self escapeParameterValue:[_connectionattributes objectForKey:key]];
         
         if ([value length] == 0) {
             value = @"''";
@@ -245,6 +245,28 @@
     
     return connectionstring;
 }
+
+- (NSString *)escapeParameterValue:(NSString *)value
+{
+    // characters to escape: "\", "'"
+    unsigned int length = [value length];
+    unsigned int c;
+    NSMutableString *escapedValue = [[NSMutableString alloc] initWithString:@""];
+    
+    for (c = 0; c < length; c++) {
+        unichar character = [value characterAtIndex:c];
+        
+        if (character == '\\' || character == '\'') {
+            [escapedValue appendString:@"\\"];
+        }
+        
+        [escapedValue appendFormat:@"%c", character];
+    }
+    
+    [escapedValue autorelease];
+    return escapedValue;
+}
+
 
 - (BOOL)connect:(NSError **)error
 {
