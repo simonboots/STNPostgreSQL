@@ -28,23 +28,26 @@
     NSMutableDictionary *_connectionattributes; // keys and default values by PGconndefaults
     
     /*! @var delegate delegate object to receive connection information */
-    id _delegate;
-    
-    /*NSString    *_host;
-    NSString    *_hostaddress;  // see PostgreSQL docs chapter 28.1
-    NSString    *_port;
-    NSString    *_dbname;
-    NSString    *_user;
-    NSString    *_password;
-    NSString    *_connecttimeout;
-    NSString    *_options;
-    NSString    *_sslmode;
-    NSString    *_krbsrvname;   // Kerberos service name */
-
-    
+    id _delegate;    
 }
 
 /*! @functiongroup connection attributes setters/getters */
+
+/*!
+    @method     setAuthTypeauthtype
+    @abstract   Sets AuthType
+    @discussion authType connection argument not documented in PostgreSQL documentation
+*/
+- (void)setAuthType:(NSString *)authtype;
+
+
+/*!
+    @method     authType
+    @abstract   returns authType
+    @discussion authType connection argument not documented in PostgreSQL documentation
+    @result     type of authentication
+*/
+- (NSString *)authType;
 
 /*!
     @method     setHost:
@@ -120,19 +123,19 @@
 - (NSString *)databaseName;
 
 /*!
-    @method     setUserName:
+    @method     setUser:
     @abstract   Sets PostgreSQL user name to connect as
     @discussion Defaults to the same as the operating system name of the user running the application
-    @param      username user name
+    @param      user user name
 */
-- (void)setUserName:(NSString *)username;
+- (void)setUser:(NSString *)user;
 
 /*!
-    @method     userName
+    @method     user
     @abstract   Returns PostgreSQL user name
     @result     user name
 */
-- (NSString *)userName;
+- (NSString *)user;
 
 /*!
     @method     setPassword:
@@ -151,20 +154,20 @@
 - (NSString *)password;
 
 /*!
-    @method     setConnectionTimeout:
+    @method     setConnectTimeout:
     @abstract   Sets maximum wait for connection
     @discussion Zero or not set means wait indefinitely; It is not recommended to use a timeout of less than 2 seconds
     @param      seconds timeout in seconds
 */
-- (void)setConnectionTimeout:(NSNumber *)seconds;
+- (void)setConnectTimeout:(NSNumber *)seconds;
 
 
 /*!
-    @method     connectionTimeout
+    @method     connectTimeout
     @abstract   Returns maximum wait for timeout
     @result     timeout in seconds
 */
-- (NSNumber *)connectionTimeout;
+- (NSNumber *)connectTimeout;
 
 /*!
     @method     setCommandLineOptions:
@@ -203,14 +206,14 @@
     @discussion Kerberos service name to use when authenticating with Kerberos 5.
     @param      servicename service name
 */
-- (void)setKerberosServiceName:(NSString *)servicename;
+//- (void)setKerberosServiceName:(NSString *)servicename;
 
 /*!
     @method     kerberosServiceName
     @abstract   Returns Kerberos 5 service name
     @result     service name
 */
-- (NSString *)kerberosServiceName;
+//- (NSString *)kerberosServiceName;
 
 /*!
     @method     setService:
@@ -246,6 +249,14 @@
     @result     delegate object
 */
 - (id)delegate;
+
+/*!
+    @method     connectionString
+    @abstract   Builds connection string out of _connectionattributes
+    @discussion Builds and returns connection string
+    @result     connection string
+*/
+- (NSString *)connectionString;
 
 /*!
     @method     connect:

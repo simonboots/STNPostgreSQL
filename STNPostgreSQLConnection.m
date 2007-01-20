@@ -24,14 +24,22 @@
         connectionoptions = connectionoptionsanchor = PQconndefaults();
         
         while (connectionoptions->keyword != NULL) {
-            char *value;
+            
+            // val element has to be set
+            char *defaultvalue;
+            
+            // preset rawvalue if not set
             if (connectionoptions->val != 0) {
-                value = connectionoptions->val;
+                defaultvalue = connectionoptions->val;
             } else {
-                value = "";
+                defaultvalue = "";
             }
-                        
-            [_connectionattributes setObject:[NSString stringWithCString:value encoding:NSASCIIStringEncoding] forKey:[NSString stringWithCString:connectionoptions->keyword encoding:NSASCIIStringEncoding]];
+            
+            NSLog(@"%s\n", connectionoptions->keyword);
+            
+            [_connectionattributes setObject:[NSString stringWithCString:defaultvalue encoding:NSASCIIStringEncoding] forKey:[NSString stringWithCString:connectionoptions->keyword encoding:NSASCIIStringEncoding]];
+            
+            // next array element
             connectionoptions++;
         }
         
@@ -41,6 +49,16 @@
     return self;
 }
 
+- (void)setAuthType:(NSString *)authType
+{
+    [[_connectionattributes objectForKey:@"authtype"] release];
+    [_connectionattributes setValue:authType forKey:@"authtype"];
+}
+
+- (NSString *)authType
+{
+    return [_connectionattributes objectForKey:@"authtype"];
+}
 
 - (void)setHost:(NSString *)host
 {
@@ -55,13 +73,13 @@
 
 - (void)setHostAddress:(NSString *)hostaddress
 {
-    [[_connectionattributes objectForKey:@"hostaddress"] release];
-    [_connectionattributes setValue:hostaddress forKey:@"hostaddress"];
+    [[_connectionattributes objectForKey:@"hostaddr"] release];
+    [_connectionattributes setValue:hostaddress forKey:@"hostaddr"];
 }
 
 - (NSString *)hostAddress
 {
-    return [_connectionattributes objectForKey:@"hostaddress"];
+    return [_connectionattributes objectForKey:@"hostaddr"];
 }
 
 - (void)setPort:(NSString *)port
@@ -77,24 +95,24 @@
 
 - (void)setDatabaseName:(NSString *)databasename
 {
-    [[_connectionattributes objectForKey:@"databasename"] release];
-    [_connectionattributes setValue:databasename forKey:@"databasename"];
+    [[_connectionattributes objectForKey:@"dbname"] release];
+    [_connectionattributes setValue:databasename forKey:@"dbname"];
 }
 
 - (NSString *)databaseName
 {
-    return [_connectionattributes objectForKey:@"databasename"];
+    return [_connectionattributes objectForKey:@"dbname"];
 }
 
-- (void)setUserName:(NSString *)username
+- (void)setUser:(NSString *)user
 {
-    [[_connectionattributes objectForKey:@"username"] release];
-    [_connectionattributes setValue:username forKey:@"username"];
+    [[_connectionattributes objectForKey:@"user"] release];
+    [_connectionattributes setValue:user forKey:@"user"];
 }
 
-- (NSString *)userName
+- (NSString *)user
 {
-    return [_connectionattributes objectForKey:@"username"];
+    return [_connectionattributes objectForKey:@"user"];
 }
 
 - (void)setPassword:(NSString *)password
@@ -108,15 +126,15 @@
     return [_connectionattributes objectForKey:@"password"];
 }
 
-- (void)setConnectionTimeout:(NSNumber *)seconds
+- (void)setConnectTimeout:(NSNumber *)seconds
 {
-    [[_connectionattributes objectForKey:@"timeout"] release];
-    [_connectionattributes setValue:seconds forKey:@"timeout"];
+    [[_connectionattributes objectForKey:@"connect_timeout"] release];
+    [_connectionattributes setValue:seconds forKey:@"connect_timeout"];
 }
 
 - (NSNumber *)connectionTimeout
 {
-    return [_connectionattributes objectForKey:@"timeout"];
+    return [_connectionattributes objectForKey:@"connect_timeout"];
 }
 
 - (void)setCommandLineOptions:(NSString *)options
@@ -132,25 +150,58 @@
 
 - (void)setSSLMode:(STNPostgreSQLConnectionSSLMode)sslmode
 {
-    [[_connectionattributes objectForKey:@"sslmode"] release];
-    [_connectionattributes setValue:[NSNumber numberWithInt:(int)sslmode] forKey:@"sslmode"];
+    //[[_connectionattributes objectForKey:@"sslmode"] release];
+    NSString *mode;
+
+    switch (sslmode) {
+    case STNPostgreSQLConnectionSSLModeAllow:
+        mode = @"allow";
+        break;
+    case STNPostgreSQLConnectionSSLModeDisable:
+        mode = @"disable";
+        break;
+    case STNPostgreSQLConnectionSSLModePrefer:
+        mode = @"prefer";
+        break;
+    case STNPostgreSQLConnectionSSLModeRequire:
+        mode = @"require";
+        break;
+    default:
+        // default value
+        mode = @"prefer";
+        break;
+    }
+    
+    [_connectionattributes setValue:mode forKey:@"sslmode"];
 }
 
 - (STNPostgreSQLConnectionSSLMode)SSLMode
 {
-    return (STNPostgreSQLConnectionSSLMode)[[_connectionattributes objectForKey:@"sslmode"] intValue];
+    NSString *mode = [_connectionattributes objectForKey:@"sslmode"];
+    if ([mode isEqualToString:@"allow"]) {
+        return STNPostgreSQLConnectionSSLModeAllow;
+    } else if ([mode isEqualToString:@"disable"]) {
+        return STNPostgreSQLConnectionSSLModeDisable;
+    } else if ([mode isEqualToString:@"prefer"]) {
+        return STNPostgreSQLConnectionSSLModePrefer;
+    } else if ([mode isEqualToString:@"require"]) {
+        return STNPostgreSQLConnectionSSLModeRequire;
+    } else {
+        // default value
+        return STNPostgreSQLConnectionSSLModePrefer;
+    }
 }
 
-- (void)setKerberosServiceName:(NSString *)servicename
-{
-    [[_connectionattributes objectForKey:@"krbservicename"] release];
-    [_connectionattributes setValue:servicename forKey:@"krbservicename"];
-}
-
-- (NSString *)kerberosServiceName
-{
-    return [_connectionattributes objectForKey:@"krbservicename"];
-}
+//- (void)setKerberosServiceName:(NSString *)servicename
+//{
+//    [[_connectionattributes objectForKey:@"krbservicename"] release];
+//    [_connectionattributes setValue:servicename forKey:@"krbservicename"];
+//}
+//
+//- (NSString *)kerberosServiceName
+//{
+//    return [_connectionattributes objectForKey:@"krbservicename"];
+//}
 
 - (void)setService:(NSString *)service
 {
@@ -174,21 +225,33 @@
     return _delegate;
 }
 
+- (NSString *)connectionString
+{
+    NSMutableString *connectionstring = [[NSMutableString alloc] initWithString:@""];
+    NSString *key;
+    id value;
+    NSEnumerator *csenum;
+    
+    csenum = [_connectionattributes keyEnumerator];
+    while (key = [csenum nextObject]) {
+        value = [_connectionattributes objectForKey:key];
+        
+        if ([value length] == 0) {
+            value = @"''";
+        }
+        
+        [connectionstring appendFormat:@"%@=%@ ", key, value];
+    }
+    
+    return connectionstring;
+}
+
 - (BOOL)connect:(NSError **)error
 {
-    NSMutableString *connectionstring = @"";
-    NSString *key;
-    NSEnumerator *csenum;
     NSDictionary *userinfo;
     ConnStatusType status;
     
-    // build connection string
-    csenum = [_connectionattributes keyEnumerator];
-    while (key = [csenum nextObject]) {
-        [connectionstring appendFormat:@"@=@ ", key, [_connectionattributes objectForKey:key]];
-    }
-    
-    _pgconn = PQconnectdb([connectionstring cStringUsingEncoding:NSASCIIStringEncoding]);
+    _pgconn = PQconnectdb([[self connectionString] cStringUsingEncoding:NSASCIIStringEncoding]);
     status = PQstatus(_pgconn);
     
     if (status != CONNECTION_OK) {
