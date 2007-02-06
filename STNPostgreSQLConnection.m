@@ -54,7 +54,6 @@
 
 - (void)setAuthType:(NSString *)authType
 {
-    [[_connectionattributes objectForKey:@"authtype"] release];
     [_connectionattributes setValue:authType forKey:@"authtype"];
 }
 
@@ -65,7 +64,6 @@
 
 - (void)setHost:(NSString *)host
 {
-    [[_connectionattributes objectForKey:@"host"] release];
     [_connectionattributes setValue:host forKey:@"host"];
 }
 
@@ -76,7 +74,6 @@
 
 - (void)setHostAddress:(NSString *)hostaddress
 {
-    [[_connectionattributes objectForKey:@"hostaddr"] release];
     [_connectionattributes setValue:hostaddress forKey:@"hostaddr"];
 }
 
@@ -87,7 +84,6 @@
 
 - (void)setPort:(NSString *)port
 {
-    [[_connectionattributes objectForKey:@"port"] release];
     [_connectionattributes setValue:port forKey:@"port"];
 }
 
@@ -98,7 +94,6 @@
 
 - (void)setDatabaseName:(NSString *)databasename
 {
-    [[_connectionattributes objectForKey:@"dbname"] release];
     [_connectionattributes setValue:databasename forKey:@"dbname"];
 }
 
@@ -109,7 +104,6 @@
 
 - (void)setUser:(NSString *)user
 {
-    [[_connectionattributes objectForKey:@"user"] release];
     [_connectionattributes setValue:user forKey:@"user"];
 }
 
@@ -120,7 +114,6 @@
 
 - (void)setPassword:(NSString *)password
 {
-    [[_connectionattributes objectForKey:@"password"] release];
     [_connectionattributes setValue:password forKey:@"password"];
 }
 
@@ -131,7 +124,6 @@
 
 - (void)setConnectTimeout:(NSNumber *)seconds
 {
-    [[_connectionattributes objectForKey:@"connect_timeout"] release];
     [_connectionattributes setValue:seconds forKey:@"connect_timeout"];
 }
 
@@ -142,7 +134,6 @@
 
 - (void)setCommandLineOptions:(NSString *)options
 {
-    [[_connectionattributes objectForKey:@"options"] release];
     [_connectionattributes setValue:options forKey:@"options"];
 }
 
@@ -208,7 +199,6 @@
 
 - (void)setService:(NSString *)service
 {
-    [[_connectionattributes objectForKey:@"service"] release];
     [_connectionattributes setValue:service forKey:@"service"];
 }
 
@@ -298,15 +288,13 @@
     }
     
     // start thread
-    [NSThread detachNewThreadSelector:@selector(connectWithDelegateCalls) toTarget:self withObject:self];
+    [NSThread detachNewThreadSelector:@selector(connectWithDelegateCalls:) toTarget:self withObject:self];
 }
 
 - (void)connectWithDelegateCalls:(id)param
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     NSError *error;
-    NSDictionary *userinfo;
-    ConnStatusType status;
     BOOL success;
     
     // call delegate
@@ -319,6 +307,7 @@
     // call delegate
     if ([_delegate respondsToSelector:@selector(connectionAttemptEnded:error:)]) {
         [_delegate connectionAttemptEnded:success error:error];
+        NSLog(@"connectionAttempt called by object");
     }
     
     [pool release];
