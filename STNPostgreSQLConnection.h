@@ -13,6 +13,9 @@
 #import <Cocoa/Cocoa.h>
 #import "libpq-fe.h"
 
+#define PROTOCOLVERSION_PARAM_STATEMENT 3
+#define PROTOCOLVERSION_PREP_STATEMENT 3
+
 /*!
     @class       STNPostgreSQLConnection 
     @superclass  NSObject
@@ -313,7 +316,8 @@
     @method     serverInformation
     @abstract   Returns useful information about the server and the connection
     @discussion method provides inforamtion in NSDictionary collection. The values are:
-    Key: @"versionnumber" => NSString: Version number of server (e.g.: 8.1.4)
+    Key: @"versionnumber" => NSNumber: Version number of server (e.g.: 80104)
+    Key: @"formattedversionnumber" => NSString: Formatted version number of server (e.g.: 8.1.4)
 	Key: @"protocolversion" => NSNumber: Version number of protocol (e.g. 3)
 	Key: @"backendPID" => NSNumber: Backend process ID of connection
     @result     dictionary with information

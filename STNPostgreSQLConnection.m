@@ -337,39 +337,40 @@
     return PQstatus(_pgconn) == CONNECTION_OK ? YES : NO;
 }
 
-
-/*!
-    @method     serverInformation
-    @abstract   Returns useful information about the server and the connection
-    @discussion method provides inforamtion in NSDictionary collection. The values are:
-    Key: @"versionnumber" => NSString: Version number of server (e.g.: 8.1.4)
-	Key: @"protocolversion" => NSNumber: Version number of protocol (e.g. 3)
-	Key: @"backendPID" => NSNumber: Backend process ID of connection
-    @result     dictionary with information
-*/
 - (NSDictionary *)serverInformation
 {
-    NSArray *keys = [NSArray arrayWithObjects:@"versionnumber", @"protocolversion", @"backendPID", nil];
+    NSNumber *versionnumber = [NSNumber numberWithInt:PQserverVersion(_pgconn)];
     NSNumber *protocolversion = [NSNumber numberWithInt:PQprotocolVersion(_pgconn)];
+    NSNumber *backendPID = [NSNumber numberWithInt:PQbackendPID(_pgconn)];
     
-    return nil;
+    // build formatted version number
+    int major = 0, minor = 0, service = 0;
+    major = [versionnumber intValue] / 10000;
+    minor = ([versionnumber intValue] - major * 10000) / 100;
+    service = [versionnumber intValue] - major * 10000 - minor * 100;
+    NSString *formattedVersionNumber = [NSString stringWithFormat:@"%d.%d.%d", major, minor, service];
+    
+    NSArray *keys = [NSArray arrayWithObjects:@"versionnumber", @"formattedversionnumber", @"protocolversion", @"backendPID", nil];
+    NSArray *values = [NSArray arrayWithObjects:versionnumber, formattedVersionNumber, protocolversion, backendPID, nil];
+    
+    return [NSDictionary dictionaryWithObjects:values forKeys:keys];
 }
 
-/*!
-    @method     parameteredStatementAvailable
-    @abstract   Returns if parametered statements are available through connection
-    @discussion Since parametered statements are only available in protocol version 3 or above you should check if the connection supports this feature.
-    @result     YES if parametered statements are available, NO if not
-*/
-//- (BOOL)parameteredStatementAvailable;
+- (BOOL)parameteredStatementAvailable
+{
+    if ([[[self serverInformation] objectForKey:@"protocolversion"] isEqualToNumber:[NSNumber numberWithInt:PROTOCOLVERSION_PARAM_STATEMENT]]) {
+        return YES;
+    }
+    return NO;
+}
 
-/*!
-    @method     preparedStatementsAvailable
-    @abstract   Returns if prepared statements are available through connection
-    @discussion Since parametered statements are only available in protocol version 3 or above you should check if the connection supports this feature.
-    @result     YES if parametered statements are available, NO if not
-*/
-//- (BOOL)preparedStatementsAvailable;
+- (BOOL)preparedStatementsAvailable
+{
+    if ([[[self serverInformation] objectForKey:@"protocolversion"] isEqualToNumber:[NSNumber numberWithInt:PROTOCOLVERSION_PREP_STATEMENT]]) {
+        return YES;
+    }
+    return NO;
+}
 
 - (NSString *)recentErrorMessage
 {
