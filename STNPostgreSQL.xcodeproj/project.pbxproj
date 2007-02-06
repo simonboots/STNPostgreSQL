@@ -52,6 +52,7 @@
 		1C3A359D0B4C5E6A0063ADDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */; };
 		1C3A35A30B4C5EDE0063ADDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */; };
 		1C50F1810B07B01000780C72 /* STNPostgreSQLConnectionSSLMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C4BF73A0AE81AE4004AB36F /* STNPostgreSQLConnectionSSLMode.h */; };
+		1C771BD60B62C86C003CD21C /* STNPostgreSQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* STNPostgreSQL.framework */; };
 		1CE1D86B0AE4119F00BFBBF3 /* STNPostgreSQL.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CE1D86A0AE4119F00BFBBF3 /* STNPostgreSQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1CE4BB370AE409EE00853614 /* STNPostgreSQLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CE4BB350AE409EE00853614 /* STNPostgreSQLConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1CE4BB380AE409EE00853614 /* STNPostgreSQLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */; };
@@ -4265,6 +4266,8 @@
 		1C3A35930B4C5E410063ADDC /* Playground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Playground; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C3A359C0B4C5E6A0063ADDC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1C4BF73A0AE81AE4004AB36F /* STNPostgreSQLConnectionSSLMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQLConnectionSSLMode.h; sourceTree = "<group>"; };
+		1C771BD00B62C7AF003CD21C /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C771BD10B62C7AF003CD21C /* Unit Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Unit Tests-Info.plist"; sourceTree = "<group>"; };
 		1CE1D86A0AE4119F00BFBBF3 /* STNPostgreSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQL.h; sourceTree = "<group>"; };
 		1CE4BB320AE4095300853614 /* framework.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; path = framework.xcclassmodel; sourceTree = "<group>"; };
 		1CE4BB350AE409EE00853614 /* STNPostgreSQLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQLConnection.h; sourceTree = "<group>"; };
@@ -4281,6 +4284,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C3A35950B4C5E520063ADDC /* STNPostgreSQL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C771BCD0B62C7AF003CD21C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C771BD60B62C86C003CD21C /* STNPostgreSQL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4301,6 +4312,7 @@
 			children = (
 				8DC2EF5B0486A6940098B216 /* STNPostgreSQL.framework */,
 				1C3A35930B4C5E410063ADDC /* Playground */,
+				1C771BD00B62C7AF003CD21C /* Unit Tests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4309,6 +4321,7 @@
 			isa = PBXGroup;
 			children = (
 				08FB77AEFE84172EC02AAC07 /* Classes */,
+				1C771C070B62C9F3003CD21C /* Test case classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				089C1665FE841158C02AAC07 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
@@ -4333,6 +4346,7 @@
 				8DC2EF5A0486A6940098B216 /* Info.plist */,
 				089C1666FE841158C02AAC07 /* InfoPlist.strings */,
 				1CE4BB320AE4095300853614 /* framework.xcclassmodel */,
+				1C771BD10B62C7AF003CD21C /* Unit Tests-Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -10829,6 +10843,13 @@
 			name = "Playground files";
 			sourceTree = "<group>";
 		};
+		1C771C070B62C9F3003CD21C /* Test case classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Test case classes";
+			sourceTree = "<group>";
+		};
 		1CE1D8E70AE4193600BFBBF3 /* PostgreSQL Distribution */ = {
 			isa = PBXGroup;
 			children = (
@@ -10899,6 +10920,24 @@
 			productReference = 1C3A35930B4C5E410063ADDC /* Playground */;
 			productType = "com.apple.product-type.tool";
 		};
+		1C771BCF0B62C7AF003CD21C /* Unit Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C771BD20B62C7B0003CD21C /* Build configuration list for PBXNativeTarget "Unit Tests" */;
+			buildPhases = (
+				1C771BCB0B62C7AF003CD21C /* Resources */,
+				1C771BCC0B62C7AF003CD21C /* Sources */,
+				1C771BCD0B62C7AF003CD21C /* Frameworks */,
+				1C771BCE0B62C7AF003CD21C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Unit Tests";
+			productName = "Unit Tests";
+			productReference = 1C771BD00B62C7AF003CD21C /* Unit Tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		8DC2EF4F0486A6940098B216 /* STNPostgreSQL */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "STNPostgreSQL" */;
@@ -10935,11 +10974,19 @@
 				1C0E3A370AE42ED80052A499 /* libpq - i386 */,
 				1C0E3A890AE42F2C0052A499 /* libpq - universal */,
 				1C3A35920B4C5E410063ADDC /* Playground */,
+				1C771BCF0B62C7AF003CD21C /* Unit Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1C771BCB0B62C7AF003CD21C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DC2EF520486A6940098B216 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -10990,6 +11037,19 @@
 			shellPath = /bin/sh;
 			shellScript = "cd $POSTGRESQL_SRC_DIR\nLIBDIR=build\nlipo -create $LIBDIR/*/libpq.a -output $LIBDIR/libpq.a\nexit $?";
 		};
+		1C771BCE0B62C7AF003CD21C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -10998,6 +11058,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C3A35A30B4C5EDE0063ADDC /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C771BCC0B62C7AF003CD21C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11155,6 +11222,58 @@
 			};
 			name = Release;
 		};
+		1C771BD30B62C7B0003CD21C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Unit Tests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Unit Tests";
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		1C771BD40B62C7B0003CD21C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Unit Tests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Unit Tests";
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		1DEB91AE08733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -11274,6 +11393,15 @@
 			buildConfigurations = (
 				1C3A359A0B4C5E590063ADDC /* Debug */,
 				1C3A359B0B4C5E590063ADDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C771BD20B62C7B0003CD21C /* Build configuration list for PBXNativeTarget "Unit Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C771BD30B62C7B0003CD21C /* Debug */,
+				1C771BD40B62C7B0003CD21C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -303,7 +303,7 @@
 
 - (void)connectWithDelegateCalls:(id)param
 {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool init] alloc];
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     NSError *error;
     NSDictionary *userinfo;
     ConnStatusType status;
