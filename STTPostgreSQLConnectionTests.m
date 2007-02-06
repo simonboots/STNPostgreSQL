@@ -39,6 +39,41 @@
     [conn startConnection];
 }
 
+- (void)testServerInformation
+{
+    NSError *error;
+    STAssertTrue([conn connect:&error], @"connection failed! (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    pleaseWait = NO;
+    
+    NSDictionary *serverInformation = [conn serverInformation];
+    
+    STAssertTrue([[serverInformation objectForKey:@"versionnumber"] isEqualToNumber:[NSNumber numberWithInt:80200]], @"Version number mismatch (%d)", [[serverInformation objectForKey:@"versionnumber"] intValue]);
+    STAssertTrue([[serverInformation objectForKey:@"formattedversionnumber"] isEqualToString:@"8.2.0"], @"Formatted version number mismatch (%@)", [serverInformation objectForKey:@"formattedversionnumber"]);
+    STAssertTrue([[serverInformation objectForKey:@"protocolversion"] isEqualToNumber:[NSNumber numberWithInt:3]], @"Protocol version mismatch (%d)", [[serverInformation objectForKey:@"protocolversion"] intValue]);
+}
+
+- (void)testAvailableStatementFeatures
+{
+    // Tests availability of parametered and prepared statements
+    NSError *error;
+    STAssertTrue([conn connect:&error], @"connection failed! (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    pleaseWait = NO;
+    
+    NSDictionary *serverInformation = [conn serverInformation];
+    
+    if ([[serverInformation objectForKey:@"protocolversion"] isEqualToNumber:[NSNumber numberWithInt:PROTOCOLVERSION_PARAM_STATEMENT]]) {
+        STAssertTrue([conn parameteredStatementAvailable], @"Parametered Statements should be available");
+    } else {
+        STAssertFalse([conn parameteredStatementAvailable], @"Parametered Statements should not be available");
+    }
+    
+    if ([[serverInformation objectForKey:@"protocolversion"] isEqualToNumber:[NSNumber numberWithInt:PROTOCOLVERSION_PREP_STATEMENT]]) {
+        STAssertTrue([conn preparedStatementsAvailable], @"Prepared statements should be available");
+    } else {
+        STAssertFalse([conn preparedStatementsAvailable], @"Prepared statements should not be available");
+    }
+}
+
 - (BOOL)connectionAttemptShouldStart
 {
     NSLog(@"connectionAttemptShouldStart called (1/3)");
