@@ -47,8 +47,8 @@
     
     NSDictionary *serverInformation = [conn serverInformation];
     
-    STAssertTrue([[serverInformation objectForKey:@"versionnumber"] isEqualToNumber:[NSNumber numberWithInt:80200]], @"Version number mismatch (%d)", [[serverInformation objectForKey:@"versionnumber"] intValue]);
-    STAssertTrue([[serverInformation objectForKey:@"formattedversionnumber"] isEqualToString:@"8.2.0"], @"Formatted version number mismatch (%@)", [serverInformation objectForKey:@"formattedversionnumber"]);
+    STAssertTrue([[serverInformation objectForKey:@"versionnumber"] isEqualToNumber:[NSNumber numberWithInt:80203]], @"Version number mismatch (%d)", [[serverInformation objectForKey:@"versionnumber"] intValue]);
+    STAssertTrue([[serverInformation objectForKey:@"formattedversionnumber"] isEqualToString:@"8.2.3"], @"Formatted version number mismatch (%@)", [serverInformation objectForKey:@"formattedversionnumber"]);
     STAssertTrue([[serverInformation objectForKey:@"protocolversion"] isEqualToNumber:[NSNumber numberWithInt:3]], @"Protocol version mismatch (%d)", [[serverInformation objectForKey:@"protocolversion"] intValue]);
 }
 
