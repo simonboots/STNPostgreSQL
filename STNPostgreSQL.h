@@ -12,5 +12,7 @@
 #import "libpq-fe.h"
 
 // load framework header files
+#import <STNPostgreSQLErrorDomain.h>
 #import <STNPostgreSQLConnectionSSLMode.h>
 #import <STNPostgreSQLConnection.h>
+#import <STNPostgreSQLStatement.h>

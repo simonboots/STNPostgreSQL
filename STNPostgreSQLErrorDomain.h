@@ -26,9 +26,9 @@ extern NSString *const STNPostgreSQLErrorDomain;
  @constant      STNPostgreSQLClientEncodingFailed Client encoding couldn't be set
  @constant      STNPostgreSQLStatementFatalError Fatal error in statement execution
  */
-enum {
-    STNPostgreSQLConnectionFailed = 101,
-    STNPostgreSQLClientEncodingFailed = 102,
+enum STNPostgreSQLError {
+    STNPostgreSQLConnectionError = 101,
+    STNPostgreSQLClientEncodingError = 102,
 	STNPostgreSQLEmptyQueryError = 110,
 	STNPostgreSQLBadResponseError = 111,
 	STNPostgreSQLStatementNonFatalError = 112,

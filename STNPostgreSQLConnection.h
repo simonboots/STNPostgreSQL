@@ -254,6 +254,13 @@
 - (id)delegate;
 
 /*!
+    @method     PgConn
+    @abstract   Returns PGConn pointer used by libpq
+    @result     PGConn pointer
+*/
+- (PGconn *)PgConn;
+
+/*!
     @method     connectionString
     @abstract   Builds connection string out of _connectionattributes
     @discussion Builds, escapes and returns connection string

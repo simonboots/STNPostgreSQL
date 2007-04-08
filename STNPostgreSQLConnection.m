@@ -220,6 +220,11 @@
     return _delegate;
 }
 
+- (PGconn *)PgConn
+{
+    return _pgconn;
+}
+
 #pragma mark connection strings methods
 
 - (NSString *)connectionString
@@ -275,7 +280,7 @@
     
     if (status != CONNECTION_OK) {
         userinfo = [NSDictionary dictionaryWithObject:[self recentErrorMessage] forKey:@"errormessage"];
-        *error = [NSError errorWithDomain:STNPostgreSQLErrorDomain code:STNPostgreSQLConnectionFailed userInfo:userinfo];
+        *error = [NSError errorWithDomain:STNPostgreSQLErrorDomain code:STNPostgreSQLConnectionError userInfo:userinfo];
         return NO;
     }
     

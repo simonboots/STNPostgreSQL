@@ -18,13 +18,22 @@ int main(void)
     
     [conn setUser:@"sst"];
     [conn setHost:@"localhost"];
-    [conn setDatabaseName:@"template1"];
+    [conn setDatabaseName:@"postgres"];
     [conn setSSLMode:STNPostgreSQLConnectionSSLModePrefer];
-
+    
     NSLog([conn connectionString]);
     
     if ([conn connect:&error]) {
-        NSLog(@"Connection successfull");
+        NSLog(@"Connection successful");
+        NSError *error;
+        STNPostgreSQLStatement *statement = [[STNPostgreSQLStatement alloc] initWithConnection:conn];
+        [statement setStatement:@"CREATE TABLE test (id int, name varchar(50)"];
+        if ([statement execute:&error]) {
+            NSLog(@"Table created!");
+        } else {
+            NSLog(@"creation failed: %@", [[error userInfo] objectForKey:@"errormessage"]);
+        }
+        
     } else {
         NSLog(@"Connection failed");
         NSLog(@"Error: %@", [[error userInfo] objectForKey:@"errormessage"]);
