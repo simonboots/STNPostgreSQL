@@ -52,6 +52,8 @@
     return self;
 }
 
+#pragma mark Getters/Setters
+
 - (void)setAuthType:(NSString *)authType
 {
     [_connectionattributes setValue:authType forKey:@"authtype"];
@@ -218,6 +220,8 @@
     return _delegate;
 }
 
+#pragma mark connection strings methods
+
 - (NSString *)connectionString
 {
     NSMutableString *connectionstring = [[NSMutableString alloc] initWithString:@""];
@@ -259,6 +263,7 @@
     return [escapedValue autorelease];
 }
 
+#pragma mark connect methods
 
 - (BOOL)connect:(NSError **)error
 {
@@ -331,6 +336,8 @@
     [self disconnect];
     [self startConnection];
 }
+
+#pragma mark connection status methods
 
 - (BOOL)isConnected
 {
