@@ -13,6 +13,11 @@
 
 @implementation STNPostgreSQLConnection
 
++ (STNPostgreSQLConnection *)connection
+{
+    return [[[self alloc] init] autorelease];
+}
+
 - (id)init {
     self = [super init];
     if (self != nil) {

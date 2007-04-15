@@ -12,6 +12,29 @@
 
 @implementation STNPostgreSQLStatement
 
++ (STNPostgreSQLStatement *)statement
+{
+    return [[[self alloc] init] autorelease];
+}
+
++ (STNPostgreSQLStatement *)statementWithConnection:(STNPostgreSQLConnection *)connection
+{
+    return [[[self alloc] initWithConnection:connection] autorelease];
+}
+
++ (STNPostgreSQLStatement *)statementWithStatement:(NSString *)statement
+{
+    STNPostgreSQLStatement *statement = [[self alloc] init];
+    [statement setStatement:statement];
+    return [statement autorelease];
+}
+
++ (STNPostgreSQLStatement *)statementWithConnection:(STNPostgreSQLConnection *)connection andStatement:(NSString *)statement
+{
+    STNPostgreSQLStatement *statement = [[self alloc] initWithConnection:connection];
+    [statement setStatement:statement];
+    return [statement autorelease];
+}
 
 - (id)initWithConnection:(STNPostgreSQLConnection *)connection {
     self = [super init];
@@ -54,6 +77,19 @@
     return _connection;
 }
 
+- (void)setDelegate:(id)delegate
+{
+    if (delegate != [self delegate]) {
+        [_delegate release];
+        _delegate = [delegate retain];
+    }
+}
+
+- (id)delegate
+{
+    return _delegate;
+}
+
 #pragma mark Execution methods
 
 - (BOOL)execute:(NSError **)error
@@ -61,7 +97,7 @@
     PGresult *result;
     ExecStatusType statusType;
     NSDictionary *userInfo;
-    NSDictionary *errorField;
+    STNPostgreSQLErrorField *errorField;
     NSString *errorMessage;
     BOOL success;
     
@@ -116,31 +152,49 @@
     return success;
 }
 
-#pragma mark Error handling
-
-- (NSDictionary *)generateErrorField:(PGresult *)result
+- (void)startExecution
 {
-    NSArray *keys = [NSArray arrayWithObjects:@"severity", @"sqlstate", @"message_primary", @"message_detail", @"message_hint",
-                                              @"statement_position", @"internal_position", @"internal_query", @"context",
-                                              @"source_file", @"source_line", @"source_function", nil];
-    
-    int fieldcodes[] = {PG_DIAG_SEVERITY, PG_DIAG_SQLSTATE, PG_DIAG_MESSAGE_PRIMARY, PG_DIAG_MESSAGE_DETAIL, PG_DIAG_MESSAGE_HINT, PG_DIAG_STATEMENT_POSITION, PG_DIAG_INTERNAL_POSITION, PG_DIAG_INTERNAL_QUERY, PG_DIAG_CONTEXT, PG_DIAG_SOURCE_FILE, PG_DIAG_SOURCE_LINE, PG_DIAG_SOURCE_FUNCTION};
-    
-    NSMutableArray *values = [[NSMutableArray alloc] init];
-    
-    int i;
-    for (i = 0; i < sizeof(fieldcodes)/sizeof(int); i++) {
-        char *errorField = PQresultErrorField(result,fieldcodes[i]);
-        if (errorField == NULL) {
-            [values addObject:[NSString string]];
-        } else {
-            [values addObject:[NSString stringWithUTF8String:errorField]];
+    // call delegate
+    if ([_delegate respondsToSelector:@selector(executionAttemptShouldStart)]) {
+        if ([_delegate executionAttemptShouldStart] == NO) {
+            return;
         }
     }
     
-    [values autorelease];
+    // start thread
+    [NSThread detachNewThreadSelector:@selector(executeWithDelegateCalls:) toTarget:self withObject:self];
+}
+
+- (void)executeWithDelegateCalls:(id)param
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    NSError *error;
+    BOOL success;
     
-    return [NSDictionary dictionaryWithObjects:values forKeys:keys];
+    // call delegate
+    if ([_delegate respondsToSelector:@selector(executionAttemptWillStart)]) {
+        [_delegate executionAttemptWillStart];
+    }
+    
+    success = [param execute:&error];
+    
+    // call delegate
+    if ([_delegate respondsToSelector:@selector(executionAttemptEnded:error:)]) {
+        [_delegate executionAttemptEnded:success error:error];
+        NSLog(@"executionAttempt called by object");
+    }
+    
+    [pool release];
+    
+    return;
+}
+
+#pragma mark Error handling
+
+- (STNPostgreSQLErrorField *)generateErrorField:(PGresult *)result
+{
+    STNPostgreSQLErrorField *errorField =[[STNPostgreSQLErrorField alloc] initWithPGResult:result];
+    return [errorField autorelease];
 }
 
 

@@ -34,6 +34,8 @@
     id _delegate;    
 }
 
++ (STNPostgreSQLConnection *)connection;
+
 /*! @functiongroup connection attributes setters/getters */
 
 /*!

@@ -13,7 +13,7 @@
 int main(void)
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    STNPostgreSQLConnection *conn = [[STNPostgreSQLConnection alloc] init];
+    STNPostgreSQLConnection *conn = [STNPostgreSQLConnection connection];
     NSError *error;
     
     [conn setUser:@"sst"];
@@ -27,11 +27,12 @@ int main(void)
         NSLog(@"Connection successful");
         NSError *error;
         STNPostgreSQLStatement *statement = [[STNPostgreSQLStatement alloc] initWithConnection:conn];
-        [statement setStatement:@"CREATE TABLE test (id int, name varchar(50)"];
+        [statement setStatement:@"CREATE TABLE test (id int, name varchar(50))"];
         if ([statement execute:&error]) {
             NSLog(@"Table created!");
         } else {
             NSLog(@"creation failed: %@", [[error userInfo] objectForKey:@"errormessage"]);
+            NSLog(@"severity: %@", [[[error userInfo] objectForKey:@"errorfield"] valueForField:STNPostgreSQLSeverityErrorField]);
         }
         
     } else {
