@@ -13,6 +13,7 @@
 
 // load framework header files
 #import <STNPostgreSQLErrorDomain.h>
+#import <STNPostgreSQLErrorField.h>
 #import <STNPostgreSQLConnectionSSLMode.h>
 #import <STNPostgreSQLConnection.h>
 #import <STNPostgreSQLStatement.h>

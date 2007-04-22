@@ -14,7 +14,7 @@
 
 @implementation STNPostgreSQLErrorField
 
-+ (STNPostgreSQLErrorField *)errorFieldWithPGResult:(PGResult *)result
++ (STNPostgreSQLErrorField *)errorFieldWithPGResult:(PGresult *)result
 {
     return [[[self alloc] initWithPGResult:result] autorelease];
 }

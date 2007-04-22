@@ -10,7 +10,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "STNPostgreSQL.h"
-#import "STNPostgreSQLErrorField.h"
 
 @interface STNPostgreSQLStatement : NSObject {
     NSString *_statement;
@@ -46,8 +45,4 @@
 - (BOOL)executionAttemptShouldStart;
 - (void)executionAttemptWillStart;
 - (void)executionAttemptEnded:(BOOL)success error:(NSError *)error;
-    // disconnection methods
-    // - (BOOL)disconnectionAttemptShouldStart;
-    // - (void)disconnectionAttemptWillStart;
-    // - (void)disconnectionAttemptEnded;
 @end

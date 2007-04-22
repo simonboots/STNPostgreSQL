@@ -24,16 +24,16 @@
 
 + (STNPostgreSQLStatement *)statementWithStatement:(NSString *)statement
 {
-    STNPostgreSQLStatement *statement = [[self alloc] init];
-    [statement setStatement:statement];
-    return [statement autorelease];
+    STNPostgreSQLStatement *_statement = [[self alloc] init];
+    [_statement setStatement:statement];
+    return [_statement autorelease];
 }
 
 + (STNPostgreSQLStatement *)statementWithConnection:(STNPostgreSQLConnection *)connection andStatement:(NSString *)statement
 {
-    STNPostgreSQLStatement *statement = [[self alloc] initWithConnection:connection];
-    [statement setStatement:statement];
-    return [statement autorelease];
+    STNPostgreSQLStatement *_statement = [[self alloc] initWithConnection:connection];
+    [_statement setStatement:statement];
+    return [_statement autorelease];
 }
 
 - (id)initWithConnection:(STNPostgreSQLConnection *)connection {

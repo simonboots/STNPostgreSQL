@@ -9,13 +9,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "STNPostgreSQL.h"
 
 
 @interface STNPostgreSQLErrorField : NSObject {
     NSDictionary *_errorField;
 }
 
-+ (STNPostgreSQLErrorField *)errorFieldWithPGResult:(PGResult *)result
++ (STNPostgreSQLErrorField *)errorFieldWithPGResult:(PGresult *)result;
 
 - (id)initWithPGResult:(PGresult *)result;
 - (NSString *)valueForField:(unsigned int)field;
