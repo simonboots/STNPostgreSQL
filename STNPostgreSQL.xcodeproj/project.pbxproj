@@ -56,6 +56,8 @@
 		1CB3025F0BC0294B005323AE /* STNPostgreSQLStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3025D0BC02944005323AE /* STNPostgreSQLStatement.m */; };
 		1CB302600BC0294D005323AE /* STNPostgreSQLStatement.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CB3025C0BC02944005323AE /* STNPostgreSQLStatement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1CBFEC160B790C9A0022E5BA /* STTPostgreSQLConnectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBFEC150B790C9A0022E5BA /* STTPostgreSQLConnectionTests.m */; };
+		1CD887FD0BE8AFA600526BA7 /* STNPostgreSQLResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CD887FB0BE8AFA600526BA7 /* STNPostgreSQLResult.h */; };
+		1CD887FE0BE8AFA700526BA7 /* STNPostgreSQLResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD887FC0BE8AFA600526BA7 /* STNPostgreSQLResult.m */; };
 		1CE1D86B0AE4119F00BFBBF3 /* STNPostgreSQL.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CE1D86A0AE4119F00BFBBF3 /* STNPostgreSQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1CE4BB370AE409EE00853614 /* STNPostgreSQLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CE4BB350AE409EE00853614 /* STNPostgreSQLConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1CE4BB380AE409EE00853614 /* STNPostgreSQLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */; };
@@ -87,12 +89,12 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = STNPostgreSQL;
 		};
-		1CBFECCD0B79176D0022E5BA /* PBXContainerItemProxy */ = {
+		1CD887F80BE8AF3100526BA7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = STNPostgreSQL;
+			remoteGlobalIDString = 1C771BCF0B62C7AF003CD21C;
+			remoteInfo = "Unit Tests";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -3196,6 +3198,8 @@
 		1CB3FFFF0BC01C0A005323AE /* query07 */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = query07; sourceTree = "<group>"; };
 		1CBFEC150B790C9A0022E5BA /* STTPostgreSQLConnectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTPostgreSQLConnectionTests.m; sourceTree = "<group>"; };
 		1CBFEDFC0B791FF00022E5BA /* STTPostgreSQLConnectionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTPostgreSQLConnectionTests.h; sourceTree = "<group>"; };
+		1CD887FB0BE8AFA600526BA7 /* STNPostgreSQLResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQLResult.h; sourceTree = "<group>"; };
+		1CD887FC0BE8AFA600526BA7 /* STNPostgreSQLResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STNPostgreSQLResult.m; sourceTree = "<group>"; };
 		1CE1D86A0AE4119F00BFBBF3 /* STNPostgreSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQL.h; sourceTree = "<group>"; };
 		1CE4BB320AE4095300853614 /* framework.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; path = framework.xcclassmodel; sourceTree = "<group>"; };
 		1CE4BB350AE409EE00853614 /* STNPostgreSQLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQLConnection.h; sourceTree = "<group>"; };
@@ -3292,6 +3296,8 @@
 				1CB3025D0BC02944005323AE /* STNPostgreSQLStatement.m */,
 				1CEA80030BD2AED3004D95B2 /* STNPostgreSQLErrorField.h */,
 				1CEA80040BD2AED3004D95B2 /* STNPostgreSQLErrorField.m */,
+				1CD887FB0BE8AFA600526BA7 /* STNPostgreSQLResult.h */,
+				1CD887FC0BE8AFA600526BA7 /* STNPostgreSQLResult.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -8719,6 +8725,7 @@
 				1C1CC34F0B087B4F00FE39C4 /* STNPostgreSQLErrorDomain.h in Headers */,
 				1CB302600BC0294D005323AE /* STNPostgreSQLStatement.h in Headers */,
 				1CEA80050BD2AED3004D95B2 /* STNPostgreSQLErrorField.h in Headers */,
+				1CD887FD0BE8AFA600526BA7 /* STNPostgreSQLResult.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8754,7 +8761,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				1CBFECCE0B79176D0022E5BA /* PBXTargetDependency */,
 			);
 			name = "Unit Tests";
 			productName = "Unit Tests";
@@ -8773,6 +8779,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1CD887F90BE8AF3100526BA7 /* PBXTargetDependency */,
 			);
 			name = STNPostgreSQL;
 			productInstallPath = "$(HOME)/Library/Frameworks";
@@ -8901,6 +8908,7 @@
 				1C1CC3500B087B4F00FE39C4 /* STNPostgreSQLErrorDomain.m in Sources */,
 				1CB3025F0BC0294B005323AE /* STNPostgreSQLStatement.m in Sources */,
 				1CEA80060BD2AED3004D95B2 /* STNPostgreSQLErrorField.m in Sources */,
+				1CD887FE0BE8AFA700526BA7 /* STNPostgreSQLResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8922,10 +8930,10 @@
 			target = 8DC2EF4F0486A6940098B216 /* STNPostgreSQL */;
 			targetProxy = 1C8130910B627A6B001F2041 /* PBXContainerItemProxy */;
 		};
-		1CBFECCE0B79176D0022E5BA /* PBXTargetDependency */ = {
+		1CD887F90BE8AF3100526BA7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8DC2EF4F0486A6940098B216 /* STNPostgreSQL */;
-			targetProxy = 1CBFECCD0B79176D0022E5BA /* PBXContainerItemProxy */;
+			target = 1C771BCF0B62C7AF003CD21C /* Unit Tests */;
+			targetProxy = 1CD887F80BE8AF3100526BA7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

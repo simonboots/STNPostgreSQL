@@ -14,6 +14,7 @@
 @interface STNPostgreSQLStatement : NSObject {
     NSString *_statement;
     STNPostgreSQLConnection *_connection;
+    STNPostgreSQLResult *_result;
     id _delegate;
 }
 

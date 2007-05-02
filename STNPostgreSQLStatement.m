@@ -39,6 +39,7 @@
 - (id)initWithConnection:(STNPostgreSQLConnection *)connection {
     self = [super init];
     if (self != nil) {
+        _result = nil;
         [self setConnection:connection];
         [self setStatement:[NSString string]];
     }
@@ -94,6 +95,7 @@
 
 - (BOOL)execute:(NSError **)error
 {
+    _result = nil; // reset result object
     PGresult *result;
     ExecStatusType statusType;
     NSDictionary *userInfo;
@@ -147,6 +149,10 @@
         break;
     default:
         break;
+    }
+    
+    if (success) {
+        // Build STNPostgreSQLResult object
     }
 
     return success;
