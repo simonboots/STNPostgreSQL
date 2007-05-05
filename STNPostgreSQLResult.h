@@ -9,6 +9,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "STNPostgreSQL.h"
 
 
 @interface STNPostgreSQLResult : NSObject {
@@ -18,5 +19,15 @@
 + (STNPostgreSQLResult *)resultWithPGresult:(PGresult*)result;
 
 - (id)initWithPGresult:(PGresult *)result;
+
+- (int)numberOfTuples;
+- (int)numberOfFields;
+- (NSString *)nameOfFieldAtIndex:(int)index;
+- (int)indexOfFieldWithName:(NSString *)name;
+- (int)indexOfFieldWithinTableAtIndex:(int)index;
+- (NSString *)valueAtRow:(int)row column:(int)column;
+- (BOOL)hasNullValueAtRow:(int)row column:(int)column;
+- (NSString *)kindOfCommand;
+- (int)numberOfRowsAffected;
 
 @end

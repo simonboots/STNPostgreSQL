@@ -10,7 +10,6 @@
 
 #import "STTPostgreSQLConnectionTests.h"
 
-
 @implementation STTPostgreSQLConnectionTests
 
 - (void)setUp

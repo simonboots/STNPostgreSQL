@@ -38,6 +38,8 @@
 - (void)startExecution;
 - (void)executeWithDelegateCalls:(id)param;
 
+- (STNPostgreSQLResult *)result;
+
 - (STNPostgreSQLErrorField *)generateErrorField:(PGresult *)result;
 
 @end

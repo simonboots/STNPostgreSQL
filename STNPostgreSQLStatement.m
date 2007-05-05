@@ -152,6 +152,7 @@
     }
     
     if (success) {
+        _result = [[STNPostgreSQLResult alloc] initWithPGresult:result];
         // Build STNPostgreSQLResult object
     }
 
@@ -195,6 +196,13 @@
     return;
 }
 
+#pragma mark Result handling
+
+- (STNPostgreSQLResult *)result
+{
+    return _result;
+}
+
 #pragma mark Error handling
 
 - (STNPostgreSQLErrorField *)generateErrorField:(PGresult *)result
@@ -207,6 +215,7 @@
 - (void) dealloc {
     [[self connection] release];
     [[self statement] release];
+    [[self result] release];
     [super dealloc];
 }
 
