@@ -84,7 +84,7 @@
     return [NSString stringWithCString:PQcmdStatus(_result) encoding:NSASCIIStringEncoding];
 }
 
-- (int)numberOfRowsAffected
+- (int)numberOfAffectedRows
 {
     NSString *rowsAffected = [NSString stringWithCString:PQcmdTuples(_result) encoding:NSASCIIStringEncoding];
     NSScanner *intScanner = [NSScanner scannerWithString:rowsAffected];
@@ -94,6 +94,50 @@
     } else {
         return 0;
     }
+}
+
+- (NSDictionary *)dictionaryWithKeyColumn:(int)keycolumn valueColumn:(int)valuecolumn keyType:(int)modifier
+{
+    NSMutableArray *keys   = [NSMutableArray arrayWithCapacity:[self numberOfTuples]];
+    NSMutableArray *values = [NSMutableArray arrayWithCapacity:[self numberOfTuples]];
+    int row = 0;
+    for (row = 0; row < [self numberOfTuples]; row++) {
+        // keys
+        if (modifier != STNPostgreSQLKeyTypeString) {
+            NSScanner *numberScanner = [NSScanner scannerWithString:[self valueAtRow:row column:keycolumn]];
+            switch (modifier) {
+            case STNPostgreSQLKeyTypeFloatNumber:
+            {
+                float floatkey;
+                [numberScanner scanFloat:&floatkey];
+                [keys addObject:[NSNumber numberWithFloat:floatkey]];
+                break;
+            }
+            case STNPostgreSQLKeyTypeDoubleNumber:
+            {
+                double doublekey;
+                [numberScanner scanDouble:&doublekey];
+                [keys addObject:[NSNumber numberWithDouble:doublekey]];
+                break;
+            }
+            case STNPostgreSQLKeyTypeIntNumber:
+            default: 
+            {
+                int integerkey;
+                [numberScanner scanInt:&integerkey];
+                [keys addObject:[NSNumber numberWithInt:integerkey]];
+                break;
+            }
+            }
+        } else {
+            [keys addObject:[self valueAtRow:row column:keycolumn]];
+        }
+        
+        // values
+        [values addObject:[self valueAtRow:row column:valuecolumn]];
+    }
+    
+    return [NSDictionary dictionaryWithObjects:values forKeys:keys];
 }
 
 

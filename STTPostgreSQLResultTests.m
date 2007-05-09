@@ -24,7 +24,7 @@
     STAssertTrue([_conn connect:&error], @"connect should return YES (%@)", [[error userInfo] objectForKey:@"errormessage"]);
     
     _statement = [[STNPostgreSQLStatement alloc] initWithConnection:_conn];
-    [_statement setStatement:@"SELECT 'f1' AS f1, 'f2' AS f2, 'f3' AS f3"];
+    [_statement setStatement:@"SELECT 'f1' AS f1, 'f2' AS f2, NULL AS f3"];
     
     STAssertTrue([_statement execute:&error], @"Statement couldn't be executed (%@)", [[error userInfo] objectForKey:@"errormessage"]);
     
@@ -48,7 +48,7 @@
     
     STNPostgreSQLResult *result = [statement result];
     
-    STAssertEquals([result numberOfTuples], 3, @"Tuple count does not match (is %d)!", [result numberOfTuples]);
+    STAssertTrue([result numberOfTuples] > 3, @"Tuple count is not > 3 (is %d)!", [result numberOfTuples]);
 }
 
 - (void)testNumberOfFields
@@ -81,5 +81,33 @@
     int indexAtTable = [result indexOfFieldWithinTableAtIndex:[result indexOfFieldWithName:@"name"]];
     STAssertEquals(indexAtTable, 2, @"index at table should be 2 (is %d)", indexAtTable);
 }
+
+- (void)testValue
+{
+    STAssertEqualObjects([_result valueAtRow:0 column:1], @"f2", @"value does not match (is %@)", [_result valueAtRow:0 column:1]);
+}
+
+- (void)testNullValue
+{
+    STAssertEquals([_result hasNullValueAtRow:0 column:2], YES, @"Column 2 is not null!");
+}
+
+- (void)testKindOfCommand
+{
+    STAssertEqualObjects([_result kindOfCommand], @"SELECT", @"kindOfCommand != SELECT (is %@)", [_result kindOfCommand]);
+}
+
+- (void)testAffectedRows
+{
+    // not using standard statement
+    STNPostgreSQLStatement *statement = [STNPostgreSQLStatement statementWithConnection:_conn
+                                                                           andStatement:@"INSERT INTO test VALUES (4711, 'Simon')"];
+    NSError *error;
+    STAssertTrue([statement execute:&error], @"Statement couldn't be executed (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    
+    STNPostgreSQLResult *result = [statement result];
+    STAssertEquals([result numberOfAffectedRows], 1, @"Affected Rows != 1 (is %d)", [result numberOfAffectedRows]);
+}
+    
 
 @end

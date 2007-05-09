@@ -10,6 +10,8 @@
 
 #import "STNPostgreSQLConnection.h"
 #import "STNPostgreSQLErrorDomain.h"
+#import "STNPostgreSQLStatement.h"
+#import "STNPostgreSQLTypes.h"
 
 @implementation STNPostgreSQLConnection
 
@@ -134,7 +136,7 @@
     [_connectionattributes setValue:seconds forKey:@"connect_timeout"];
 }
 
-- (NSNumber *)connectionTimeout
+- (NSNumber *)connectTimeout
 {
     return [_connectionattributes objectForKey:@"connect_timeout"];
 }
@@ -287,6 +289,16 @@
         userinfo = [NSDictionary dictionaryWithObject:[self recentErrorMessage] forKey:@"errormessage"];
         *error = [NSError errorWithDomain:STNPostgreSQLErrorDomain code:STNPostgreSQLConnectionError userInfo:userinfo];
         return NO;
+    } else {
+        // collect available data types
+        STNPostgreSQLStatement *datatypestatement = [STNPostgreSQLStatement statementWithConnection:self andStatement:@"SELECT oid, typname FROM pg_catalog.pg_type WHERE substring(typname from 1 for 1) != '_'"];
+        if (! [datatypestatement execute:error]) {
+            return NO;
+        } else {
+            _datatypes = [[datatypestatement result] dictionaryWithKeyColumn:0
+                                                                 valueColumn:1
+                                                                     keyType:STNPostgreSQLKeyTypeIntNumber];
+        }
     }
     
     *error = nil;
@@ -392,6 +404,11 @@
 - (NSString *)recentErrorMessage
 {
     return [NSString stringWithCString:PQerrorMessage(_pgconn) encoding:NSASCIIStringEncoding];
+}
+
+- (STNPostgreSQLTypes *)availableTypes
+{
+    return [STNPostgreSQLTypes typesWithDictionary:_datatypes];
 }
 
 @end

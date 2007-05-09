@@ -12,6 +12,13 @@
 #import "STNPostgreSQL.h"
 
 
+enum STNPostgreSQLKeyTypeModifier {
+    STNPostgreSQLKeyTypeString = 0,
+    STNPostgreSQLKeyTypeIntNumber = 1,
+    STNPostgreSQLKeyTypeFloatNumber = 2,
+    STNPostgreSQLKeyTypeDoubleNumber = 3
+};
+
 @interface STNPostgreSQLResult : NSObject {
     PGresult *_result;
 }
@@ -28,6 +35,8 @@
 - (NSString *)valueAtRow:(int)row column:(int)column;
 - (BOOL)hasNullValueAtRow:(int)row column:(int)column;
 - (NSString *)kindOfCommand;
-- (int)numberOfRowsAffected;
+- (int)numberOfAffectedRows;
+
+- (NSDictionary *)dictionaryWithKeyColumn:(int)keycolumn valueColumn:(int)valuecolumn keyType:(int)modifier;
 
 @end

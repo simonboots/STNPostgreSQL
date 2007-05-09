@@ -19,3 +19,4 @@
 #import <STNPostgreSQLConnectionSSLMode.h>
 #import <STNPostgreSQLConnection.h>
 #import <STNPostgreSQLStatement.h>
+#import <STNPostgreSQLTypes.h>

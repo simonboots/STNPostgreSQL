@@ -16,6 +16,8 @@
 #define PROTOCOLVERSION_PARAM_STATEMENT 3
 #define PROTOCOLVERSION_PREP_STATEMENT 3
 
+@class STNPostgreSQLTypes;
+
 /*!
     @class       STNPostgreSQLConnection 
     @superclass  NSObject
@@ -31,7 +33,10 @@
     NSMutableDictionary *_connectionattributes; // keys and default values by PGconndefaults
     
     /*! @var delegate delegate object to receive connection information */
-    id _delegate;    
+    id _delegate;
+    
+    /*! @var datatypes dictionary containing available data types */
+    NSDictionary *_datatypes;
 }
 
 + (STNPostgreSQLConnection *)connection;
@@ -356,6 +361,8 @@
     @result     most recent error message
 */
 - (NSString *)recentErrorMessage;
+
+- (STNPostgreSQLTypes *)availableTypes;
 
 @end
 
