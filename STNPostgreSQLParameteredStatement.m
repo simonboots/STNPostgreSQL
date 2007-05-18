@@ -131,6 +131,11 @@ struct STNPostgreSQLRawParameterArray {
     return [[self parameters] objectAtIndex:index];
 }
 
+- (void)insertParameter:(STNPostgreSQLStatementParameter *)parameter atIndex:(unsigned int)index
+{
+    [_parameters insertObject:parameter atIndex:index];
+}
+
 - (void)dropParameterAtIndex:(unsigned int)index
 {
     [_parameters removeObjectAtIndex:index];
@@ -144,6 +149,8 @@ struct STNPostgreSQLRawParameterArray {
     int paramCount = [[self parameters] count];
     struct STNPostgreSQLRawParameterArray rawParameterData;
     
+    // starting ugly C operations
+    
     rawParameterData.types = (unsigned int *)malloc(paramCount * sizeof(unsigned int));
     rawParameterData.values = (char**)malloc(paramCount * sizeof(char*));
     rawParameterData.lengths = (int *)malloc(paramCount * sizeof(int));
@@ -151,10 +158,12 @@ struct STNPostgreSQLRawParameterArray {
     
     while (aParameter = [enumerator nextObject]) {
         if ([aParameter format] == STNPostgreSQLParameterFormatString) {
+            // STNPostgreSQLParameterFormatString
             const char *value = [[[aParameter value] description] cStringUsingEncoding:NSASCIIStringEncoding];
             rawParameterData.values[count] = (char *)malloc((strlen(value)+1) * sizeof(char));
             strcpy(rawParameterData.values[count], value);
         } else {
+            // STNPostgreSQLParameterFormatBinary
             const void *value = [[aParameter value] bytes];
             rawParameterData.values[count] = (void *)malloc([aParameter length] * sizeof(char));
             memcpy(rawParameterData.values[count], value, (size_t)[aParameter length]);

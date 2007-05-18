@@ -32,6 +32,7 @@
 - (NSArray *)parameters;
 - (void)setParameters:(NSArray *)parameters;
 - (STNPostgreSQLStatementParameter *)parameterAtIndex:(unsigned int)index;
+- (void)insertParameter:(STNPostgreSQLStatementParameter)parameter atIndex:(unsigned int)index;
 - (void)dropParameterAtIndex:(unsigned int)index;
 
 
