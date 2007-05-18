@@ -9,8 +9,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "STNPostgreSQL.h"
-
 
 enum STNPostgreSQLKeyTypeModifier {
     STNPostgreSQLKeyTypeString = 0,

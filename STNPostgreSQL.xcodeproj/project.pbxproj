@@ -51,6 +51,10 @@
 		1C1CC3500B087B4F00FE39C4 /* STNPostgreSQLErrorDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1CC34E0B087B4F00FE39C4 /* STNPostgreSQLErrorDomain.m */; };
 		1C3A35950B4C5E520063ADDC /* STNPostgreSQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* STNPostgreSQL.framework */; };
 		1C3A35A30B4C5EDE0063ADDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */; };
+		1C40FCB30BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C40FCB10BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.h */; };
+		1C40FCB40BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C40FCB20BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.m */; };
+		1C40FCC90BF797A900D167A3 /* STNPostgreSQLStatementParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C40FCC70BF797A900D167A3 /* STNPostgreSQLStatementParameter.h */; };
+		1C40FCCA0BF797A900D167A3 /* STNPostgreSQLStatementParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C40FCC80BF797A900D167A3 /* STNPostgreSQLStatementParameter.m */; };
 		1C4E3A6A0BF08FE00075D870 /* STNPostgreSQLTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C4E3A680BF08FE00075D870 /* STNPostgreSQLTypes.h */; };
 		1C4E3A6B0BF08FE00075D870 /* STNPostgreSQLTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E3A690BF08FE00075D870 /* STNPostgreSQLTypes.m */; };
 		1C50F1810B07B01000780C72 /* STNPostgreSQLConnectionSSLMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C4BF73A0AE81AE4004AB36F /* STNPostgreSQLConnectionSSLMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -59,6 +63,8 @@
 		1C51DFF40BEA473D00B76E62 /* STTPostgreSQLResultTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C51DFF30BEA473D00B76E62 /* STTPostgreSQLResultTests.m */; };
 		1C68C56D0BDBC2DB00791487 /* STTPostgreSQLStatementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C68C56A0BDBC2CC00791487 /* STTPostgreSQLStatementTests.m */; };
 		1C771BD60B62C86C003CD21C /* STNPostgreSQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* STNPostgreSQL.framework */; };
+		1CA2C53F0BFCA34B006F252B /* STTPostgreSQLPreparedStatementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2C53E0BFCA34B006F252B /* STTPostgreSQLPreparedStatementTests.m */; };
+		1CA2C7900BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2C78F0BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.m */; };
 		1CB3025F0BC0294B005323AE /* STNPostgreSQLStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3025D0BC02944005323AE /* STNPostgreSQLStatement.m */; };
 		1CB302600BC0294D005323AE /* STNPostgreSQLStatement.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CB3025C0BC02944005323AE /* STNPostgreSQLStatement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1CBFEC160B790C9A0022E5BA /* STTPostgreSQLConnectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBFEC150B790C9A0022E5BA /* STTPostgreSQLConnectionTests.m */; };
@@ -116,6 +122,10 @@
 		1C1CC34E0B087B4F00FE39C4 /* STNPostgreSQLErrorDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STNPostgreSQLErrorDomain.m; sourceTree = "<group>"; };
 		1C3A35930B4C5E410063ADDC /* Playground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Playground; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C3A359C0B4C5E6A0063ADDC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1C40FCB10BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQLParameteredStatement.h; sourceTree = "<group>"; };
+		1C40FCB20BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STNPostgreSQLParameteredStatement.m; sourceTree = "<group>"; };
+		1C40FCC70BF797A900D167A3 /* STNPostgreSQLStatementParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQLStatementParameter.h; sourceTree = "<group>"; };
+		1C40FCC80BF797A900D167A3 /* STNPostgreSQLStatementParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STNPostgreSQLStatementParameter.m; sourceTree = "<group>"; };
 		1C4BF73A0AE81AE4004AB36F /* STNPostgreSQLConnectionSSLMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQLConnectionSSLMode.h; sourceTree = "<group>"; };
 		1C4E3A680BF08FE00075D870 /* STNPostgreSQLTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQLTypes.h; sourceTree = "<group>"; };
 		1C4E3A690BF08FE00075D870 /* STNPostgreSQLTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STNPostgreSQLTypes.m; sourceTree = "<group>"; };
@@ -127,6 +137,10 @@
 		1C68C56A0BDBC2CC00791487 /* STTPostgreSQLStatementTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTPostgreSQLStatementTests.m; sourceTree = "<group>"; };
 		1C771BD00B62C7AF003CD21C /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C771BD10B62C7AF003CD21C /* Unit Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Unit Tests-Info.plist"; sourceTree = "<group>"; };
+		1CA2C53D0BFCA34B006F252B /* STTPostgreSQLPreparedStatementTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTPostgreSQLPreparedStatementTests.h; sourceTree = "<group>"; };
+		1CA2C53E0BFCA34B006F252B /* STTPostgreSQLPreparedStatementTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTPostgreSQLPreparedStatementTests.m; sourceTree = "<group>"; };
+		1CA2C78E0BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTPostgreSQLParameteredStatementTests.h; sourceTree = "<group>"; };
+		1CA2C78F0BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTPostgreSQLParameteredStatementTests.m; sourceTree = "<group>"; };
 		1CB300000BC01C0A005323AE /* query08 */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = query08; sourceTree = "<group>"; };
 		1CB300010BC01C0A005323AE /* query09 */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = query09; sourceTree = "<group>"; };
 		1CB300020BC01C0A005323AE /* query10 */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = query10; sourceTree = "<group>"; };
@@ -3316,6 +3330,10 @@
 				1C51DFE30BEA458900B76E62 /* STNPostgreSQLTransaction.m */,
 				1C4E3A680BF08FE00075D870 /* STNPostgreSQLTypes.h */,
 				1C4E3A690BF08FE00075D870 /* STNPostgreSQLTypes.m */,
+				1C40FCB10BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.h */,
+				1C40FCB20BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.m */,
+				1C40FCC70BF797A900D167A3 /* STNPostgreSQLStatementParameter.h */,
+				1C40FCC80BF797A900D167A3 /* STNPostgreSQLStatementParameter.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -3358,6 +3376,10 @@
 				1C51DFF30BEA473D00B76E62 /* STTPostgreSQLResultTests.m */,
 				1C1256790BF1ED2B00E37144 /* STTPostgreSQLTypesTests.h */,
 				1C12567A0BF1ED2B00E37144 /* STTPostgreSQLTypesTests.m */,
+				1CA2C53D0BFCA34B006F252B /* STTPostgreSQLPreparedStatementTests.h */,
+				1CA2C53E0BFCA34B006F252B /* STTPostgreSQLPreparedStatementTests.m */,
+				1CA2C78E0BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.h */,
+				1CA2C78F0BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.m */,
 			);
 			name = "Test case classes";
 			sourceTree = "<group>";
@@ -8750,6 +8772,8 @@
 				1CD887FD0BE8AFA600526BA7 /* STNPostgreSQLResult.h in Headers */,
 				1C51DFE40BEA458900B76E62 /* STNPostgreSQLTransaction.h in Headers */,
 				1C4E3A6A0BF08FE00075D870 /* STNPostgreSQLTypes.h in Headers */,
+				1C40FCB30BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.h in Headers */,
+				1C40FCC90BF797A900D167A3 /* STNPostgreSQLStatementParameter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8923,6 +8947,8 @@
 				1C68C56D0BDBC2DB00791487 /* STTPostgreSQLStatementTests.m in Sources */,
 				1C51DFF40BEA473D00B76E62 /* STTPostgreSQLResultTests.m in Sources */,
 				1C12567B0BF1ED2B00E37144 /* STTPostgreSQLTypesTests.m in Sources */,
+				1CA2C53F0BFCA34B006F252B /* STTPostgreSQLPreparedStatementTests.m in Sources */,
+				1CA2C7900BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8937,6 +8963,8 @@
 				1CD887FE0BE8AFA700526BA7 /* STNPostgreSQLResult.m in Sources */,
 				1C51DFE50BEA458900B76E62 /* STNPostgreSQLTransaction.m in Sources */,
 				1C4E3A6B0BF08FE00075D870 /* STNPostgreSQLTypes.m in Sources */,
+				1C40FCB40BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.m in Sources */,
+				1C40FCCA0BF797A900D167A3 /* STNPostgreSQLStatementParameter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9199,6 +9227,7 @@
 		1DEB91B208733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(POSTGRESQL_SRC_DIR)/src/interfaces/libpq";
@@ -9215,6 +9244,7 @@
 		1DEB91B308733DA50010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (

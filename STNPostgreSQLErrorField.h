@@ -9,8 +9,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "STNPostgreSQL.h"
-
 
 @interface STNPostgreSQLErrorField : NSObject {
     NSDictionary *_errorField;

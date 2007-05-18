@@ -9,6 +9,7 @@
 //
 
 #import "STNPostgreSQLStatement.h"
+#import "STNPostgreSQLErrorDomain.h"
 
 @implementation STNPostgreSQLStatement
 
@@ -93,6 +94,11 @@
 
 #pragma mark Execution methods
 
+- (PGresult *)PQexecute
+{
+    return PQexec([[self connection] PgConn] , [[self statement] cStringUsingEncoding:NSASCIIStringEncoding]);
+}
+
 - (BOOL)execute:(NSError **)error
 {
     _result = nil; // reset result object
@@ -103,7 +109,7 @@
     NSString *errorMessage;
     BOOL success;
     
-    result = PQexec([[self connection] PgConn] , [[self statement] cStringUsingEncoding:NSASCIIStringEncoding]);
+    result = [self PQexecute]; 
     statusType = PQresultStatus(result);
     
     errorMessage = [NSString stringWithUTF8String:PQresultErrorMessage(result)];

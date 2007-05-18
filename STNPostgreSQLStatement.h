@@ -9,7 +9,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "STNPostgreSQL.h"
+#import "STNPostgreSQLConnection.h"
+#import "STNPostgreSQLResult.h"
+#import "STNPostgreSQLErrorField.h"
 
 @interface STNPostgreSQLStatement : NSObject {
     NSString *_statement;

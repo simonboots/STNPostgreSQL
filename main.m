@@ -27,7 +27,6 @@ int main(void)
     if ([conn connect:&error]) {
         NSLog(@"Connection successful");
         NSError *error;
-        STNPostgreSQLStatement *statement = [[STNPostgreSQLStatement alloc] initWithConnection:conn];
         [statement setStatement:@"CREATE TABLE test3 (id int, name varchar(50))"];
         if ([statement execute:&error]) {
             NSLog(@"Table created!");
@@ -41,6 +40,18 @@ int main(void)
         NSLog(@"Connection failed");
         NSLog(@"Error: %@", [[error userInfo] objectForKey:@"errormessage"]);
     }
+    
+    // Parametered Statement
+    STNPostgreSQLParameteredStatement *parameteredstatement = [[STNPostgreSQLParameteredStatement alloc] init];
+    [parameteredstatement setConnection:conn];
+    [parameteredstatement setStatement:@"INSERT INTO test VALUES($1, $2)"];
+    [parameteredstatement addParameterWithValue:@"4712" type:@"int8" length:0 format:0];
+    [parameteredstatement addParameterWithValue:@"SimonSt" type:@"varchar" length:0 format:0];
+        
+    if (![parameteredstatement execute:&error]) {
+        NSLog(@"Statement should be executed (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    }
+    [parameteredstatement release];
     
     [pool release];
     
