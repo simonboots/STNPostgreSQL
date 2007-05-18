@@ -14,6 +14,8 @@
 
 @implementation STNPostgreSQLErrorField
 
+#pragma mark initializers/dealloc
+
 + (STNPostgreSQLErrorField *)errorFieldWithPGResult:(PGresult *)result
 {
     return [[[self alloc] initWithPGResult:result] autorelease];
@@ -64,9 +66,18 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [_errorField release];
+    [super dealloc];
+}
+
+#pragma mark field access
+
 - (NSString *)valueForField:(unsigned int)field
 {
     return [_errorField objectForKey:[NSNumber numberWithInt:field]];
 }
+
 
 @end

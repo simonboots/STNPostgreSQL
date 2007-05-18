@@ -13,6 +13,8 @@
 
 @implementation STNPostgreSQLStatement
 
+#pragma mark initializers/dealloc
+
 + (STNPostgreSQLStatement *)statement
 {
     return [[[self alloc] init] autorelease];
@@ -40,6 +42,7 @@
 - (id)initWithConnection:(STNPostgreSQLConnection *)connection {
     self = [super init];
     if (self != nil) {
+        _delegate = nil;
         _result = nil;
         [self setConnection:connection];
         [self setStatement:[NSString string]];
@@ -51,7 +54,17 @@
     return [self initWithConnection:nil];
 }
 
-#pragma mark Getters/Setters
+- (void)dealloc
+{    
+    [[self connection] release];
+    [[self statement] release];
+    [[self result] release];
+    [[self delegate] release];
+    [super dealloc];
+}
+
+
+#pragma mark getters/setters
 
 - (void)setStatement:(NSString *)statement
 {
@@ -92,7 +105,7 @@
     return _delegate;
 }
 
-#pragma mark Execution methods
+#pragma mark execution methods
 
 - (PGresult *)PQexecute
 {
@@ -202,14 +215,14 @@
     return;
 }
 
-#pragma mark Result handling
+#pragma mark result handling
 
 - (STNPostgreSQLResult *)result
 {
     return _result;
 }
 
-#pragma mark Error handling
+#pragma mark error handling
 
 - (STNPostgreSQLErrorField *)generateErrorField:(PGresult *)result
 {
@@ -218,12 +231,6 @@
 }
 
 
-- (void) dealloc {
-    [[self connection] release];
-    [[self statement] release];
-    [[self result] release];
-    [super dealloc];
-}
 
 
 @end

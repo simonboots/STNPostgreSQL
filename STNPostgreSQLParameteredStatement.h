@@ -13,10 +13,11 @@
 
 @class STNPostgreSQLStatementParameter;
 
+
+
 @interface STNPostgreSQLParameteredStatement : STNPostgreSQLStatement {
     NSMutableArray *_parameters;
 }
-
 
 + (STNPostgreSQLParameteredStatement *)statementWithStatement:(NSString *)statement
                                                 andParameters:(NSArray *)parameter;

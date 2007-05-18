@@ -14,6 +14,7 @@ int main(void)
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     STNPostgreSQLConnection *conn = [STNPostgreSQLConnection connection];
+    [conn retain];
     STNPostgreSQLStatement *statement = [[STNPostgreSQLStatement alloc] initWithConnection:conn];
     NSError *error;
     
@@ -53,6 +54,18 @@ int main(void)
     }
     [parameteredstatement release];
     
+    [conn disconnect];
+    [conn release];
+    
+    conn = [[STNPostgreSQLConnection alloc] init];
+    [conn retain];
+    [conn setUser:@"sst"];
+    [conn setHost:@"localhost"];
+    [conn setDatabaseName:@"postgres"];
+    [conn setSSLMode:STNPostgreSQLConnectionSSLModePrefer];
+    [conn connect:&error];
+    [conn disconnect];
+    [conn release];
     [pool release];
     
     return 0;

@@ -21,6 +21,8 @@ struct STNPostgreSQLRawParameterArray {
 
 @implementation STNPostgreSQLParameteredStatement
 
+#pragma mark initializers/dealloc
+
 + (STNPostgreSQLParameteredStatement *)statement
 {
     return [[[self alloc] init] autorelease];
@@ -78,6 +80,13 @@ struct STNPostgreSQLRawParameterArray {
     return [self initWithConnection:nil];
 }
 
+- (void) dealloc {
+    [_parameters release];
+    [super dealloc];
+}
+
+#pragma mark parameter handling
+
 - (int)addParameter:(STNPostgreSQLStatementParameter *)parameter
 {
     int index;
@@ -127,8 +136,8 @@ struct STNPostgreSQLRawParameterArray {
     NSEnumerator *enumerator = [[self parameters] objectEnumerator];
     id aParameter;
     int count = 0;
-    struct STNPostgreSQLRawParameterArray rawParameterData;
     int paramCount = [[self parameters] count];
+    struct STNPostgreSQLRawParameterArray rawParameterData;
     
     rawParameterData.types = (unsigned int *)malloc(paramCount * sizeof(unsigned int));
     rawParameterData.values = (char**)malloc(paramCount * sizeof(char*));
@@ -149,24 +158,25 @@ struct STNPostgreSQLRawParameterArray {
     return rawParameterData;
 }
 
+#pragma mark statement execution
+
 - (PGresult *)PQexecute
 {
     struct STNPostgreSQLRawParameterArray rawArray = [self buildRawParameterArray];
+    PGresult *result = PQexecParams([[self connection] PgConn], 
+                                    [[self statement] cStringUsingEncoding:NSASCIIStringEncoding],
+                                    [[self parameters] count],
+                                    rawArray.types,
+                                    (const char* const *)rawArray.values,
+                                    rawArray.lengths,
+                                    rawArray.formats,
+                                    0);
     
-    return PQexecParams([[self connection] PgConn], 
-                        [[self statement] cStringUsingEncoding:NSASCIIStringEncoding],
-                        [[self parameters] count],
-                        rawArray.types,
-                        (const char* const *)rawArray.values,
-                        rawArray.lengths,
-                        rawArray.formats,
-                        0);
+    free(rawArray.values);
+    free(rawArray.types);
+    free(rawArray.lengths);
+    free(rawArray.formats);
+    return result;
 }
-
-- (void) dealloc {
-    [_parameters release];
-    [super dealloc];
-}
-
 
 @end

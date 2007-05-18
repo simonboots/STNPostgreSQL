@@ -10,8 +10,9 @@
 
 #import "STNPostgreSQLStatementParameter.h"
 
-
 @implementation STNPostgreSQLStatementParameter
+
+#pragma mark initializers/dealloc
 
 + (STNPostgreSQLStatementParameter *)parameterWithValue:(id)value datatype:(unsigned int)datatype
 {
@@ -60,6 +61,14 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [_value release];
+    [super dealloc];
+}
+
+#pragma mark getters/setters
+
 - (void)setDatatype:(unsigned int)datatype
 {
     _datatype = datatype;
@@ -103,10 +112,5 @@
     return _value;
 }
 
-- (void)dealloc
-{
-    [_value release];
-    [super dealloc];
-}
 
 @end

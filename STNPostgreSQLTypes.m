@@ -10,8 +10,9 @@
 
 #import "STNPostgreSQLTypes.h"
 
-
 @implementation STNPostgreSQLTypes
+
+#pragma mark initializers/dealloc
 
 + (STNPostgreSQLTypes *)typesWithDictionary:(NSDictionary *)dictionary
 {
@@ -31,6 +32,14 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [[self types] release];
+    [super dealloc];
+}
+
+#pragma mark getters/setters
+
 - (void)setTypes:(NSDictionary *)types
 {
     if (types != _types) {
@@ -43,6 +52,8 @@
 {
     return _types;
 }
+
+#pragma mark type information
 
 - (NSString *)typeWithOid:(unsigned int)oid
 {

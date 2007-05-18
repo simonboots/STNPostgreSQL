@@ -1,4 +1,4 @@
-//
+
 //  STNPostgreSQLConnection.m
 //  STNPostgreSQL
 //
@@ -15,6 +15,8 @@
 
 @implementation STNPostgreSQLConnection
 
+#pragma mark initializers/dealloc
+
 + (STNPostgreSQLConnection *)connection
 {
     return [[[self alloc] init] autorelease];
@@ -25,6 +27,9 @@
     if (self != nil) {
         // ivar initialisation
         _connectionattributes = [[NSMutableDictionary alloc] init];
+        _delegate = nil;
+        _pgconn = NULL;
+        _datatypes = nil;
         
         // default values for connection attributes
         PQconninfoOption *connectionoptions, *connectionoptionsanchor;
@@ -59,7 +64,16 @@
     return self;
 }
 
-#pragma mark Getters/Setters
+- (void)dealloc
+{
+    [self disconnect];
+    [_connectionattributes release];
+    [[self delegate] release];
+    [_datatypes release];
+    [super dealloc];
+}
+
+#pragma mark getters/setters
 
 - (void)setAuthType:(NSString *)authType
 {
@@ -291,13 +305,14 @@
         return NO;
     } else {
         // collect available data types
-        STNPostgreSQLStatement *datatypestatement = [STNPostgreSQLStatement statementWithConnection:self andStatement:@"SELECT oid, typname FROM pg_catalog.pg_type WHERE substring(typname from 1 for 1) != '_'"];
+        STNPostgreSQLStatement *datatypestatement = [STNPostgreSQLStatement statementWithConnection:self 
+                                                                                       andStatement:@"SELECT oid, typname FROM pg_catalog.pg_type WHERE substring(typname from 1 for 1) != '_'"];
         if (! [datatypestatement execute:error]) {
             return NO;
         } else {
-            _datatypes = [[datatypestatement result] dictionaryWithKeyColumn:0
+            _datatypes = [[[datatypestatement result] dictionaryWithKeyColumn:0
                                                                  valueColumn:1
-                                                                     keyType:STNPostgreSQLKeyTypeIntNumber];
+                                                                     keyType:STNPostgreSQLKeyTypeIntNumber] retain];
         }
     }
     
@@ -344,7 +359,12 @@
 
 - (void)disconnect
 {
-    PQfinish(_pgconn);
+    [_datatypes release];
+    _datatypes = nil;
+    if (_pgconn != NULL) {
+        PQfinish(_pgconn);
+        _pgconn = NULL;
+    }
 }
 
 - (BOOL)reconnect:(NSError **)error
@@ -409,6 +429,6 @@
 - (STNPostgreSQLTypes *)availableTypes
 {
     return [STNPostgreSQLTypes typesWithDictionary:_datatypes];
-}
+}    
 
 @end

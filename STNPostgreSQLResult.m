@@ -14,6 +14,8 @@
 
 @implementation STNPostgreSQLResult
 
+#pragma mark initializers/dealloc
+
 + (STNPostgreSQLResult *)resultWithPGresult:(PGresult*)result
 {
     return [[[STNPostgreSQLResult alloc] initWithPGresult:result] autorelease];
@@ -31,6 +33,13 @@
     }
     return self;
 }
+
+- (void)dealloc
+{
+    PQclear(_result);
+    [super dealloc];
+}
+
 
 #pragma mark result information
 
@@ -139,6 +148,5 @@
     
     return [NSDictionary dictionaryWithObjects:values forKeys:keys];
 }
-
 
 @end
