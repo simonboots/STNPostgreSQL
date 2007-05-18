@@ -305,14 +305,8 @@
         return NO;
     } else {
         // collect available data types
-        STNPostgreSQLStatement *datatypestatement = [STNPostgreSQLStatement statementWithConnection:self 
-                                                                                       andStatement:@"SELECT oid, typname FROM pg_catalog.pg_type WHERE substring(typname from 1 for 1) != '_'"];
-        if (! [datatypestatement execute:error]) {
+        if (! [self reloadAvailableTypes:error]) {
             return NO;
-        } else {
-            _datatypes = [[[datatypestatement result] dictionaryWithKeyColumn:0
-                                                                 valueColumn:1
-                                                                     keyType:STNPostgreSQLKeyTypeIntNumber] retain];
         }
     }
     
@@ -425,6 +419,21 @@
 {
     return [NSString stringWithCString:PQerrorMessage(_pgconn) encoding:NSASCIIStringEncoding];
 }
+
+- (BOOL)reloadAvailableTypes:(NSError **)error
+{
+    STNPostgreSQLStatement *datatypestatement = [STNPostgreSQLStatement statementWithConnection:self 
+                                                                                   andStatement:@"SELECT oid, typname FROM pg_catalog.pg_type WHERE substring(typname from 1 for 1) != '_'"];
+    if (! [datatypestatement execute:error]) {
+        return NO;
+    } else {
+        _datatypes = [[[datatypestatement result] dictionaryWithKeyColumn:0
+                                                              valueColumn:1
+                                                                  keyType:STNPostgreSQLKeyTypeIntNumber] retain];
+        *error = nil;
+        return YES;
+    }
+}    
 
 - (STNPostgreSQLTypes *)availableTypes
 {

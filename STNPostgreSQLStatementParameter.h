@@ -23,19 +23,17 @@ enum STNPostgreSQLParameterFormat {
 }
 
 + (STNPostgreSQLStatementParameter *)parameterWithValue:(id)value datatype:(unsigned int)datatype;
-+ (STNPostgreSQLStatementParameter *)parameterWithBinaryValue:(NSData *)value datatype:(unsigned int)datatype length:(int)length;
++ (STNPostgreSQLStatementParameter *)parameterWithBinaryValue:(NSData *)value datatype:(unsigned int)datatype;
 
-- (id)initWithValue:(id)value datatype:(unsigned int)datatype length:(int)length format:(int)format;
 - (id)initWithValue:(id)value datatype:(unsigned int)datatype;
-- (id)initWithBinaryValue:(NSData *)value datatype:(unsigned int)datatype length:(int)length;
+- (id)initWithBinaryValue:(NSData *)value datatype:(unsigned int)datatype;
 
 - (void)setDatatype:(unsigned int)datatype;
 - (unsigned int)datatype;
-- (void)setLength:(int)length;
 - (int)length;
-- (void)setFormat:(int)format;
 - (int)format;
 - (void)setValue:(id)value;
+- (void)setBinaryValue:(NSData *)value;
 - (id)value;
 - (void)dealloc;
 

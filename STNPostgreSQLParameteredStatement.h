@@ -26,11 +26,12 @@
                                                  andParameters:(NSArray *)parameters;
 
 - (int)addParameter:(STNPostgreSQLStatementParameter *)parameter;
-- (int)addParameterWithValue:(id)value type:(NSString *)type length:(int)length format:(int)format;
+- (int)addParameterWithValue:(id)value type:(NSString *)type;
 - (int)parameterCount;
 - (void)clearParameters;
 - (NSArray *)parameters;
 - (void)setParameters:(NSArray *)parameters;
+- (STNPostgreSQLStatementParameter *)parameterAtIndex:(unsigned int)index;
 - (void)dropParameterAtIndex:(unsigned int)index;
 
 

@@ -362,6 +362,7 @@
 */
 - (NSString *)recentErrorMessage;
 
+- (BOOL)reloadAvailableTypes:(NSError **)error;
 - (STNPostgreSQLTypes *)availableTypes;
 
 @end
@@ -371,8 +372,4 @@
 - (BOOL)connectionAttemptShouldStart;
 - (void)connectionAttemptWillStart;
 - (void)connectionAttemptEnded:(BOOL)success error:(NSError *)error;
-// disconnection methods
-// - (BOOL)disconnectionAttemptShouldStart;
-// - (void)disconnectionAttemptWillStart;
-// - (void)disconnectionAttemptEnded;
 @end

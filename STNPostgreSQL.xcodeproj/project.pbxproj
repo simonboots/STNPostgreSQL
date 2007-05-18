@@ -45,7 +45,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		1C0E3A9D0AE4314E0052A499 /* libpq.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0E3A9C0AE4314E0052A499 /* libpq.a */; };
 		1C12567B0BF1ED2B00E37144 /* STTPostgreSQLTypesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C12567A0BF1ED2B00E37144 /* STTPostgreSQLTypesTests.m */; };
 		1C1CC34F0B087B4F00FE39C4 /* STNPostgreSQLErrorDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C1CC34D0B087B4F00FE39C4 /* STNPostgreSQLErrorDomain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C1CC3500B087B4F00FE39C4 /* STNPostgreSQLErrorDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1CC34E0B087B4F00FE39C4 /* STNPostgreSQLErrorDomain.m */; };
@@ -63,6 +62,7 @@
 		1C51DFF40BEA473D00B76E62 /* STTPostgreSQLResultTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C51DFF30BEA473D00B76E62 /* STTPostgreSQLResultTests.m */; };
 		1C68C56D0BDBC2DB00791487 /* STTPostgreSQLStatementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C68C56A0BDBC2CC00791487 /* STTPostgreSQLStatementTests.m */; };
 		1C771BD60B62C86C003CD21C /* STNPostgreSQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* STNPostgreSQL.framework */; };
+		1C7F03C20BFE1DAE00304272 /* libpq.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7F03C10BFE1DAE00304272 /* libpq.a */; };
 		1CA2C7900BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2C78F0BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.m */; };
 		1CB3025F0BC0294B005323AE /* STNPostgreSQLStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3025D0BC02944005323AE /* STNPostgreSQLStatement.m */; };
 		1CB302600BC0294D005323AE /* STNPostgreSQLStatement.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CB3025C0BC02944005323AE /* STNPostgreSQLStatement.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -114,12 +114,11 @@
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		1C0E3A9C0AE4314E0052A499 /* libpq.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpq.a; path = "/Users/sst/postgresql-8.2.3/build/libpq.a"; sourceTree = "<absolute>"; };
 		1C1256790BF1ED2B00E37144 /* STTPostgreSQLTypesTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTPostgreSQLTypesTests.h; sourceTree = "<group>"; };
 		1C12567A0BF1ED2B00E37144 /* STTPostgreSQLTypesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTPostgreSQLTypesTests.m; sourceTree = "<group>"; };
 		1C1CC34D0B087B4F00FE39C4 /* STNPostgreSQLErrorDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQLErrorDomain.h; sourceTree = "<group>"; };
 		1C1CC34E0B087B4F00FE39C4 /* STNPostgreSQLErrorDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STNPostgreSQLErrorDomain.m; sourceTree = "<group>"; };
-		1C3A35930B4C5E410063ADDC /* Playground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Playground; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C3A35930B4C5E410063ADDC /* Playground */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.executable"; path = Playground; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C3A359C0B4C5E6A0063ADDC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1C40FCB10BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQLParameteredStatement.h; sourceTree = "<group>"; };
 		1C40FCB20BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STNPostgreSQLParameteredStatement.m; sourceTree = "<group>"; };
@@ -136,6 +135,7 @@
 		1C68C56A0BDBC2CC00791487 /* STTPostgreSQLStatementTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTPostgreSQLStatementTests.m; sourceTree = "<group>"; };
 		1C771BD00B62C7AF003CD21C /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C771BD10B62C7AF003CD21C /* Unit Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Unit Tests-Info.plist"; sourceTree = "<group>"; };
+		1C7F03C10BFE1DAE00304272 /* libpq.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpq.a; path = build/libpq.a; sourceTree = "<group>"; };
 		1CA2C78E0BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTPostgreSQLParameteredStatementTests.h; sourceTree = "<group>"; };
 		1CA2C78F0BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTPostgreSQLParameteredStatementTests.m; sourceTree = "<group>"; };
 		1CB300000BC01C0A005323AE /* query08 */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = query08; sourceTree = "<group>"; };
@@ -3259,7 +3259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */,
-				1C0E3A9D0AE4314E0052A499 /* libpq.a in Frameworks */,
+				1C7F03C20BFE1DAE00304272 /* libpq.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3338,7 +3338,7 @@
 		1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1C0E3A9C0AE4314E0052A499 /* libpq.a */,
+				1C7F03C10BFE1DAE00304272 /* libpq.a */,
 				1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -8882,7 +8882,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $POSTGRESQL_SRC_DIR\nBUILD_ARCH=build/ppc\nCURRENT_DIR=`pwd`\nrm -rf $BUILD_ARCH\nmkdir -p $BUILD_ARCH\nmake clean\n./configure --target=ppc --host=ppc-apple-darwin8 --build=ppc-apple-darwin8 --without-readline --without-zlib --disable-shared CFLAGS=\"-mmacosx-version-min=10.4\"\ncd src/interfaces/libpq\nmake \"CC=cc -arch ppc\"\nmv *.a \"$CURRENT_DIR/$BUILD_ARCH\"\necho \"Done!\"\nexit 0";
+			shellScript = "cd $POSTGRESQL_SRC_DIR\nBUILD_ARCH=build/ppc\nrm -rf $BUILD_ARCH\nmkdir -p $BUILD_ARCH\nmake clean\n./configure --target=ppc --host=ppc-apple-darwin8 --build=ppc-apple-darwin8 --without-readline --without-zlib --disable-shared CFLAGS=\"-mmacosx-version-min=10.4\"\ncd src/interfaces/libpq\nmake \"CC=cc -arch ppc\"\nmv *.a \"$POSTGRESQL_SRC_DIR/$BUILD_ARCH\"\necho \"Done!\"\nexit 0";
 		};
 		1C0E3A360AE42ED80052A499 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -8895,7 +8895,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $POSTGRESQL_SRC_DIR\nBUILD_ARCH=build/i386\nCURRENT_DIR=`pwd`\nrm -rf $BUILD_ARCH\nmkdir -p $BUILD_ARCH\nmake clean\n./configure --target=i386 --host=i686-apple-darwin8 --build=i686-apple-darwin8 --without-readline --without-zlib --disable-shared CFLAGS=\"-mmacosx-version-min=10.4\"\ncd src/interfaces/libpq\nmake \"CC=cc -arch i386\"\nmv *.a \"$CURRENT_DIR/$BUILD_ARCH\"\necho \"Done!\"\nexit 0";
+			shellScript = "cd $POSTGRESQL_SRC_DIR\nBUILD_ARCH=build/i386\nrm -rf $BUILD_ARCH\nmkdir -p $BUILD_ARCH\nmake clean\n./configure --target=i386 --host=i686-apple-darwin8 --build=i686-apple-darwin8 --without-readline --without-zlib --disable-shared CFLAGS=\"-mmacosx-version-min=10.4\"\ncd src/interfaces/libpq\nmake \"CC=cc -arch i386\"\nmv *.a \"$POSTGRESQL_SRC_DIR/$BUILD_ARCH\"\necho \"Done!\"\nexit 0";
 		};
 		1C0E3A8E0AE42F3C0052A499 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -8908,7 +8908,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $POSTGRESQL_SRC_DIR\nLIBDIR=build\nlipo -create $LIBDIR/*/libpq.a -output $LIBDIR/libpq.a\nexit $?";
+			shellScript = "cd $POSTGRESQL_SRC_DIR\nLIBDIR=build\nmkdir -p \"$CONFIGURATION_BUILD_DIR\"\nlipo -create $LIBDIR/*/libpq.a -output \"$CONFIGURATION_BUILD_DIR/../libpq.a\"\nexit $?";
 		};
 		1C771BCE0B62C7AF003CD21C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -9185,7 +9185,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/build\"";
 				PRODUCT_NAME = STNPostgreSQL;
 				WRAPPER_EXTENSION = framework;
 				ZERO_LINK = NO;
@@ -9211,8 +9213,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_2)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/postgresql/build\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)/build\"";
 				PRODUCT_NAME = STNPostgreSQL;
 				WRAPPER_EXTENSION = framework;
 			};

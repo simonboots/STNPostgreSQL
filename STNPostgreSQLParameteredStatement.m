@@ -97,7 +97,7 @@ struct STNPostgreSQLRawParameterArray {
     return index;
 }
 
-- (int)addParameterWithValue:(id)value type:(NSString *)type length:(int)length format:(int)format
+- (int)addParameterWithValue:(id)value type:(NSString *)type
 {
     STNPostgreSQLStatementParameter *parameter = 
         [STNPostgreSQLStatementParameter parameterWithValue:value
@@ -126,6 +126,11 @@ struct STNPostgreSQLRawParameterArray {
     _parameters = [parameters mutableCopy];
 }
 
+- (STNPostgreSQLStatementParameter *)parameterAtIndex:(unsigned int)index
+{
+    return [[self parameters] objectAtIndex:index];
+}
+
 - (void)dropParameterAtIndex:(unsigned int)index
 {
     [_parameters removeObjectAtIndex:index];
@@ -145,10 +150,16 @@ struct STNPostgreSQLRawParameterArray {
     rawParameterData.formats = (int *)malloc(paramCount * sizeof(int));
     
     while (aParameter = [enumerator nextObject]) {
-        const char *value = [[[aParameter value] description] cStringUsingEncoding:NSASCIIStringEncoding];
-        
-        rawParameterData.values[count] = (char *)malloc(strlen(value) * sizeof(char) + 1);
-        strcpy(rawParameterData.values[count], value);
+        if ([aParameter format] == STNPostgreSQLParameterFormatString) {
+            const char *value = [[[aParameter value] description] cStringUsingEncoding:NSASCIIStringEncoding];
+            rawParameterData.values[count] = (char *)malloc((strlen(value)+1) * sizeof(char));
+            strcpy(rawParameterData.values[count], value);
+        } else {
+            const void *value = [[aParameter value] bytes];
+            rawParameterData.values[count] = (void *)malloc([aParameter length] * sizeof(char));
+            memcpy(rawParameterData.values[count], value, (size_t)[aParameter length]);
+        }
+
         rawParameterData.types[count] = [aParameter datatype];
         rawParameterData.lengths[count] = [aParameter length];
         rawParameterData.formats[count] = (int)[aParameter format];

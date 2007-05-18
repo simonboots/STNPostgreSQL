@@ -13,7 +13,6 @@
 
 @interface STTPostgreSQLParameteredStatementTests : SenTestCase {
     STNPostgreSQLConnection *_conn;
-    BOOL _pleaseWait; // wait for thread
 }
 
 @end
