@@ -14,37 +14,37 @@
 
 - (void)setUp
 {
-    conn = [[STNPostgreSQLConnection alloc] init];
-    pleaseWait = NO;
+    _conn = [[STNPostgreSQLConnection alloc] init];
+    _pleaseWait = NO;
     
-    [conn setUser:@"sst"];
-    [conn setHost:@"localhost"];
-    [conn setDatabaseName:@"template1"];
-    [conn setSSLMode:STNPostgreSQLConnectionSSLModePrefer];
+    [_conn setUser:@"sst"];
+    [_conn setHost:@"localhost"];
+    [_conn setDatabaseName:@"template1"];
+    [_conn setSSLMode:STNPostgreSQLConnectionSSLModePrefer];
 }
 
 - (void)testConnectionDirect
 {
     NSError *error;
-    STAssertTrue([conn connect:&error], @"connect should return YES (%@)", [[error userInfo] objectForKey:@"errormessage"]);
-    pleaseWait = NO;
+    STAssertTrue([_conn connect:&error], @"connect should return YES (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    _pleaseWait = NO;
 }
 
 - (void)testConnectionThreaded
 {
-    pleaseWait = YES;
+    _pleaseWait = YES;
     
-    [conn setDelegate:self];
-    [conn startConnection];
+    [_conn setDelegate:self];
+    [_conn startConnection];
 }
 
 - (void)testServerInformation
 {
     NSError *error;
-    STAssertTrue([conn connect:&error], @"connection failed! (%@)", [[error userInfo] objectForKey:@"errormessage"]);
-    pleaseWait = NO;
+    STAssertTrue([_conn connect:&error], @"connection failed! (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    _pleaseWait = NO;
     
-    NSDictionary *serverInformation = [conn serverInformation];
+    NSDictionary *serverInformation = [_conn serverInformation];
     
     STAssertTrue([[serverInformation objectForKey:@"versionnumber"] isEqualToNumber:[NSNumber numberWithInt:80203]], @"Version number mismatch (%d)", [[serverInformation objectForKey:@"versionnumber"] intValue]);
     STAssertTrue([[serverInformation objectForKey:@"formattedversionnumber"] isEqualToString:@"8.2.3"], @"Formatted version number mismatch (%@)", [serverInformation objectForKey:@"formattedversionnumber"]);
@@ -55,21 +55,21 @@
 {
     // Tests availability of parametered and prepared statements
     NSError *error;
-    STAssertTrue([conn connect:&error], @"connection failed! (%@)", [[error userInfo] objectForKey:@"errormessage"]);
-    pleaseWait = NO;
+    STAssertTrue([_conn connect:&error], @"connection failed! (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    _pleaseWait = NO;
     
-    NSDictionary *serverInformation = [conn serverInformation];
+    NSDictionary *serverInformation = [_conn serverInformation];
     
     if ([[serverInformation objectForKey:@"protocolversion"] isEqualToNumber:[NSNumber numberWithInt:PROTOCOLVERSION_PARAM_STATEMENT]]) {
-        STAssertTrue([conn parameteredStatementAvailable], @"Parametered Statements should be available");
+        STAssertTrue([_conn parameteredStatementAvailable], @"Parametered Statements should be available");
     } else {
-        STAssertFalse([conn parameteredStatementAvailable], @"Parametered Statements should not be available");
+        STAssertFalse([_conn parameteredStatementAvailable], @"Parametered Statements should not be available");
     }
     
     if ([[serverInformation objectForKey:@"protocolversion"] isEqualToNumber:[NSNumber numberWithInt:PROTOCOLVERSION_PREP_STATEMENT]]) {
-        STAssertTrue([conn preparedStatementsAvailable], @"Prepared statements should be available");
+        STAssertTrue([_conn preparedStatementsAvailable], @"Prepared statements should be available");
     } else {
-        STAssertFalse([conn preparedStatementsAvailable], @"Prepared statements should not be available");
+        STAssertFalse([_conn preparedStatementsAvailable], @"Prepared statements should not be available");
     }
 }
 
@@ -88,17 +88,17 @@
 {
     NSLog(@"connectionAttemptEnded called (3/3)");
     STAssertTrue(success, @"success should be YES (%@)", [[error userInfo] objectForKey:@"errormessage"]);
-    pleaseWait = NO;
+    _pleaseWait = NO;
 }
 
 - (void)tearDown
 {
-    while (pleaseWait == YES) {
+    while (_pleaseWait == YES) {
         sleep(1);
     }
     
-    [conn disconnect];
-    [conn release];
+    [_conn disconnect];
+    [_conn release];
 }
 
 @end

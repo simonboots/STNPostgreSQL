@@ -12,8 +12,8 @@
 #import "STNPostgreSQL.h"
 
 @interface STTPostgreSQLConnectionTests : SenTestCase {
-    STNPostgreSQLConnection *conn;
-    BOOL pleaseWait; // wait for thread
+    STNPostgreSQLConnection *_conn;
+    BOOL _pleaseWait; // wait for thread
 }
 
 - (void)setUp;

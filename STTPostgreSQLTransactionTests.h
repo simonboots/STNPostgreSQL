@@ -12,9 +12,9 @@
 #import "STNPostgreSQL.h"
 
 @interface STTPostgreSQLTransactionTests : SenTestCase {
-    STNPostgreSQLConnection *conn;
-    BOOL pleaseWait; // wait for thread
-    int callbackcounter;
+    STNPostgreSQLConnection *_conn;
+    BOOL _pleaseWait; // wait for thread
+    int _callbackcounter;
 }
 
 @end

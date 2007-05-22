@@ -14,16 +14,16 @@
 
 - (void)setUp
 {
-    conn = [[STNPostgreSQLConnection alloc] init];
-    pleaseWait = NO;
-    callbackcounter = 0;
+    _conn = [[STNPostgreSQLConnection alloc] init];
+    _pleaseWait = NO;
+    _callbackcounter = 0;
     NSError *error;
     
-    [conn setUser:@"sst"];
-    [conn setHost:@"localhost"];
-    [conn setDatabaseName:@"postgres"];
-    [conn setSSLMode:STNPostgreSQLConnectionSSLModePrefer];
-    STAssertTrue([conn connect:&error], @"connect should return YES (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    [_conn setUser:@"sst"];
+    [_conn setHost:@"localhost"];
+    [_conn setDatabaseName:@"postgres"];
+    [_conn setSSLMode:STNPostgreSQLConnectionSSLModePrefer];
+    STAssertTrue([_conn connect:&error], @"connect should return YES (%@)", [[error userInfo] objectForKey:@"errormessage"]);
 }
 
 - (void)testSuccessfulTransaction
@@ -36,7 +36,7 @@
     [transaction addStatement:statement1];
     [transaction addStatement:statement2];
     
-    STAssertTrue([transaction executeWithConnection:conn error:&error], @"Transaction should be executed (error: %@)", [[error userInfo] objectForKey:@"errormessage"]);
+    STAssertTrue([transaction executeWithConnection:_conn error:&error], @"Transaction should be executed (error: %@)", [[error userInfo] objectForKey:@"errormessage"]);
 }
 
 - (void)testUnsuccessfulTransaction
@@ -45,12 +45,12 @@
     STNPostgreSQLTransaction *transaction = [STNPostgreSQLTransaction transactionWithStatement:statement1];
     
     NSError *error;
-    STAssertFalse([transaction executeWithConnection:conn error:&error], @"Transaction must fail (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    STAssertFalse([transaction executeWithConnection:_conn error:&error], @"Transaction must fail (%@)", [[error userInfo] objectForKey:@"errormessage"]);
 }
 
 - (void)testTransactionThreaded
 {
-    pleaseWait = YES;
+    _pleaseWait = YES;
     
     STNPostgreSQLStatement *statement1 = [STNPostgreSQLStatement statementWithStatement:@"INSERT INTO test VALUES(1155, 'Thread successful')"];
     STNPostgreSQLStatement *statement2 = [STNPostgreSQLStatement statementWithStatement:@"INSERT INTO test VALUES(1256, 'also successful')"];
@@ -60,7 +60,7 @@
     [transaction addStatement:statement1];
     [transaction addStatement:statement2];
     
-    [transaction startExecutionWithConnection:conn];
+    [transaction startExecutionWithConnection:_conn];
 }
 
 - (void)testStatementCallback
@@ -74,15 +74,15 @@
     [transaction addStatement:statement1];
     [transaction addStatement:statement2];
     
-    STAssertTrue([transaction executeWithConnection:conn error:&error], @"Statement should be executed (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    STAssertTrue([transaction executeWithConnection:_conn error:&error], @"Statement should be executed (%@)", [[error userInfo] objectForKey:@"errormessage"]);
     
-    STAssertEquals(callbackcounter, 2, @"callbackcounter should be 2");
+    STAssertEquals(_callbackcounter, 2, @"callbackcounter should be 2");
 }
 
 - (BOOL)shouldExecuteStatement:(STNPostgreSQLStatement *)statement atIndex:(unsigned int)index ofTotal:(unsigned int)total
 {
     NSLog(@"executing statement (%@) atIndex %d ofTotal %d", [statement statement], index, total);
-    callbackcounter++;
+    _callbackcounter++;
     return YES;
 }
 
@@ -101,17 +101,17 @@
 {
     NSLog(@"transactionAttemptEnded:error: called");
     STAssertTrue(success, @"Transaction failed (%@)", [[error userInfo] objectForKey:@"errormessage"]);
-    pleaseWait = NO;
+    _pleaseWait = NO;
 }
 
 - (void)tearDown
 {
-    while (pleaseWait == YES) {
+    while (_pleaseWait == YES) {
         sleep(1);
     }
     
-    [conn disconnect];
-    [conn release];
+    [_conn disconnect];
+    [_conn release];
 }
 
 @end
