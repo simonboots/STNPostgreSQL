@@ -10,6 +10,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class STNPostgreSQLConnection;
 @class STNPostgreSQLStatement;
 
 @interface STNPostgreSQLTransaction : NSObject {
@@ -37,8 +38,15 @@
 - (int)statementCount;
 - (void)clearStatements;
 
-- (BOOL)execute:(NSError **)error;
-- (void)startExecution;
+- (BOOL)executeWithConnection:(STNPostgreSQLConnection *)connection error:(NSError **)error;
+- (void)startExecutionWithConnection:(STNPostgreSQLConnection *)connection;
 
+@end
 
+@interface NSObject (STNPostgreSQLTransactionDelegateMethods)
+// transaction methods
+- (BOOL)transactionAttemptShouldStart;
+- (void)transactionAttemptWillStart;
+- (BOOL)shouldExecuteStatement:(STNPostgreSQLStatement *)statement atIndex:(unsigned int)index ofTotal:(unsigned int)total;
+- (void)transactionAttemptEnded:(BOOL)success error:(NSError *)error;
 @end

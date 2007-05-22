@@ -22,3 +22,4 @@
 #import <STNPostgreSQLStatementParameter.h>
 #import <STNPostgreSQLParameteredStatement.h>
 #import <STNPostgreSQLTypes.h>
+#import <STNPostgreSQLTransaction.h>

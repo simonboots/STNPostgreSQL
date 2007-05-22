@@ -74,6 +74,7 @@
 		1CE4BB380AE409EE00853614 /* STNPostgreSQLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */; };
 		1CEA80050BD2AED3004D95B2 /* STNPostgreSQLErrorField.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CEA80030BD2AED3004D95B2 /* STNPostgreSQLErrorField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1CEA80060BD2AED3004D95B2 /* STNPostgreSQLErrorField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA80040BD2AED3004D95B2 /* STNPostgreSQLErrorField.m */; };
+		1CF56A630C03804100253D31 /* STTPostgreSQLTransactionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF56A620C03804100253D31 /* STTPostgreSQLTransactionTests.m */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -118,7 +119,7 @@
 		1C12567A0BF1ED2B00E37144 /* STTPostgreSQLTypesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTPostgreSQLTypesTests.m; sourceTree = "<group>"; };
 		1C1CC34D0B087B4F00FE39C4 /* STNPostgreSQLErrorDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQLErrorDomain.h; sourceTree = "<group>"; };
 		1C1CC34E0B087B4F00FE39C4 /* STNPostgreSQLErrorDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STNPostgreSQLErrorDomain.m; sourceTree = "<group>"; };
-		1C3A35930B4C5E410063ADDC /* Playground */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.executable"; path = Playground; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C3A35930B4C5E410063ADDC /* Playground */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Playground; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C3A359C0B4C5E6A0063ADDC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1C40FCB10BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQLParameteredStatement.h; sourceTree = "<group>"; };
 		1C40FCB20BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STNPostgreSQLParameteredStatement.m; sourceTree = "<group>"; };
@@ -3231,6 +3232,8 @@
 		1CE4BB360AE409EE00853614 /* STNPostgreSQLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = STNPostgreSQLConnection.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; };
 		1CEA80030BD2AED3004D95B2 /* STNPostgreSQLErrorField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQLErrorField.h; sourceTree = "<group>"; };
 		1CEA80040BD2AED3004D95B2 /* STNPostgreSQLErrorField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STNPostgreSQLErrorField.m; sourceTree = "<group>"; };
+		1CF56A610C03804100253D31 /* STTPostgreSQLTransactionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTPostgreSQLTransactionTests.h; sourceTree = "<group>"; };
+		1CF56A620C03804100253D31 /* STTPostgreSQLTransactionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTPostgreSQLTransactionTests.m; sourceTree = "<group>"; };
 		32DBCF5E0370ADEE00C91783 /* STNPostgreSQL_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQL_Prefix.pch; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* STNPostgreSQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = STNPostgreSQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3375,6 +3378,8 @@
 				1C12567A0BF1ED2B00E37144 /* STTPostgreSQLTypesTests.m */,
 				1CA2C78E0BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.h */,
 				1CA2C78F0BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.m */,
+				1CF56A610C03804100253D31 /* STTPostgreSQLTransactionTests.h */,
+				1CF56A620C03804100253D31 /* STTPostgreSQLTransactionTests.m */,
 			);
 			name = "Test case classes";
 			sourceTree = "<group>";
@@ -8943,6 +8948,7 @@
 				1C51DFF40BEA473D00B76E62 /* STTPostgreSQLResultTests.m in Sources */,
 				1C12567B0BF1ED2B00E37144 /* STTPostgreSQLTypesTests.m in Sources */,
 				1CA2C7900BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.m in Sources */,
+				1CF56A630C03804100253D31 /* STTPostgreSQLTransactionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

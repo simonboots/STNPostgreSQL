@@ -46,26 +46,26 @@ int main(void)
     STNPostgreSQLParameteredStatement *parameteredstatement = [[STNPostgreSQLParameteredStatement alloc] init];
     [parameteredstatement setConnection:conn];
     [parameteredstatement setStatement:@"INSERT INTO test VALUES($1, $2)"];
-    [parameteredstatement addParameterWithValue:@"4712" type:@"int8" length:0 format:0];
-    [parameteredstatement addParameterWithValue:@"SimonSt" type:@"varchar" length:0 format:0];
+    [parameteredstatement addParameterWithValue:@"4712" type:@"int8"];
+    [parameteredstatement addParameterWithValue:@"SimonSt" type:@"varchar"];
         
     if (![parameteredstatement execute:&error]) {
         NSLog(@"Statement should be executed (%@)", [[error userInfo] objectForKey:@"errormessage"]);
     }
     [parameteredstatement release];
     
+    STNPostgreSQLStatement *statement1 = [STNPostgreSQLStatement statementWithStatement:@"INSERT INTO test VALUES(1123, 'successful')"];
+    STNPostgreSQLStatement *statement2 = [STNPostgreSQLStatement statementWithStatement:@"INSERT INTO test VALUES(1234, 'also successful')"];
+    STNPostgreSQLTransaction *transaction = [STNPostgreSQLTransaction transaction];
+    
+    [transaction addStatement:statement1];
+    [transaction addStatement:statement2];
+ 
+    [transaction executeWithConnection:conn error:&error];
+    
     [conn disconnect];
     [conn release];
     
-    conn = [[STNPostgreSQLConnection alloc] init];
-    [conn retain];
-    [conn setUser:@"sst"];
-    [conn setHost:@"localhost"];
-    [conn setDatabaseName:@"postgres"];
-    [conn setSSLMode:STNPostgreSQLConnectionSSLModePrefer];
-    [conn connect:&error];
-    [conn disconnect];
-    [conn release];
     [pool release];
     
     return 0;

@@ -9,6 +9,8 @@
 //
 
 #import "STNPostgreSQLTransaction.h"
+#import "STNPostgreSQLConnection.h"
+#import "STNPostgreSQLStatement.h"
 
 @implementation STNPostgreSQLTransaction
 
@@ -122,7 +124,83 @@
 
 #pragma mark execution methods
 
-//- (BOOL)execute:(NSError **)error;
-//- (void)startExecution;
+- (BOOL)executeWithConnection:(STNPostgreSQLConnection *)connection error:(NSError **)error
+{    
+    BOOL success = YES;
+    
+    STNPostgreSQLStatement *beginTransaction = [STNPostgreSQLStatement statementWithStatement:@"BEGIN"];
+    if (! [beginTransaction executeWithConnection:connection error:error]) {
+        return NO;
+    }
+    
+    NSEnumerator *statementEnumerator = [_statements objectEnumerator];
+    id nextStatement;
+    int counter = 0;
+    
+    while (nextStatement = [statementEnumerator nextObject]) {
+        if ([_delegate respondsToSelector:@selector(shouldExecuteStatement:atIndex:ofTotal:)]) {
+            if (! [_delegate shouldExecuteStatement:nextStatement atIndex:counter ofTotal:[self statementCount]]) {
+                success = NO;
+                break;
+            }
+        }
+        
+        success = [nextStatement executeWithConnection:connection error:error];
+        
+        counter++;
+
+        if (! success) {
+            break;
+        }
+    }
+    
+    STNPostgreSQLStatement *endTransaction;
+
+    if (success) {
+        endTransaction = [STNPostgreSQLStatement statementWithStatement:@"COMMIT"];
+    } else {
+        endTransaction = [STNPostgreSQLStatement statementWithStatement:@"ROLLBACK"];
+    }
+    
+    NSError *endError;
+    [endTransaction executeWithConnection:connection error:&endError];
+    return success;
+}
+
+- (void)startExecutionWithConnection:(STNPostgreSQLConnection *)connection
+{
+    if ([_delegate respondsToSelector:@selector(transactionAttemptShouldStart)]) {
+        if (! [_delegate transactionAttemptShouldStart]) {
+            return;
+        }
+    }
+    
+    // start thread
+    [NSThread detachNewThreadSelector:@selector(executeWithDelegateCalls:) toTarget:self withObject:connection];
+}
+
+- (void)executeWithDelegateCalls:(id)param
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    BOOL success;
+    NSError *error;
+    
+    //call delegate
+    if ([_delegate respondsToSelector:@selector(transactionAttemptWillStart)]) {
+        [_delegate transactionAttemptWillStart];
+    }
+    
+    success = [self executeWithConnection:param error:&error];
+    
+    // call delegate
+    if ([_delegate respondsToSelector:@selector(transactionAttemptEnded:error:)]) {
+        [_delegate transactionAttemptEnded:success error:error];
+        NSLog(@"transactionAttemptEnded:error: called by object");
+    }
+    
+    [pool release];
+    return;
+}
+    
 
 @end
