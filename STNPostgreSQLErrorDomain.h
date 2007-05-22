@@ -30,6 +30,8 @@ extern NSString *const STNPostgreSQLErrorDomain;
 enum STNPostgreSQLError {
     STNPostgreSQLConnectionError = 101,
     STNPostgreSQLClientEncodingError = 102,
+    STNPostgreSQLNotConnected = 103,
+    STNPostgreSQLNoConnection = 104,
 	STNPostgreSQLEmptyQueryError = 110,
 	STNPostgreSQLBadResponseError = 111,
 	STNPostgreSQLStatementNonFatalError = 112,

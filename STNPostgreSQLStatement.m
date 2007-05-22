@@ -120,8 +120,23 @@
 - (PGresult *)PQexecute
 {
     PGresult *result;
+    STNPostgreSQLConnection *connection = [self primaryConnection];
+    
+    if (connection == nil) {
+        NSException *noConnectionException = [NSException exceptionWithName:@"noConnectionException"
+                                                                     reason:@"No Connection Available"
+                                                                   userInfo:nil];
+        [noConnectionException raise];
+    }
+    
+    if (! [connection isConnected]) {
+        NSException *notConnectedException = [NSException exceptionWithName:@"notConnectedException"
+                                                                     reason:@"Not connected"
+                                                                   userInfo:nil];
+        [notConnectedException raise];
+    }
 
-    result = PQexec([[self primaryConnection] PgConn] , [[self statement] cStringUsingEncoding:NSASCIIStringEncoding]);
+    result = PQexec([connection PgConn] , [[self statement] cStringUsingEncoding:NSASCIIStringEncoding]);
     
     // reset temporary connection
     if (_temporaryConnection != nil)
@@ -144,7 +159,25 @@
     NSString *errorMessage;
     BOOL success;
     
-    result = [self PQexecute]; 
+    @try {
+        result = [self PQexecute];
+    } @catch(NSException *e) {
+        errorMessage = [e reason];
+        userInfo = [NSDictionary dictionaryWithObject:errorMessage forKey:@"errormessage"];
+        if ([[e name] isEqualToString:@"notConnectedException"]) {
+            *error = [NSError errorWithDomain:STNPostgreSQLErrorDomain
+                                         code:STNPostgreSQLNotConnected
+                                     userInfo:userInfo];
+        } else if ([[e name] isEqualToString:@"noConnectionException"]) {
+            *error = [NSError errorWithDomain:STNPostgreSQLErrorDomain
+                                         code:STNPostgreSQLNoConnection
+                                     userInfo:userInfo];
+        } else {
+            *error = nil;
+        }
+        return NO;
+    }
+        
     statusType = PQresultStatus(result);
     
     errorMessage = [NSString stringWithUTF8String:PQresultErrorMessage(result)];

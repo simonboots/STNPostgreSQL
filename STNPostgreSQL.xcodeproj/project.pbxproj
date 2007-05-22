@@ -50,14 +50,14 @@
 		1C1CC3500B087B4F00FE39C4 /* STNPostgreSQLErrorDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1CC34E0B087B4F00FE39C4 /* STNPostgreSQLErrorDomain.m */; };
 		1C3A35950B4C5E520063ADDC /* STNPostgreSQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* STNPostgreSQL.framework */; };
 		1C3A35A30B4C5EDE0063ADDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A359C0B4C5E6A0063ADDC /* main.m */; };
-		1C40FCB30BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C40FCB10BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.h */; };
+		1C40FCB30BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C40FCB10BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C40FCB40BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C40FCB20BF7970E00D167A3 /* STNPostgreSQLParameteredStatement.m */; };
-		1C40FCC90BF797A900D167A3 /* STNPostgreSQLStatementParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C40FCC70BF797A900D167A3 /* STNPostgreSQLStatementParameter.h */; };
+		1C40FCC90BF797A900D167A3 /* STNPostgreSQLStatementParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C40FCC70BF797A900D167A3 /* STNPostgreSQLStatementParameter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C40FCCA0BF797A900D167A3 /* STNPostgreSQLStatementParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C40FCC80BF797A900D167A3 /* STNPostgreSQLStatementParameter.m */; };
-		1C4E3A6A0BF08FE00075D870 /* STNPostgreSQLTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C4E3A680BF08FE00075D870 /* STNPostgreSQLTypes.h */; };
+		1C4E3A6A0BF08FE00075D870 /* STNPostgreSQLTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C4E3A680BF08FE00075D870 /* STNPostgreSQLTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C4E3A6B0BF08FE00075D870 /* STNPostgreSQLTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E3A690BF08FE00075D870 /* STNPostgreSQLTypes.m */; };
 		1C50F1810B07B01000780C72 /* STNPostgreSQLConnectionSSLMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C4BF73A0AE81AE4004AB36F /* STNPostgreSQLConnectionSSLMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1C51DFE40BEA458900B76E62 /* STNPostgreSQLTransaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C51DFE20BEA458900B76E62 /* STNPostgreSQLTransaction.h */; };
+		1C51DFE40BEA458900B76E62 /* STNPostgreSQLTransaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C51DFE20BEA458900B76E62 /* STNPostgreSQLTransaction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C51DFE50BEA458900B76E62 /* STNPostgreSQLTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C51DFE30BEA458900B76E62 /* STNPostgreSQLTransaction.m */; };
 		1C51DFF40BEA473D00B76E62 /* STTPostgreSQLResultTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C51DFF30BEA473D00B76E62 /* STTPostgreSQLResultTests.m */; };
 		1C68C56D0BDBC2DB00791487 /* STTPostgreSQLStatementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C68C56A0BDBC2CC00791487 /* STTPostgreSQLStatementTests.m */; };

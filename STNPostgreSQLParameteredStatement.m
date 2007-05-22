@@ -182,8 +182,17 @@ struct STNPostgreSQLRawParameterArray {
 
 - (PGresult *)PQexecute
 {
+    STNPostgreSQLConnection *connection = [self primaryConnection];
+    
+    if (connection == nil) {
+        NSException *noConnectionException = [NSException exceptionWithName:@"noConnectionException"
+                                                                     reason:@"No Connection Available"
+                                                                   userInfo:nil];
+        [noConnectionException raise];
+    }
+    
     struct STNPostgreSQLRawParameterArray rawArray = [self buildRawParameterArray];
-    PGresult *result = PQexecParams([[self connection] PgConn], 
+    PGresult *result = PQexecParams([connection PgConn], 
                                     [[self statement] cStringUsingEncoding:NSASCIIStringEncoding],
                                     [[self parameters] count],
                                     rawArray.types,
