@@ -64,10 +64,8 @@
     
     // separate parameter
     
-    // STNPostgreSQLStatementParameter doesn't support NSString datatypes yet
-    unsigned int varchartype = [[_conn availableTypes] oidForType:@"varchar"];
     STNPostgreSQLStatementParameter *param = [STNPostgreSQLStatementParameter parameterWithValue:@"A Value" 
-                                                                                        datatype:varchartype];
+                                                                                        datatype:@"varchar"];
     
     [statement addParameter:param];
     
@@ -89,9 +87,8 @@
     [statement addParameterWithValue:@"4714" type:@"int8"];
     
     // binary parameter
-    unsigned int varchartype = [[_conn availableTypes] oidForType:@"varchar"];
     STNPostgreSQLStatementParameter *binaryParameter = [STNPostgreSQLStatementParameter parameterWithBinaryValue:binaryData
-                                                                                                        datatype:varchartype];
+                                                                                                        datatype:@"varchar"];
     [statement addParameter:binaryParameter];
     
     NSError *error;

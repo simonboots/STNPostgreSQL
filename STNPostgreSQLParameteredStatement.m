@@ -101,7 +101,7 @@ struct STNPostgreSQLRawParameterArray {
 {
     STNPostgreSQLStatementParameter *parameter = 
         [STNPostgreSQLStatementParameter parameterWithValue:value
-                                                   datatype:[[[self connection] availableTypes] oidForType:type]];
+                                                   datatype:type];
     return [self addParameter:parameter];
 }
 
@@ -169,7 +169,7 @@ struct STNPostgreSQLRawParameterArray {
             memcpy(rawParameterData.values[count], value, (size_t)[aParameter length]);
         }
 
-        rawParameterData.types[count] = [aParameter datatype];
+        rawParameterData.types[count] = [[[self primaryConnection] availableTypes] oidForType:[aParameter datatype]];
         rawParameterData.lengths[count] = [aParameter length];
         rawParameterData.formats[count] = (int)[aParameter format];
         count++;

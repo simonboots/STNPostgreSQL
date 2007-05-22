@@ -10,6 +10,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class STNPostgreSQLStatement;
 
 @interface STNPostgreSQLTransaction : NSObject {
     NSMutableArray *_statements;

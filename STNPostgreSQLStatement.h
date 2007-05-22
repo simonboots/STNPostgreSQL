@@ -16,6 +16,7 @@
 @interface STNPostgreSQLStatement : NSObject {
     NSString *_statement;
     STNPostgreSQLConnection *_connection;
+    STNPostgreSQLConnection *_temporaryConnection;
     STNPostgreSQLResult *_result;
     id _delegate;
 }
@@ -35,9 +36,12 @@
 
 - (void)setConnection:(STNPostgreSQLConnection *)connection;
 - (STNPostgreSQLConnection *)connection;
+- (STNPostgreSQLConnection *)primaryConnection;
 
 - (BOOL)execute:(NSError **)error;
+- (BOOL)executeWithConnection:(STNPostgreSQLConnection *)connection error:(NSError **)error;
 - (void)startExecution;
+- (void)startExecutionWithConnection:(STNPostgreSQLConnection *)connection;
 - (void)executeWithDelegateCalls:(id)param;
 
 - (STNPostgreSQLResult *)result;

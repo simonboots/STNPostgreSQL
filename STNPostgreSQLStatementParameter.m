@@ -14,19 +14,19 @@
 
 #pragma mark initializers/dealloc
 
-+ (STNPostgreSQLStatementParameter *)parameterWithValue:(id)value datatype:(unsigned int)datatype
++ (STNPostgreSQLStatementParameter *)parameterWithValue:(id)value datatype:(NSString *)datatype
 {
     return [[[STNPostgreSQLStatementParameter alloc] initWithValue:value
                                                           datatype:datatype] autorelease];
 }
 
-+ (STNPostgreSQLStatementParameter *)parameterWithBinaryValue:(NSData *)value datatype:(unsigned int)datatype
++ (STNPostgreSQLStatementParameter *)parameterWithBinaryValue:(NSData *)value datatype:(NSString *)datatype
 {
     return [[[STNPostgreSQLStatementParameter alloc] initWithBinaryValue:value
                                                                 datatype:datatype] autorelease];
 }
 
-- (id)initWithBinaryValue:(NSData *)value datatype:(unsigned int)datatype
+- (id)initWithBinaryValue:(NSData *)value datatype:(NSString *)datatype
 {
     self = [self initWithValue:value
                       datatype:datatype];
@@ -36,7 +36,7 @@
     return self;
 }
 
-- (id)initWithValue:(id)value datatype:(unsigned int)datatype
+- (id)initWithValue:(id)value datatype:(NSString *)datatype
 {
     self = [super init];
     if (self != nil) {
@@ -50,7 +50,7 @@
 
 - (id)init
 {
-    [self initWithValue:nil datatype:0];
+    [self initWithValue:nil datatype:nil];
     return self;
 }
 
@@ -62,12 +62,15 @@
 
 #pragma mark getters/setters
 
-- (void)setDatatype:(unsigned int)datatype
+- (void)setDatatype:(NSString *)datatype
 {
-    _datatype = datatype;
+    if (datatype != _datatype) {
+        [_datatype release];
+        _datatype = [datatype retain];
+    }
 }
 
-- (unsigned int)datatype
+- (NSString *)datatype
 {
     return _datatype;
 }

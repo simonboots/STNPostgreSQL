@@ -44,6 +44,7 @@
     if (self != nil) {
         _delegate = nil;
         _result = nil;
+        _temporaryConnection = nil;
         [self setConnection:connection];
         [self setStatement:[NSString string]];
     }
@@ -92,6 +93,15 @@
     return _connection;
 }
 
+- (STNPostgreSQLConnection *)primaryConnection
+{
+    if (_temporaryConnection != nil) {
+        return _temporaryConnection;
+    } else {
+        return [self connection];
+    }
+}
+
 - (void)setDelegate:(id)delegate
 {
     if (delegate != [self delegate]) {
@@ -109,11 +119,23 @@
 
 - (PGresult *)PQexecute
 {
-    return PQexec([[self connection] PgConn] , [[self statement] cStringUsingEncoding:NSASCIIStringEncoding]);
+    PGresult *result;
+
+    result = PQexec([[self primaryConnection] PgConn] , [[self statement] cStringUsingEncoding:NSASCIIStringEncoding]);
+    
+    // reset temporary connection
+    if (_temporaryConnection != nil)
+    {
+        [_temporaryConnection release];
+        _temporaryConnection = nil;
+    }
+    
+    return result;
 }
 
 - (BOOL)execute:(NSError **)error
 {
+    [_result release];
     _result = nil; // reset result object
     PGresult *result;
     ExecStatusType statusType;
@@ -171,12 +193,19 @@
     }
     
     if (success) {
-        _result = [[STNPostgreSQLResult alloc] initWithPGresult:result];
         // Build STNPostgreSQLResult object
+        _result = [[STNPostgreSQLResult alloc] initWithPGresult:result];
     }
 
     return success;
 }
+
+- (BOOL)executeWithConnection:(STNPostgreSQLConnection *)connection error:(NSError **)error
+{
+    _temporaryConnection = [connection retain];
+    return [self execute:error];
+}
+
 
 - (void)startExecution
 {
@@ -189,6 +218,12 @@
     
     // start thread
     [NSThread detachNewThreadSelector:@selector(executeWithDelegateCalls:) toTarget:self withObject:self];
+}
+
+- (void)startExecutionWithConnection:(STNPostgreSQLConnection *)connection
+{
+    _temporaryConnection = [connection retain];
+    [self startExecution];
 }
 
 - (void)executeWithDelegateCalls:(id)param

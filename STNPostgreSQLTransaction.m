@@ -122,7 +122,7 @@
 
 #pragma mark execution methods
 
-- (BOOL)execute:(NSError **)error;
-- (void)startExecution;
+//- (BOOL)execute:(NSError **)error;
+//- (void)startExecution;
 
 @end
