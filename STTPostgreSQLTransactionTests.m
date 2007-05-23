@@ -19,9 +19,11 @@
     _callbackcounter = 0;
     NSError *error;
     
-    [_conn setUser:@"sst"];
-    [_conn setHost:@"localhost"];
-    [_conn setDatabaseName:@"postgres"];
+    [_conn setUser:[NSString stringWithCString:UT_USERNAME encoding:NSASCIIStringEncoding]];
+    [_conn setPassword:[NSString stringWithCString:UT_PASSWD encoding:NSASCIIStringEncoding]];
+    [_conn setHost:[NSString stringWithCString:UT_HOST encoding:NSASCIIStringEncoding]];
+    [_conn setDatabaseName:[NSString stringWithCString:UT_DATABASE encoding:NSASCIIStringEncoding]];
+    [_conn setPort:[NSString stringWithCString:UT_PORT encoding:NSASCIIStringEncoding]];
     [_conn setSSLMode:STNPostgreSQLConnectionSSLModePrefer];
     STAssertTrue([_conn connect:&error], @"connect should return YES (%@)", [[error userInfo] objectForKey:@"errormessage"]);
 }

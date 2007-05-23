@@ -11,7 +11,6 @@
 #import "STNPostgreSQL.h"
 #import "STNPostgreSQLErrorField.h"
 
-
 @implementation STNPostgreSQLErrorField
 
 #pragma mark initializers/dealloc

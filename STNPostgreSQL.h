@@ -8,12 +8,7 @@
 //  $Id$
 //
 
-// load libpq header file
-#import "libpq-fe.h"
-
-// load framework header files
 #import <STNPostgreSQLResult.h>
-
 #import <STNPostgreSQLErrorDomain.h>
 #import <STNPostgreSQLErrorField.h>
 #import <STNPostgreSQLConnectionSSLMode.h>

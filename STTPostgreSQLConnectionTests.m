@@ -17,9 +17,11 @@
     _conn = [[STNPostgreSQLConnection alloc] init];
     _pleaseWait = NO;
     
-    [_conn setUser:@"sst"];
-    [_conn setHost:@"localhost"];
-    [_conn setDatabaseName:@"template1"];
+    [_conn setUser:[NSString stringWithCString:UT_USERNAME encoding:NSASCIIStringEncoding]];
+    [_conn setPassword:[NSString stringWithCString:UT_PASSWD encoding:NSASCIIStringEncoding]];
+    [_conn setHost:[NSString stringWithCString:UT_HOST encoding:NSASCIIStringEncoding]];
+    [_conn setDatabaseName:[NSString stringWithCString:UT_DATABASE encoding:NSASCIIStringEncoding]];
+    [_conn setPort:[NSString stringWithCString:UT_PORT encoding:NSASCIIStringEncoding]];
     [_conn setSSLMode:STNPostgreSQLConnectionSSLModePrefer];
 }
 
@@ -46,8 +48,8 @@
     
     NSDictionary *serverInformation = [_conn serverInformation];
     
-    STAssertTrue([[serverInformation objectForKey:@"versionnumber"] isEqualToNumber:[NSNumber numberWithInt:80203]], @"Version number mismatch (%d)", [[serverInformation objectForKey:@"versionnumber"] intValue]);
-    STAssertTrue([[serverInformation objectForKey:@"formattedversionnumber"] isEqualToString:@"8.2.3"], @"Formatted version number mismatch (%@)", [serverInformation objectForKey:@"formattedversionnumber"]);
+    STAssertTrue([[serverInformation objectForKey:@"versionnumber"] isEqualToNumber:[NSNumber numberWithInt:POSTGRESQL_INT_VERSION]], @"Version number mismatch (%d)", [[serverInformation objectForKey:@"versionnumber"] intValue]);
+    STAssertTrue([[serverInformation objectForKey:@"formattedversionnumber"] isEqualToString:[NSString stringWithCString:POSTGRESQL_VERSION encoding:NSASCIIStringEncoding]], @"Formatted version number mismatch (%@)", [serverInformation objectForKey:@"formattedversionnumber"]);
     STAssertTrue([[serverInformation objectForKey:@"protocolversion"] isEqualToNumber:[NSNumber numberWithInt:3]], @"Protocol version mismatch (%d)", [[serverInformation objectForKey:@"protocolversion"] intValue]);
 }
 
