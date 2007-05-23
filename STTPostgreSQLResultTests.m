@@ -5,7 +5,9 @@
 //  Created by Simon Stiefel on 03.05.07.
 //  Copyright 2007 stiefels.net. All rights reserved.
 //
-//  $Id$
+//  $Id: STTPostgreSQLResultTests.m 39 2007-05-23 18:35:40Z sst 
+//
+//  For PostgreSQL Copyright information read PostgreSQL_COPYRIGHT
 //
 //  Redistribution and use in source and binary forms, with or
 //  without modification, are permitted provided that the

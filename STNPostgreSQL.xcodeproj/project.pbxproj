@@ -152,6 +152,7 @@
 		1CEA80030BD2AED3004D95B2 /* STNPostgreSQLErrorField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQLErrorField.h; sourceTree = "<group>"; };
 		1CEA80040BD2AED3004D95B2 /* STNPostgreSQLErrorField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STNPostgreSQLErrorField.m; sourceTree = "<group>"; };
 		1CED18470C04BA3000CBB673 /* create_unittest_table.sql */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = create_unittest_table.sql; sourceTree = "<group>"; };
+		1CED19240C04C45E00CBB673 /* PostgreSQL_COPYRIGHT */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = PostgreSQL_COPYRIGHT; sourceTree = "<group>"; };
 		1CF56A610C03804100253D31 /* STTPostgreSQLTransactionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTPostgreSQLTransactionTests.h; sourceTree = "<group>"; };
 		1CF56A620C03804100253D31 /* STTPostgreSQLTransactionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTPostgreSQLTransactionTests.m; sourceTree = "<group>"; };
 		32DBCF5E0370ADEE00C91783 /* STNPostgreSQL_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STNPostgreSQL_Prefix.pch; sourceTree = "<group>"; };
@@ -205,7 +206,6 @@
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				1C771C070B62C9F3003CD21C /* Test case classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
-				089C1665FE841158C02AAC07 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -224,6 +224,7 @@
 		089C1665FE841158C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1CED19240C04C45E00CBB673 /* PostgreSQL_COPYRIGHT */,
 				1CED18470C04BA3000CBB673 /* create_unittest_table.sql */,
 				8DC2EF5A0486A6940098B216 /* Info.plist */,
 				089C1666FE841158C02AAC07 /* InfoPlist.strings */,
@@ -311,6 +312,7 @@
 				32DBCF5E0370ADEE00C91783 /* STNPostgreSQL_Prefix.pch */,
 				1CE1D86A0AE4119F00BFBBF3 /* STNPostgreSQL.h */,
 				1C4BF73A0AE81AE4004AB36F /* STNPostgreSQLConnectionSSLMode.h */,
+				089C1665FE841158C02AAC07 /* Resources */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
