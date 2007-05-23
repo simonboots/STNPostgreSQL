@@ -7,6 +7,31 @@
 //
 //  $Id$
 //
+//  Redistribution and use in source and binary forms, with or
+//  without modification, are permitted provided that the
+//  following conditions are met:
+//
+//  1. Redistributions of source code must retain the above
+//  copyright notice, this list of conditions and the following
+//  disclaimer.
+//
+//  2. Redistributions in binary form must reproduce the above
+//  copyright notice, this list of conditions and the following
+//  disclaimer in the documentation and/or other materials
+//  provided with the distribution.
+//
+//  THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+//  WARRANTIES, INCLUDING, BUT NOTLIMITED TO, THE IMPLIED WARRANTIES
+//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+//  DISCLAIMED. IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS
+//  BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+//  OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+//  OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+//  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+//  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
 
 #import "STTPostgreSQLParameteredStatementTests.h"
 
@@ -32,9 +57,9 @@
     STNPostgreSQLParameteredStatement *statement = [[STNPostgreSQLParameteredStatement alloc] init];
     [statement setConnection:_conn];
     
-    [statement setStatement:@"INSERT INTO test VALUES($1, $2)"];
-    [statement addParameterWithValue:@"4712" type:@"int8"];
-    [statement addParameterWithValue:@"SimonSt" type:@"varchar"];
+    [statement setStatement:@"INSERT INTO stnpostgresqltests VALUES($1, $2)"];
+    [statement addParameterWithValue:@"11" type:@"int8"];
+    [statement addParameterWithValue:@"eleven" type:@"varchar"];
     
     NSError *error;
     
@@ -47,8 +72,8 @@
     STNPostgreSQLParameteredStatement *statement = [[STNPostgreSQLParameteredStatement alloc] init];
     [statement setConnection:_conn];
     
-    [statement setStatement:@"INSERT INTO test VALUES($1, $2)"];
-    [statement addParameterWithValue:@"4712" type:@"int8"];
+    [statement setStatement:@"INSERT INTO stnpostgresqltests VALUES($1, $2)"];
+    [statement addParameterWithValue:@"12" type:@"int8"];
     
     NSError *error;
     
@@ -61,12 +86,12 @@
     STNPostgreSQLParameteredStatement *statement = [[STNPostgreSQLParameteredStatement alloc] init];
     [statement setConnection:_conn];
     
-    [statement setStatement:@"INSERT INTO test VALUES($1, $2)"];
-    [statement addParameterWithValue:@"4713" type:@"int8"];
+    [statement setStatement:@"INSERT INTO stnpostgresqltests VALUES($1, $2)"];
+    [statement addParameterWithValue:@"13" type:@"int8"];
     
     // separate parameter
     
-    STNPostgreSQLStatementParameter *param = [STNPostgreSQLStatementParameter parameterWithValue:@"A Value" 
+    STNPostgreSQLStatementParameter *param = [STNPostgreSQLStatementParameter parameterWithValue:@"thirteen" 
                                                                                         datatype:@"varchar"];
     
     [statement addParameter:param];
@@ -79,14 +104,14 @@
 
 - (void)testWithSeparateBinaryParameter
 {
-    char binaryValue[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd'};
-    NSData *binaryData = [NSData dataWithBytes:binaryValue length:11];
-    
+    char binaryValue[] = {'F', 'o', 'u', 'r', 't', 'e', 'e', 'n'};
+    NSData *binaryData = [NSData dataWithBytes:binaryValue length:8];
+   
     STNPostgreSQLParameteredStatement *statement =[[STNPostgreSQLParameteredStatement alloc] init];
     [statement setConnection:_conn];
     
-    [statement setStatement:@"INSERT INTO test VALUES($1, $2)"];
-    [statement addParameterWithValue:@"4714" type:@"int8"];
+    [statement setStatement:@"INSERT INTO stnpostgresqltests VALUES($1, $2)"];
+    [statement addParameterWithValue:@"14" type:@"int8"];
     
     // binary parameter
     STNPostgreSQLStatementParameter *binaryParameter = [STNPostgreSQLStatementParameter parameterWithBinaryValue:binaryData

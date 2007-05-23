@@ -7,3 +7,9 @@ CREATE TABLE stnpostgresqltests (
   name character varying(50)
 )
 WITHOUT OIDS;
+
+-- Insert some dummy data
+INSERT INTO stnpostgresqltests VALUES(1, 'foo');
+INSERT INTO stnpostgresqltests VALUES(2, 'bar');
+INSERT INTO stnpostgresqltests VALUES(3, 'baz');
+INSERT INTO stnpostgresqltests VALUES(4, 'bazz');
