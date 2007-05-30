@@ -206,6 +206,7 @@
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				1C771C070B62C9F3003CD21C /* Test case classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
+				089C1665FE841158C02AAC07 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
@@ -312,7 +313,6 @@
 				32DBCF5E0370ADEE00C91783 /* STNPostgreSQL_Prefix.pch */,
 				1CE1D86A0AE4119F00BFBBF3 /* STNPostgreSQL.h */,
 				1C4BF73A0AE81AE4004AB36F /* STNPostgreSQLConnectionSSLMode.h */,
-				089C1665FE841158C02AAC07 /* Resources */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";

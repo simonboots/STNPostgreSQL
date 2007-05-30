@@ -35,13 +35,13 @@
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <STNPostgreSQLResult.h>
-#import <STNPostgreSQLErrorDomain.h>
-#import <STNPostgreSQLErrorField.h>
-#import <STNPostgreSQLConnectionSSLMode.h>
-#import <STNPostgreSQLConnection.h>
-#import <STNPostgreSQLStatement.h>
-#import <STNPostgreSQLStatementParameter.h>
-#import <STNPostgreSQLParameteredStatement.h>
-#import <STNPostgreSQLTypes.h>
-#import <STNPostgreSQLTransaction.h>
+#import <STNPostgreSQL/STNPostgreSQLResult.h>
+#import <STNPostgreSQL/STNPostgreSQLErrorDomain.h>
+#import <STNPostgreSQL/STNPostgreSQLErrorField.h>
+#import <STNPostgreSQL/STNPostgreSQLConnectionSSLMode.h>
+#import <STNPostgreSQL/STNPostgreSQLConnection.h>
+#import <STNPostgreSQL/STNPostgreSQLStatement.h>
+#import <STNPostgreSQL/STNPostgreSQLStatementParameter.h>
+#import <STNPostgreSQL/STNPostgreSQLParameteredStatement.h>
+#import <STNPostgreSQL/STNPostgreSQLTypes.h>
+#import <STNPostgreSQL/STNPostgreSQLTransaction.h>

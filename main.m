@@ -7,6 +7,34 @@
 //
 //  $Id$
 //
+//
+//  For PostgreSQL Copyright information read PostgreSQL_COPYRIGHT
+//
+//  Redistribution and use in source and binary forms, with or
+//  without modification, are permitted provided that the
+//  following conditions are met:
+//
+//  1. Redistributions of source code must retain the above
+//  copyright notice, this list of conditions and the following
+//  disclaimer.
+//
+//  2. Redistributions in binary form must reproduce the above
+//  copyright notice, this list of conditions and the following
+//  disclaimer in the documentation and/or other materials
+//  provided with the distribution.
+//
+//  THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+//  WARRANTIES, INCLUDING, BUT NOTLIMITED TO, THE IMPLIED WARRANTIES
+//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+//  DISCLAIMED. IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS
+//  BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+//  OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+//  OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+//  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+//  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
 
 #include <STNPostgreSQL.h>
 
@@ -28,7 +56,7 @@ int main(void)
     if ([conn connect:&error]) {
         NSLog(@"Connection successful");
         NSError *error;
-        [statement setStatement:@"CREATE TABLE test3 (id int, name varchar(50))"];
+        [statement setStatement:@"CREATE TABLE test (id int, name varchar(50))"];
         if ([statement execute:&error]) {
             NSLog(@"Table created!");
             NSLog(@"kindOfCommand: %@", [[statement result] kindOfCommand]);
@@ -46,8 +74,8 @@ int main(void)
     STNPostgreSQLParameteredStatement *parameteredstatement = [[STNPostgreSQLParameteredStatement alloc] init];
     [parameteredstatement setConnection:conn];
     [parameteredstatement setStatement:@"INSERT INTO test VALUES($1, $2)"];
-    [parameteredstatement addParameterWithValue:@"4712" type:@"int8"];
-    [parameteredstatement addParameterWithValue:@"SimonSt" type:@"varchar"];
+    [parameteredstatement addParameterWithValue:@"100" type:@"int8"];
+    [parameteredstatement addParameterWithValue:@"Simon" type:@"varchar"];
         
     if (![parameteredstatement execute:&error]) {
         NSLog(@"Statement should be executed (%@)", [[error userInfo] objectForKey:@"errormessage"]);
