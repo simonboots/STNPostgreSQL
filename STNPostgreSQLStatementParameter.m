@@ -41,6 +41,24 @@
 
 #pragma mark initializers/dealloc
 
++ (STNPostgreSQLStatementParameter *)parameterWithDatatype:(NSString *)datatype
+{
+    return [[[STNPostgreSQLStatementParameter alloc] initWithValue:nil
+                                                          datatype:datatype] autorelease];
+}
+
++ (STNPostgreSQLStatementParameter *)parameterWithValue:(id)value
+{
+    return [[[STNPostgreSQLStatementParameter alloc] initWithValue:value
+                                                          datatype:nil] autorelease];
+}
+
++ (STNPostgreSQLStatementParameter *)parameterWithBinaryValue:(NSData *)value
+{
+    return [[[STNPostgreSQLStatementParameter alloc] initWithBinaryValue:value
+                                                                datatype:nil] autorelease];
+}
+
 + (STNPostgreSQLStatementParameter *)parameterWithValue:(id)value datatype:(NSString *)datatype
 {
     return [[[STNPostgreSQLStatementParameter alloc] initWithValue:value
@@ -128,12 +146,14 @@
         [_value release];
         _value = [value retain];
     }
+    _format = STNPostgreSQLParameterFormatString;
 }
 
 - (void)setBinaryValue:(NSData *)value
 {
     [self setValue:value];
     _length = [value length];
+    _format = STNPostgreSQLParameterFormatBinary;
 }
 
 - (id)value

@@ -89,6 +89,7 @@
 
 - (unsigned int)oidForType:(NSString *)type
 {
+    if (type == nil) { return 0; }
     NSArray *allKeys = [_types allKeysForObject:type];
     if ([allKeys count] > 0) {
         return [[allKeys objectAtIndex:0] unsignedIntValue];

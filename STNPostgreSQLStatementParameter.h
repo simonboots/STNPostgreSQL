@@ -49,6 +49,9 @@ enum STNPostgreSQLParameterFormat {
     id  _value;
 }
 
++ (STNPostgreSQLStatementParameter *)parameterWithDatatype:(NSString *)datatype;
++ (STNPostgreSQLStatementParameter *)parameterWithValue:(id)value;
++ (STNPostgreSQLStatementParameter *)parameterWithBinaryValue:(NSData *)value;
 + (STNPostgreSQLStatementParameter *)parameterWithValue:(id)value datatype:(NSString *)datatype;
 + (STNPostgreSQLStatementParameter *)parameterWithBinaryValue:(NSData *)value datatype:(NSString *)datatype;
 
