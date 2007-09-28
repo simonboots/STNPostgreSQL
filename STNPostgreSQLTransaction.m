@@ -106,10 +106,7 @@
 
 - (void)setDelegate:(id)delegate
 {
-    if (delegate != _delegate) {
-        [_delegate release];
-        _delegate = [delegate retain];
-    }
+    _delegate = delegate;
 }
 
 - (id)delegate
