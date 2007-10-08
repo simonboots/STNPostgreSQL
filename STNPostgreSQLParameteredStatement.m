@@ -39,13 +39,6 @@
 #import "STNPostgreSQLStatementParameter.h"
 #import "STNPostgreSQLTypes.h"
 
-struct STNPostgreSQLRawParameterArray {
-    unsigned int *types;
-    char **values;
-    int *lengths;
-    int *formats;
-};
-
 @implementation STNPostgreSQLParameteredStatement
 
 #pragma mark initializers/dealloc

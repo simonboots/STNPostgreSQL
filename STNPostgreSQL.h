@@ -43,5 +43,6 @@
 #import <STNPostgreSQL/STNPostgreSQLStatement.h>
 #import <STNPostgreSQL/STNPostgreSQLStatementParameter.h>
 #import <STNPostgreSQL/STNPostgreSQLParameteredStatement.h>
+#import <STNPostgreSQL/STNPostgreSQLPreparedStatement.h>
 #import <STNPostgreSQL/STNPostgreSQLTypes.h>
 #import <STNPostgreSQL/STNPostgreSQLTransaction.h>

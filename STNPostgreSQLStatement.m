@@ -139,6 +139,11 @@
     return _delegate;
 }
 
+- (NSString *)identifier
+{
+    return [NSString stringWithFormat:@"%u", [[self statement] hash]];
+}
+
 #pragma mark execution methods
 
 - (PGresult *)PQexecute

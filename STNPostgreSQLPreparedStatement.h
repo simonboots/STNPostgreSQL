@@ -1,11 +1,11 @@
 //
-//  STNPostgreSQLParameteredStatement.h
+//  STNPostgreSQLPreparedStatement.h
 //  STNPostgreSQL
 //
-//  Created by Simon Stiefel on 13.05.07.
+//  Created by Simon Stiefel on 28.09.07.
 //  Copyright 2007 stiefels.net. All rights reserved.
 //
-//  $Id$
+//  $Id: STNPostgreSQLPreparedStatement.h 40 2007-05-23 18:59:27Z sst $
 //
 //  For PostgreSQL Copyright information read PostgreSQL_COPYRIGHT
 //
@@ -36,36 +36,27 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "STNPostgreSQLStatement.h"
+#import "STNPostgreSQLParameteredStatement.h"
 
-@class STNPostgreSQLStatementParameter;
-
-struct STNPostgreSQLRawParameterArray {
-    unsigned int *types;
-    char **values;
-    int *lengths;
-    int *formats;
+enum STNPostgreSQLPreparedState {
+    STNPostgreSQLPreparedStatePrepare = 0,
+    STNPostgreSQLPreparedStateExecute = 1
 };
 
-@interface STNPostgreSQLParameteredStatement : STNPostgreSQLStatement {
-    NSMutableArray *_parameters;
+@interface STNPostgreSQLPreparedStatement : STNPostgreSQLParameteredStatement {
+    NSString *_statementName;
+    NSArray  *_parameterTypes;
+    int _state;
 }
 
-+ (STNPostgreSQLParameteredStatement *)statementWithStatement:(NSString *)statement
-                                                andParameters:(NSArray *)parameter;
-+ (STNPostgreSQLParameteredStatement *)statementWithConnection:(STNPostgreSQLConnection *)connection 
-                                                  andStatement:(NSString *)statement 
-                                                 andParameters:(NSArray *)parameters;
++ (STNPostgreSQLPreparedStatement *)statementWithStatement:(NSString *)statement
+                                             andParameters:(NSArray *)parameter;
++ (STNPostgreSQLPreparedStatement *)statementWithConnection:(STNPostgreSQLConnection *)connection 
+                                               andStatement:(NSString *)statement 
+                                              andParameters:(NSArray *)parameters;
 
-- (int)addParameter:(STNPostgreSQLStatementParameter *)parameter;
-- (int)addParameterWithValue:(id)value type:(NSString *)type;
-- (int)parameterCount;
-- (void)clearParameters;
-- (NSArray *)parameters;
-- (void)setParameters:(NSArray *)parameters;
-- (STNPostgreSQLStatementParameter *)parameterAtIndex:(unsigned int)index;
-- (void)insertParameter:(STNPostgreSQLStatementParameter *)parameter atIndex:(unsigned int)index;
-- (void)dropParameterAtIndex:(unsigned int)index;
-- (struct STNPostgreSQLRawParameterArray)buildRawParameterArray;
+- (BOOL)prepare:(NSError **)error;
+
+
 
 @end

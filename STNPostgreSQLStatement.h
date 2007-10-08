@@ -65,6 +65,8 @@
 - (STNPostgreSQLConnection *)connection;
 - (STNPostgreSQLConnection *)primaryConnection;
 
+- (NSString *)identifier;
+
 - (BOOL)execute:(NSError **)error;
 - (BOOL)executeWithConnection:(STNPostgreSQLConnection *)connection error:(NSError **)error;
 - (void)startExecution;

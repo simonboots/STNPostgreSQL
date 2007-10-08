@@ -36,7 +36,7 @@
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#include <STNPostgreSQL.h>
+#import <STNPostgreSQL/STNPostgreSQL.h>
 
 int main(void)
 {
@@ -75,7 +75,7 @@ int main(void)
     [parameteredstatement setConnection:conn];
     [parameteredstatement setStatement:@"INSERT INTO test VALUES($1, $2)"];
     [parameteredstatement addParameterWithValue:@"100" type:@"int8"];
-    [parameteredstatement addParameterWithValue:@"Simon" type:@"varchar"];
+    [parameteredstatement addParameterWithValue:@"phu" type:@"varchar"];
         
     if (![parameteredstatement execute:&error]) {
         NSLog(@"Statement should be executed (%@)", [[error userInfo] objectForKey:@"errormessage"]);
@@ -91,6 +91,20 @@ int main(void)
  
     [transaction executeWithConnection:conn error:&error];
     
+    // prepared statements
+    STNPostgreSQLPreparedStatement *ps = [[STNPostgreSQLPreparedStatement alloc] initWithConnection:conn];
+    [ps setStatement:@"INSERT INTO test VALUES($1, $2)"];
+    [ps addParameterWithValue:@"12" type:@"int"];
+    [ps addParameterWithValue:@"huhu" type:@"varchar"];
+    
+    if (! [ps prepare:&error]) {
+        NSLog(@"Prepared Statement should be prepared (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    }
+    
+    if (! [ps execute:&error]) {
+        NSLog(@"Prepared Statement should be prepared (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    }
+
     [conn disconnect];
     [conn release];
     
