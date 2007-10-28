@@ -122,7 +122,7 @@
 #pragma mark statement preparation/execution
 
 - (PGresult *)PQexecute
-{
+{    
     STNPostgreSQLConnection *connection = [self primaryConnection];
     PGresult *result = NULL;
     struct STNPostgreSQLRawParameterArray rawArray = [self buildRawParameterArray];

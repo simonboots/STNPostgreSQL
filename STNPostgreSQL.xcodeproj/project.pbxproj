@@ -63,6 +63,7 @@
 		1C51DFE50BEA458900B76E62 /* STNPostgreSQLTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C51DFE30BEA458900B76E62 /* STNPostgreSQLTransaction.m */; };
 		1C51DFF40BEA473D00B76E62 /* STTPostgreSQLResultTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C51DFF30BEA473D00B76E62 /* STTPostgreSQLResultTests.m */; };
 		1C68C56D0BDBC2DB00791487 /* STTPostgreSQLStatementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C68C56A0BDBC2CC00791487 /* STTPostgreSQLStatementTests.m */; };
+		1C6CF4F60CD52B1300B4A30B /* STTPostgreSQLPreparedStatementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6CF4F50CD52B1300B4A30B /* STTPostgreSQLPreparedStatementTests.m */; };
 		1C771BD60B62C86C003CD21C /* STNPostgreSQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* STNPostgreSQL.framework */; };
 		1C7F03C20BFE1DAE00304272 /* libpq.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C7F03C10BFE1DAE00304272 /* libpq.a */; };
 		1CA2C7900BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2C78F0BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.m */; };
@@ -136,6 +137,8 @@
 		1C51DFF30BEA473D00B76E62 /* STTPostgreSQLResultTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTPostgreSQLResultTests.m; sourceTree = "<group>"; };
 		1C68C5690BDBC2CC00791487 /* STTPostgreSQLStatementTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTPostgreSQLStatementTests.h; sourceTree = "<group>"; };
 		1C68C56A0BDBC2CC00791487 /* STTPostgreSQLStatementTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTPostgreSQLStatementTests.m; sourceTree = "<group>"; };
+		1C6CF4F40CD52B1300B4A30B /* STTPostgreSQLPreparedStatementTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTPostgreSQLPreparedStatementTests.h; sourceTree = "<group>"; };
+		1C6CF4F50CD52B1300B4A30B /* STTPostgreSQLPreparedStatementTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTPostgreSQLPreparedStatementTests.m; sourceTree = "<group>"; };
 		1C771BD00B62C7AF003CD21C /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C771BD10B62C7AF003CD21C /* Unit Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Unit Tests-Info.plist"; sourceTree = "<group>"; };
 		1C7F03C10BFE1DAE00304272 /* libpq.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpq.a; path = build/libpq.a; sourceTree = "<group>"; };
@@ -308,6 +311,8 @@
 				1CA2C78F0BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.m */,
 				1CF56A610C03804100253D31 /* STTPostgreSQLTransactionTests.h */,
 				1CF56A620C03804100253D31 /* STTPostgreSQLTransactionTests.m */,
+				1C6CF4F40CD52B1300B4A30B /* STTPostgreSQLPreparedStatementTests.h */,
+				1C6CF4F50CD52B1300B4A30B /* STTPostgreSQLPreparedStatementTests.m */,
 			);
 			name = "Test case classes";
 			sourceTree = "<group>";
@@ -532,6 +537,7 @@
 				1C12567B0BF1ED2B00E37144 /* STTPostgreSQLTypesTests.m in Sources */,
 				1CA2C7900BFDB60D006F252B /* STTPostgreSQLParameteredStatementTests.m in Sources */,
 				1CF56A630C03804100253D31 /* STTPostgreSQLTransactionTests.m in Sources */,
+				1C6CF4F60CD52B1300B4A30B /* STTPostgreSQLPreparedStatementTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
