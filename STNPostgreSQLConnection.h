@@ -35,13 +35,39 @@
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "STNPostgreSQLConnectionSSLMode.h"
-
 #import <Cocoa/Cocoa.h>
 #import "libpq-fe.h"
 
 #define PROTOCOLVERSION_PARAM_STATEMENT 3
 #define PROTOCOLVERSION_PREP_STATEMENT 3
+
+/* connection parameter constants */
+extern NSString *const STNPostgreSQLConnectionParameterHost;
+extern NSString *const STNPostgreSQLConnectionParameterHostaddr;
+extern NSString *const STNPostgreSQLConnectionParameterPort;
+extern NSString *const STNPostgreSQLConnectionParameterDbname;
+extern NSString *const STNPostgreSQLConnectionParameterUser;
+extern NSString *const STNPostgreSQLConnectionParameterPassword;
+extern NSString *const STNPostgreSQLConnectionParameterConnectTimeout;
+extern NSString *const STNPostgreSQLConnectionParameterOptions;
+extern NSString *const STNPostgreSQLConnectionParameterTty;
+extern NSString *const STNPostgreSQLConnectionParameterSslmode;
+extern NSString *const STNPostgreSQLConnectionParameterKrbsrvname;
+extern NSString *const STNPostgreSQLConnectionParameterGsslib;
+extern NSString *const STNPostgreSQLConnectionParameterService;
+
+/* ssl mode constants */
+extern NSString *const STNPostgreSQLConnectionSSLModeDisable;
+extern NSString *const STNPostgreSQLConnectionSSLModeAllow;
+extern NSString *const STNPostgreSQLConnectionSSLModePrefer;
+extern NSString *const STNPostgreSQLConnectionSSLModeRequire;
+
+/* misc constants */
+extern NSString *const STNPostgreSQLServerInfoVersionNumber;
+extern NSString *const STNPostgreSQLServerInfoFormattedVersionNumber;
+extern NSString *const STNPostgreSQLServerInfoProtocolVersion;
+extern NSString *const STNPostgreSQLServerInfoBackendPID;
+
 
 @class STNPostgreSQLTypes;
 
@@ -59,32 +85,16 @@
     /*! @var *_connectionattributes connection string attributes */
     NSMutableDictionary *_connectionattributes; // keys and default values by PGconndefaults
     
-    /*! @var delegate delegate object to receive connection information */
+    /*! @var _delegate delegate object to receive connection information */
     id _delegate;
     
-    /*! @var datatypes dictionary containing available data types */
+    /*! @var _datatypes dictionary containing available data types */
     NSDictionary *_datatypes;
 }
 
 + (STNPostgreSQLConnection *)connection;
 
 /*! @functiongroup connection attributes setters/getters */
-
-/*!
-    @method     setAuthTypeauthtype
-    @abstract   Sets AuthType
-    @discussion authType connection argument not documented in PostgreSQL documentation
-*/
-- (void)setAuthType:(NSString *)authtype;
-
-
-/*!
-    @method     authType
-    @abstract   returns authType
-    @discussion authType connection argument not documented in PostgreSQL documentation
-    @result     type of authentication
-*/
-- (NSString *)authType;
 
 /*!
     @method     setHost:
@@ -224,10 +234,9 @@
     @method     setSSLMode:
     @abstract   Sets SSL connection priority
     @discussion This option determines whether or with what priority an SSL connection will be negotiated with the server.
- Modes see STNPostgreSQLConnectionSSLMode.h
     @param      sslmode SSL connection priority
 */
-- (void)setSSLMode:(STNPostgreSQLConnectionSSLMode)sslmode;
+- (void)setSSLMode:(NSString *)sslmode;
 
 /*!
     @method     SSLMode
@@ -235,7 +244,7 @@
     @discussion Modes see STNPostgreSQLConnectionSSLMode.h
     @result     SSL connection priority
 */
-- (STNPostgreSQLConnectionSSLMode)SSLMode;
+- (NSString *)SSLMode;
 
 /*!
     @method     setKerberosServiceName:

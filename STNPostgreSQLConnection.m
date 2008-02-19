@@ -1,4 +1,3 @@
-
 //  STNPostgreSQLConnection.m
 //  STNPostgreSQL
 //
@@ -40,7 +39,47 @@
 #import "STNPostgreSQLStatement.h"
 #import "STNPostgreSQLTypes.h"
 
+#pragma mark private methods
+
+@interface STNPostgreSQLConnection (private)
+- (void)connectThreaded:(id)param;
+@end
+
 @implementation STNPostgreSQLConnection
+
+#pragma mark connection parameter constants
+
+NSString *const STNPostgreSQLConnectionParameterHost = @"host";
+NSString *const STNPostgreSQLConnectionParameterHostaddr = @"hostaddr";
+NSString *const STNPostgreSQLConnectionParameterPort = @"port";
+NSString *const STNPostgreSQLConnectionParameterDbname = @"dbname";
+NSString *const STNPostgreSQLConnectionParameterUser = @"user";
+NSString *const STNPostgreSQLConnectionParameterPassword = @"password";
+NSString *const STNPostgreSQLConnectionParameterConnectTimeout = @"connect_timeout";
+NSString *const STNPostgreSQLConnectionParameterOptions = @"options";
+NSString *const STNPostgreSQLConnectionParameterTty = @"tty";
+NSString *const STNPostgreSQLConnectionParameterSslmode = @"sslmode";
+NSString *const STNPostgreSQLConnectionParameterKrbsrvname = @"krbsrvname";
+NSString *const STNPostgreSQLConnectionParameterGsslib = @"gsslib";
+NSString *const STNPostgreSQLConnectionParameterService = @"service";
+
+#pragma mark ssl mode constants
+
+NSString *const STNPostgreSQLConnectionSSLModeDisable = @"disable";
+NSString *const STNPostgreSQLConnectionSSLModeAllow = @"allow";
+NSString *const STNPostgreSQLConnectionSSLModePrefer = @"prefer";
+NSString *const STNPostgreSQLConnectionSSLModeRequire = @"require";
+
+#pragma mark misc constants
+
+NSString *const STNPostgreSQLErrorMessageUserInfoKey = @"errormessage";
+NSString *const STNPostgreSQLServerInfoVersionNumber = @"versionnumber";
+NSString *const STNPostgreSQLServerInfoFormattedVersionNumber = @"formattedversionnumber";
+NSString *const STNPostgreSQLServerInfoProtocolVersion = @"protocolversion";
+NSString *const STNPostgreSQLServerInfoBackendPID = @"backendPID";
+NSString *const STNPostgreSQLLoadDatatypesStatement = @"SELECT oid, typname FROM pg_catalog.pg_type WHERE substring(typname from 1 for 1) != '_'";
+NSString *const STNPostgreSQLSetUTF8ClientEncodingStatement = @"SET client_encoding TO UTF8";
+
 
 #pragma mark initializers/dealloc
 
@@ -84,6 +123,7 @@
         
         // free allocated space
         PQconninfoFree(connectionoptionsanchor);
+        connectionoptions = connectionoptionsanchor = NULL;
         
         // remove service name (causes error if set to empty string)
         [self setService:nil];
@@ -95,166 +135,120 @@
 {
     [self disconnect];
     [_connectionattributes release];
-    [[self delegate] release];
     [_datatypes release];
     [super dealloc];
 }
 
 #pragma mark getters/setters
 
-- (void)setAuthType:(NSString *)authType
-{
-    [_connectionattributes setValue:authType forKey:@"authtype"];
-}
-
-- (NSString *)authType
-{
-    return [_connectionattributes objectForKey:@"authtype"];
-}
-
 - (void)setHost:(NSString *)host
 {
-    [_connectionattributes setValue:host forKey:@"host"];
+    [_connectionattributes setValue:host forKey:STNPostgreSQLConnectionParameterHost];
 }
 
 - (NSString *)host
 {
-    return [_connectionattributes objectForKey:@"host"];
+    return [_connectionattributes objectForKey:STNPostgreSQLConnectionParameterHost];
 }
 
 - (void)setHostAddress:(NSString *)hostaddress
 {
-    [_connectionattributes setValue:hostaddress forKey:@"hostaddr"];
+    [_connectionattributes setValue:hostaddress forKey:STNPostgreSQLConnectionParameterHostaddr];
 }
 
 - (NSString *)hostAddress
 {
-    return [_connectionattributes objectForKey:@"hostaddr"];
+    return [_connectionattributes objectForKey:STNPostgreSQLConnectionParameterHostaddr];
 }
 
 - (void)setPort:(NSString *)port
 {
-    [_connectionattributes setValue:port forKey:@"port"];
+    [_connectionattributes setValue:port forKey:STNPostgreSQLConnectionParameterPort];
 }
 
 - (NSString *)port
 {
-    return [_connectionattributes objectForKey:@"port"];
+    return [_connectionattributes objectForKey:STNPostgreSQLConnectionParameterPort];
 }
 
 - (void)setDatabaseName:(NSString *)databasename
 {
-    [_connectionattributes setValue:databasename forKey:@"dbname"];
+    [_connectionattributes setValue:databasename forKey:STNPostgreSQLConnectionParameterDbname];
 }
 
 - (NSString *)databaseName
 {
-    return [_connectionattributes objectForKey:@"dbname"];
+    return [_connectionattributes objectForKey:STNPostgreSQLConnectionParameterDbname];
 }
 
 - (void)setUser:(NSString *)user
 {
-    [_connectionattributes setValue:user forKey:@"user"];
+    [_connectionattributes setValue:user forKey:STNPostgreSQLConnectionParameterUser];
 }
 
 - (NSString *)user
 {
-    return [_connectionattributes objectForKey:@"user"];
+    return [_connectionattributes objectForKey:STNPostgreSQLConnectionParameterUser];
 }
 
 - (void)setPassword:(NSString *)password
 {
-    [_connectionattributes setValue:password forKey:@"password"];
+    [_connectionattributes setValue:password forKey:STNPostgreSQLConnectionParameterPassword];
 }
 
 - (NSString *)password
 {
-    return [_connectionattributes objectForKey:@"password"];
+    return [_connectionattributes objectForKey:STNPostgreSQLConnectionParameterPassword];
 }
 
 - (void)setConnectTimeout:(NSNumber *)seconds
 {
-    [_connectionattributes setValue:seconds forKey:@"connect_timeout"];
+    [_connectionattributes setValue:seconds forKey:STNPostgreSQLConnectionParameterConnectTimeout];
 }
 
 - (NSNumber *)connectTimeout
 {
-    return [_connectionattributes objectForKey:@"connect_timeout"];
+    return [_connectionattributes objectForKey:STNPostgreSQLConnectionParameterConnectTimeout];
 }
 
 - (void)setCommandLineOptions:(NSString *)options
 {
-    [_connectionattributes setValue:options forKey:@"options"];
+    [_connectionattributes setValue:options forKey:STNPostgreSQLConnectionParameterOptions];
 }
 
 - (NSString *)commandLineOptions
 {
-    return [_connectionattributes objectForKey:@"options"];
+    return [_connectionattributes objectForKey:STNPostgreSQLConnectionParameterOptions];
 }
 
-- (void)setSSLMode:(STNPostgreSQLConnectionSSLMode)sslmode
+- (void)setSSLMode:(NSString *)sslmode
 {
-    //[[_connectionattributes objectForKey:@"sslmode"] release];
-    NSString *mode;
-
-    switch (sslmode) {
-    case STNPostgreSQLConnectionSSLModeAllow:
-        mode = @"allow";
-        break;
-    case STNPostgreSQLConnectionSSLModeDisable:
-        mode = @"disable";
-        break;
-    case STNPostgreSQLConnectionSSLModePrefer:
-        mode = @"prefer";
-        break;
-    case STNPostgreSQLConnectionSSLModeRequire:
-        mode = @"require";
-        break;
-    default:
-        // default value
-        mode = @"prefer";
-        break;
-    }
-    
-    [_connectionattributes setValue:mode forKey:@"sslmode"];
+    [_connectionattributes setValue:sslmode forKey:STNPostgreSQLConnectionParameterSslmode];
 }
 
-- (STNPostgreSQLConnectionSSLMode)SSLMode
+- (NSString *)SSLMode
 {
-    NSString *mode = [_connectionattributes objectForKey:@"sslmode"];
-    if ([mode isEqualToString:@"allow"]) {
-        return STNPostgreSQLConnectionSSLModeAllow;
-    } else if ([mode isEqualToString:@"disable"]) {
-        return STNPostgreSQLConnectionSSLModeDisable;
-    } else if ([mode isEqualToString:@"prefer"]) {
-        return STNPostgreSQLConnectionSSLModePrefer;
-    } else if ([mode isEqualToString:@"require"]) {
-        return STNPostgreSQLConnectionSSLModeRequire;
-    } else {
-        // default value
-        return STNPostgreSQLConnectionSSLModePrefer;
-    }
+    return [_connectionattributes objectForKey:STNPostgreSQLConnectionParameterSslmode];
 }
 
-//- (void)setKerberosServiceName:(NSString *)servicename
-//{
-//    [[_connectionattributes objectForKey:@"krbservicename"] release];
-//    [_connectionattributes setValue:servicename forKey:@"krbservicename"];
-//}
-//
-//- (NSString *)kerberosServiceName
-//{
-//    return [_connectionattributes objectForKey:@"krbservicename"];
-//}
+- (void)setKerberosServiceName:(NSString *)servicename
+{
+    [_connectionattributes setValue:servicename forKey:STNPostgreSQLConnectionParameterKrbsrvname];
+}
+
+- (NSString *)kerberosServiceName
+{
+    return [_connectionattributes objectForKey:STNPostgreSQLConnectionParameterKrbsrvname];
+}
 
 - (void)setService:(NSString *)service
 {
-    [_connectionattributes setValue:service forKey:@"service"];
+    [_connectionattributes setValue:service forKey:STNPostgreSQLConnectionParameterService];
 }
 
 - (NSString *)service
 {
-    return [_connectionattributes objectForKey:@"service"];
+    return [_connectionattributes objectForKey:STNPostgreSQLConnectionParameterService];
 }
 
 - (void)setDelegate:(id)delegate
@@ -289,7 +283,7 @@
             value = @"''";
         }
         
-        [connectionstring appendFormat:@"%@=%@ ", key, value];
+        [connectionstring appendFormat:@"%@='%@' ", key, value];
     }
     
     return connectionstring;
@@ -298,8 +292,8 @@
 - (NSString *)escapeParameterValue:(NSString *)value
 {
     // characters to escape: "\", "'"
-    unsigned int length = [value length];
-    unsigned int c;
+    unsigned int length = [value lengthOfBytesUsingEncoding:NSASCIIStringEncoding];
+    unsigned int c = 0;
     NSMutableString *escapedValue = [[NSMutableString alloc] initWithString:@""];
     
     for (c = 0; c < length; c++) {
@@ -326,7 +320,7 @@
     status = PQstatus(_pgconn);
     
     if (status != CONNECTION_OK) {
-        userinfo = [NSDictionary dictionaryWithObject:[self recentErrorMessage] forKey:@"errormessage"];
+        userinfo = [NSDictionary dictionaryWithObject:[self recentErrorMessage] forKey:STNPostgreSQLErrorMessageUserInfoKey];
         *error = [NSError errorWithDomain:STNPostgreSQLErrorDomain code:STNPostgreSQLConnectionError userInfo:userinfo];
         return NO;
     } else {
@@ -334,6 +328,9 @@
         if (! [self reloadAvailableTypes:error]) {
             return NO;
         }
+        
+        // Set client encoding to UTF-8
+        PQexec([self PgConn], [STNPostgreSQLSetUTF8ClientEncodingStatement cStringUsingEncoding:NSASCIIStringEncoding]);
     }
     
     *error = nil;
@@ -350,10 +347,10 @@
     }
     
     // start thread
-    [NSThread detachNewThreadSelector:@selector(connectWithDelegateCalls:) toTarget:self withObject:self];
+    [NSThread detachNewThreadSelector:@selector(connectThreaded:) toTarget:self withObject:self];
 }
 
-- (void)connectWithDelegateCalls:(id)param
+- (void)connectThreaded:(id)param
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     NSError *error;
@@ -403,7 +400,7 @@
 
 - (BOOL)isConnected
 {
-    return PQstatus(_pgconn) == CONNECTION_OK ? YES : NO;
+    return PQstatus([self PgConn]) == CONNECTION_OK ? YES : NO;
 }
 
 - (NSDictionary *)serverInformation
@@ -419,7 +416,7 @@
     service = [versionnumber intValue] - major * 10000 - minor * 100;
     NSString *formattedVersionNumber = [NSString stringWithFormat:@"%d.%d.%d", major, minor, service];
     
-    NSArray *keys = [NSArray arrayWithObjects:@"versionnumber", @"formattedversionnumber", @"protocolversion", @"backendPID", nil];
+    NSArray *keys = [NSArray arrayWithObjects:STNPostgreSQLServerInfoVersionNumber, STNPostgreSQLServerInfoFormattedVersionNumber, STNPostgreSQLServerInfoProtocolVersion, STNPostgreSQLServerInfoBackendPID, nil];
     NSArray *values = [NSArray arrayWithObjects:versionnumber, formattedVersionNumber, protocolversion, backendPID, nil];
     
     return [NSDictionary dictionaryWithObjects:values forKeys:keys];
@@ -427,7 +424,7 @@
 
 - (BOOL)parameteredStatementAvailable
 {
-    if ([[[self serverInformation] objectForKey:@"protocolversion"] isEqualToNumber:[NSNumber numberWithInt:PROTOCOLVERSION_PARAM_STATEMENT]]) {
+    if ([[[self serverInformation] objectForKey:STNPostgreSQLServerInfoProtocolVersion] isEqualToNumber:[NSNumber numberWithInt:PROTOCOLVERSION_PARAM_STATEMENT]]) {
         return YES;
     }
     return NO;
@@ -435,7 +432,7 @@
 
 - (BOOL)preparedStatementsAvailable
 {
-    if ([[[self serverInformation] objectForKey:@"protocolversion"] isEqualToNumber:[NSNumber numberWithInt:PROTOCOLVERSION_PREP_STATEMENT]]) {
+    if ([[[self serverInformation] objectForKey:STNPostgreSQLServerInfoProtocolVersion] isEqualToNumber:[NSNumber numberWithInt:PROTOCOLVERSION_PREP_STATEMENT]]) {
         return YES;
     }
     return NO;
@@ -449,7 +446,7 @@
 - (BOOL)reloadAvailableTypes:(NSError **)error
 {
     STNPostgreSQLStatement *datatypestatement = [STNPostgreSQLStatement statementWithConnection:self 
-                                                                                   andStatement:@"SELECT oid, typname FROM pg_catalog.pg_type WHERE substring(typname from 1 for 1) != '_'"];
+                                                                                   andStatement:STNPostgreSQLLoadDatatypesStatement];
     if (! [datatypestatement execute:error]) {
         return NO;
     } else {

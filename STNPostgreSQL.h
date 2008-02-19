@@ -38,7 +38,6 @@
 #import <STNPostgreSQL/STNPostgreSQLResult.h>
 #import <STNPostgreSQL/STNPostgreSQLErrorDomain.h>
 #import <STNPostgreSQL/STNPostgreSQLErrorField.h>
-#import <STNPostgreSQL/STNPostgreSQLConnectionSSLMode.h>
 #import <STNPostgreSQL/STNPostgreSQLConnection.h>
 #import <STNPostgreSQL/STNPostgreSQLStatement.h>
 #import <STNPostgreSQL/STNPostgreSQLStatementParameter.h>

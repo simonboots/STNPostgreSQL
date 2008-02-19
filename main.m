@@ -104,6 +104,13 @@ int main(void)
     if (! [ps execute:&error]) {
         NSLog(@"Prepared Statement should be prepared (%@)", [[error userInfo] objectForKey:@"errormessage"]);
     }
+    
+    STNPostgreSQLStatement *utf8statement = [STNPostgreSQLStatement statementWithConnection:conn];
+    NSString *str = [NSString stringWithFormat:@"INSERT INTO test VALUES(999, '%C')", 0x2714];
+    [utf8statement setStatement:str];
+    if (! [utf8statement execute:&error]) {
+        NSLog(@"Prepared Statement should be prepared (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    }
 
     [conn disconnect];
     [conn release];
