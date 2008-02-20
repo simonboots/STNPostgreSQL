@@ -62,11 +62,19 @@ extern NSString *const STNPostgreSQLConnectionSSLModeAllow;
 extern NSString *const STNPostgreSQLConnectionSSLModePrefer;
 extern NSString *const STNPostgreSQLConnectionSSLModeRequire;
 
-/* misc constants */
+/* server information constants */
 extern NSString *const STNPostgreSQLServerInfoVersionNumber;
 extern NSString *const STNPostgreSQLServerInfoFormattedVersionNumber;
 extern NSString *const STNPostgreSQLServerInfoProtocolVersion;
 extern NSString *const STNPostgreSQLServerInfoBackendPID;
+extern NSString *const STNPostgreSQLServerInfoServerEncoding;
+extern NSString *const STNPostgreSQLServerInfoClientEncoding;
+extern NSString *const STNPostgreSQLServerInfoIsSuperuser;
+extern NSString *const STNPostgreSQLServerInfoSessionAuthorization;
+extern NSString *const STNPostgreSQLServerInfoDateStyle;
+extern NSString *const STNPostgreSQLServerInfoTimeZone;
+extern NSString *const STNPostgreSQLServerInfoIntegerDatetimes;
+extern NSString *const STNPostgreSQLServerInfoStandardConformingStrings;
 
 
 @class STNPostgreSQLTypes;

@@ -70,16 +70,26 @@ NSString *const STNPostgreSQLConnectionSSLModeAllow = @"allow";
 NSString *const STNPostgreSQLConnectionSSLModePrefer = @"prefer";
 NSString *const STNPostgreSQLConnectionSSLModeRequire = @"require";
 
-#pragma mark misc constants
+#pragma mark server information constants
 
-NSString *const STNPostgreSQLErrorMessageUserInfoKey = @"errormessage";
 NSString *const STNPostgreSQLServerInfoVersionNumber = @"versionnumber";
 NSString *const STNPostgreSQLServerInfoFormattedVersionNumber = @"formattedversionnumber";
 NSString *const STNPostgreSQLServerInfoProtocolVersion = @"protocolversion";
 NSString *const STNPostgreSQLServerInfoBackendPID = @"backendPID";
+NSString *const STNPostgreSQLServerInfoServerEncoding = @"server_encoding";
+NSString *const STNPostgreSQLServerInfoClientEncoding = @"client_encoding";
+NSString *const STNPostgreSQLServerInfoIsSuperuser = @"is_superuser";
+NSString *const STNPostgreSQLServerInfoSessionAuthorization = @"session_authorization";
+NSString *const STNPostgreSQLServerInfoDateStyle = @"DateStyle";
+NSString *const STNPostgreSQLServerInfoTimeZone = @"TimeZone";
+NSString *const STNPostgreSQLServerInfoIntegerDatetimes = @"interger_datetimes";
+NSString *const STNPostgreSQLServerInfoStandardConformingStrings = @"standard_conforming_strings";
+
+#pragma mark misc internal constants
+
+NSString *const STNPostgreSQLErrorMessageUserInfoKey = @"errormessage";
 NSString *const STNPostgreSQLLoadDatatypesStatement = @"SELECT oid, typname FROM pg_catalog.pg_type WHERE substring(typname from 1 for 1) != '_'";
 NSString *const STNPostgreSQLSetUTF8ClientEncodingStatement = @"SET client_encoding TO UTF8";
-
 
 #pragma mark initializers/dealloc
 
@@ -317,8 +327,13 @@ NSString *const STNPostgreSQLSetUTF8ClientEncodingStatement = @"SET client_encod
     ConnStatusType status;
     
     _pgconn = PQconnectdb([[self connectionString] cStringUsingEncoding:NSASCIIStringEncoding]);
-    status = PQstatus(_pgconn);
+    if (_pgconn == NULL) {
+        userinfo = [NSDictionary dictionaryWithObject:@"Unable to allocate memory for connection" forKey:STNPostgreSQLErrorMessageUserInfoKey];
+        *error = [NSError errorWithDomain:STNPostgreSQLErrorDomain code:STNPostgreSQLConnectionError userInfo:userinfo];
+        return NO;
+    }
     
+    status = PQstatus(_pgconn);
     if (status != CONNECTION_OK) {
         userinfo = [NSDictionary dictionaryWithObject:[self recentErrorMessage] forKey:STNPostgreSQLErrorMessageUserInfoKey];
         *error = [NSError errorWithDomain:STNPostgreSQLErrorDomain code:STNPostgreSQLConnectionError userInfo:userinfo];
@@ -405,21 +420,48 @@ NSString *const STNPostgreSQLSetUTF8ClientEncodingStatement = @"SET client_encod
 
 - (NSDictionary *)serverInformation
 {
-    NSNumber *versionnumber = [NSNumber numberWithInt:PQserverVersion(_pgconn)];
-    NSNumber *protocolversion = [NSNumber numberWithInt:PQprotocolVersion(_pgconn)];
-    NSNumber *backendPID = [NSNumber numberWithInt:PQbackendPID(_pgconn)];
+    NSMutableDictionary *serverInfo = [[NSMutableDictionary alloc] initWithCapacity:15];
     
-    // build formatted version number
+    // version number
+    NSNumber *versionnumber = [NSNumber numberWithInt:PQserverVersion(_pgconn)];
+    [serverInfo setValue:versionnumber forKey:STNPostgreSQLServerInfoVersionNumber];
+    
+    // protocol version
+    NSNumber *protocolversion = [NSNumber numberWithInt:PQprotocolVersion(_pgconn)];
+    [serverInfo setValue:protocolversion forKey:STNPostgreSQLServerInfoProtocolVersion];
+    
+    // backend PID
+    NSNumber *backendPID = [NSNumber numberWithInt:PQbackendPID(_pgconn)];
+    [serverInfo setValue:backendPID forKey:STNPostgreSQLServerInfoBackendPID];
+    
+    // formatted version number
     int major = 0, minor = 0, service = 0;
     major = [versionnumber intValue] / 10000;
     minor = ([versionnumber intValue] - major * 10000) / 100;
     service = [versionnumber intValue] - major * 10000 - minor * 100;
     NSString *formattedVersionNumber = [NSString stringWithFormat:@"%d.%d.%d", major, minor, service];
+    [serverInfo setValue:formattedVersionNumber forKey:STNPostgreSQLServerInfoFormattedVersionNumber];
     
-    NSArray *keys = [NSArray arrayWithObjects:STNPostgreSQLServerInfoVersionNumber, STNPostgreSQLServerInfoFormattedVersionNumber, STNPostgreSQLServerInfoProtocolVersion, STNPostgreSQLServerInfoBackendPID, nil];
-    NSArray *values = [NSArray arrayWithObjects:versionnumber, formattedVersionNumber, protocolversion, backendPID, nil];
+    NSArray *paramkeys = [NSArray arrayWithObjects:STNPostgreSQLServerInfoServerEncoding,
+                          STNPostgreSQLServerInfoClientEncoding,
+                          STNPostgreSQLServerInfoIsSuperuser,
+                          STNPostgreSQLServerInfoSessionAuthorization,
+                          STNPostgreSQLServerInfoDateStyle,
+                          STNPostgreSQLServerInfoTimeZone,
+                          STNPostgreSQLServerInfoIntegerDatetimes,
+                          STNPostgreSQLServerInfoStandardConformingStrings,
+                          nil];
     
-    return [NSDictionary dictionaryWithObjects:values forKeys:keys];
+    NSEnumerator *keyenum = [paramkeys objectEnumerator];
+    NSString *key;
+    
+    while (key = [keyenum nextObject]) {
+        NSString *value = [NSString stringWithCString:PQparameterStatus([self PgConn], [key cStringUsingEncoding:NSASCIIStringEncoding])
+                                             encoding:NSASCIIStringEncoding];
+        [serverInfo setValue:value forKey:key];
+    }
+    
+    return [serverInfo autorelease];
 }
 
 - (BOOL)parameteredStatementAvailable
@@ -440,7 +482,7 @@ NSString *const STNPostgreSQLSetUTF8ClientEncodingStatement = @"SET client_encod
 
 - (NSString *)recentErrorMessage
 {
-    return [NSString stringWithCString:PQerrorMessage(_pgconn) encoding:NSASCIIStringEncoding];
+    return [NSString stringWithCString:PQerrorMessage([self PgConn]) encoding:NSASCIIStringEncoding];
 }
 
 - (BOOL)reloadAvailableTypes:(NSError **)error
@@ -450,6 +492,10 @@ NSString *const STNPostgreSQLSetUTF8ClientEncodingStatement = @"SET client_encod
     if (! [datatypestatement execute:error]) {
         return NO;
     } else {
+        if (_datatypes != nil) {
+            [_datatypes release];
+        }
+        
         _datatypes = [[[datatypestatement result] dictionaryWithKeyColumn:0
                                                               valueColumn:1
                                                                   keyType:STNPostgreSQLKeyTypeIntNumber] retain];
