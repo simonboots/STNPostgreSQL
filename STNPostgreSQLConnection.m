@@ -98,6 +98,13 @@ NSString *const STNPostgreSQLSetUTF8ClientEncodingStatement = @"SET client_encod
     return [[[self alloc] init] autorelease];
 }
 
++ (STNPostgreSQLConnection *)connectionWithURL:(NSURL *)url
+{
+    STNPostgreSQLConnection *conn = [STNPostgreSQLConnection connection];
+    [conn setConnectionURL:conn];
+    return conn;
+}
+
 - (id)init {
     self = [super init];
     if (self != nil) {
@@ -150,6 +157,17 @@ NSString *const STNPostgreSQLSetUTF8ClientEncodingStatement = @"SET client_encod
 }
 
 #pragma mark getters/setters
+
+- (void)setConnectionURL:(NSURL *)url
+{
+    if (! [[url scheme] isEqualToString:@"pgsql"]) {
+        return;
+    }
+    [self setUser:[url user]];
+    [self setPassword:[url password]];
+    [self setHost:[url host]];
+    [self setDatabaseName:[[url path] substringFromIndex:1]];
+}
 
 - (void)setHost:(NSString *)host
 {

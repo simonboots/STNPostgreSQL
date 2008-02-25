@@ -101,8 +101,11 @@ extern NSString *const STNPostgreSQLServerInfoStandardConformingStrings;
 }
 
 + (STNPostgreSQLConnection *)connection;
++ (STNPostgreSQLConnection *)connectionWithURL:(NSURL *)url;
 
 /*! @functiongroup connection attributes setters/getters */
+
+- (void)setConnectionURL:(NSURL *)url;
 
 /*!
     @method     setHost:
