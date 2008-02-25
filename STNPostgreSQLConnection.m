@@ -290,6 +290,16 @@ NSString *const STNPostgreSQLSetUTF8ClientEncodingStatement = @"SET client_encod
     return _delegate;
 }
 
+- (int)socket
+{
+    return PQsocket([self PgConn]);
+}
+
+- (SSL *)SSLstructure
+{
+    return PQgetssl([self PgConn]);
+}
+
 - (PGconn *)PgConn
 {
     return _pgconn;
@@ -506,6 +516,16 @@ NSString *const STNPostgreSQLSetUTF8ClientEncodingStatement = @"SET client_encod
         return YES;
     }
     return NO;
+}
+
+- (BOOL)needsPassword
+{
+    return PQconnectionNeedsPassword([self PgConn]) == 1 ? YES : NO;
+}
+
+- (BOOL)usedPassword
+{
+    return PQconnectionUsedPassword([self PgConn]) == 1 ? YES : NO;
 }
 
 - (NSString *)recentErrorMessage

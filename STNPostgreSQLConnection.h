@@ -36,6 +36,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <openssl/ssl.h>
 #import "libpq-fe.h"
 
 #define PROTOCOLVERSION_PARAM_STATEMENT 3
@@ -309,6 +310,9 @@ extern NSString *const STNPostgreSQLErrorMessageUserInfoKey;
 */
 - (id)delegate;
 
+- (int)socket;
+- (SSL *)SSLstructure;
+
 /*!
     @method     PgConn
     @abstract   Returns PGConn pointer used by libpq
@@ -403,6 +407,9 @@ extern NSString *const STNPostgreSQLErrorMessageUserInfoKey;
 */
 - (BOOL)preparedStatementsAvailable;
 
+- (BOOL)needsPassword;
+
+- (BOOL)usedPassword;
 
 /*!
     @method     recentErrorMessage
