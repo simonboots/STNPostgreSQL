@@ -76,6 +76,8 @@ extern NSString *const STNPostgreSQLServerInfoTimeZone;
 extern NSString *const STNPostgreSQLServerInfoIntegerDatetimes;
 extern NSString *const STNPostgreSQLServerInfoStandardConformingStrings;
 
+/* misc constants */
+extern NSString *const STNPostgreSQLErrorMessageUserInfoKey;
 
 @class STNPostgreSQLTypes;
 

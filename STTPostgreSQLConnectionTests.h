@@ -47,6 +47,7 @@
 - (void)tearDown;
 
 - (void)testConnectionDirect;
+- (void)testConnectionDirectWithURL;
 - (void)testConnectionThreaded;
 
 - (BOOL)connectionAttemptShouldStart;

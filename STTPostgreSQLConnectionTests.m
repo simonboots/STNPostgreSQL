@@ -55,8 +55,24 @@
 - (void)testConnectionDirect
 {
     NSError *error;
-    STAssertTrue([_conn connect:&error], @"connect should return YES (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    STAssertTrue([_conn connect:&error], @"connect should return YES (%@)", [[error userInfo] objectForKey:STNPostgreSQLErrorMessageUserInfoKey]);
     _pleaseWait = NO;
+}
+
+- (void)testConnectionDirectWithURL
+{
+    NSError *error;
+    NSString *urlstring = [NSString stringWithFormat:@"pgsql://%@:%@@%@:%@/%@",
+                           [NSString stringWithCString:UT_USERNAME encoding:NSASCIIStringEncoding],
+                           [NSString stringWithCString:UT_PASSWD encoding:NSASCIIStringEncoding],
+                           [NSString stringWithCString:UT_HOST encoding:NSASCIIStringEncoding],
+                           [NSString stringWithCString:UT_PORT encoding:NSASCIIStringEncoding],
+                           [NSString stringWithCString:UT_DATABASE encoding:NSASCIIStringEncoding]];
+    NSURL *url = [NSURL URLWithString:urlstring];
+    STNPostgreSQLConnection *conn = [STNPostgreSQLConnection connectionWithURL:url];
+    
+    STAssertTrue([conn connect:&error], @"connect should return YES (%@)", [[error userInfo] objectForKey:STNPostgreSQLErrorMessageUserInfoKey]);
+    _pleaseWait = NO;            
 }
 
 - (void)testConnectionThreaded
@@ -70,32 +86,32 @@
 - (void)testServerInformation
 {
     NSError *error;
-    STAssertTrue([_conn connect:&error], @"connection failed! (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    STAssertTrue([_conn connect:&error], @"connection failed! (%@)", [[error userInfo] objectForKey:STNPostgreSQLErrorMessageUserInfoKey]);
     _pleaseWait = NO;
     
     NSDictionary *serverInformation = [_conn serverInformation];
     
-    STAssertTrue([[serverInformation objectForKey:@"versionnumber"] isEqualToNumber:[NSNumber numberWithInt:POSTGRESQL_INT_VERSION]], @"Version number mismatch (%d)", [[serverInformation objectForKey:@"versionnumber"] intValue]);
-    STAssertTrue([[serverInformation objectForKey:@"formattedversionnumber"] isEqualToString:[NSString stringWithCString:POSTGRESQL_VERSION encoding:NSASCIIStringEncoding]], @"Formatted version number mismatch (%@)", [serverInformation objectForKey:@"formattedversionnumber"]);
-    STAssertTrue([[serverInformation objectForKey:@"protocolversion"] isEqualToNumber:[NSNumber numberWithInt:3]], @"Protocol version mismatch (%d)", [[serverInformation objectForKey:@"protocolversion"] intValue]);
+    STAssertTrue([[serverInformation objectForKey:STNPostgreSQLServerInfoVersionNumber] isEqualToNumber:[NSNumber numberWithInt:POSTGRESQL_INT_VERSION]], @"Version number mismatch (%d)", [[serverInformation objectForKey:STNPostgreSQLServerInfoVersionNumber] intValue]);
+    STAssertTrue([[serverInformation objectForKey:STNPostgreSQLServerInfoFormattedVersionNumber] isEqualToString:[NSString stringWithCString:POSTGRESQL_VERSION encoding:NSASCIIStringEncoding]], @"Formatted version number mismatch (%@)", [serverInformation objectForKey:STNPostgreSQLServerInfoFormattedVersionNumber]);
+    STAssertTrue([[serverInformation objectForKey:STNPostgreSQLServerInfoProtocolVersion] isEqualToNumber:[NSNumber numberWithInt:3]], @"Protocol version mismatch (%d)", [[serverInformation objectForKey:STNPostgreSQLServerInfoProtocolVersion] intValue]);
 }
 
 - (void)testAvailableStatementFeatures
 {
     // Tests availability of parametered and prepared statements
     NSError *error;
-    STAssertTrue([_conn connect:&error], @"connection failed! (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    STAssertTrue([_conn connect:&error], @"connection failed! (%@)", [[error userInfo] objectForKey:STNPostgreSQLErrorMessageUserInfoKey]);
     _pleaseWait = NO;
     
     NSDictionary *serverInformation = [_conn serverInformation];
     
-    if ([[serverInformation objectForKey:@"protocolversion"] isEqualToNumber:[NSNumber numberWithInt:PROTOCOLVERSION_PARAM_STATEMENT]]) {
+    if ([[serverInformation objectForKey:STNPostgreSQLServerInfoProtocolVersion] isEqualToNumber:[NSNumber numberWithInt:PROTOCOLVERSION_PARAM_STATEMENT]]) {
         STAssertTrue([_conn parameteredStatementAvailable], @"Parametered Statements should be available");
     } else {
         STAssertFalse([_conn parameteredStatementAvailable], @"Parametered Statements should not be available");
     }
     
-    if ([[serverInformation objectForKey:@"protocolversion"] isEqualToNumber:[NSNumber numberWithInt:PROTOCOLVERSION_PREP_STATEMENT]]) {
+    if ([[serverInformation objectForKey:STNPostgreSQLServerInfoProtocolVersion] isEqualToNumber:[NSNumber numberWithInt:PROTOCOLVERSION_PREP_STATEMENT]]) {
         STAssertTrue([_conn preparedStatementsAvailable], @"Prepared statements should be available");
     } else {
         STAssertFalse([_conn preparedStatementsAvailable], @"Prepared statements should not be available");
@@ -116,7 +132,7 @@
 - (void)connectionAttemptEnded:(BOOL)success error:(NSError *)error
 {
     NSLog(@"connectionAttemptEnded called (3/3)");
-    STAssertTrue(success, @"success should be YES (%@)", [[error userInfo] objectForKey:@"errormessage"]);
+    STAssertTrue(success, @"success should be YES (%@)", [[error userInfo] objectForKey:STNPostgreSQLErrorMessageUserInfoKey]);
     _pleaseWait = NO;
 }
 

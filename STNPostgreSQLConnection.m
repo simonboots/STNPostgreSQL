@@ -82,10 +82,10 @@ NSString *const STNPostgreSQLServerInfoIsSuperuser = @"is_superuser";
 NSString *const STNPostgreSQLServerInfoSessionAuthorization = @"session_authorization";
 NSString *const STNPostgreSQLServerInfoDateStyle = @"DateStyle";
 NSString *const STNPostgreSQLServerInfoTimeZone = @"TimeZone";
-NSString *const STNPostgreSQLServerInfoIntegerDatetimes = @"interger_datetimes";
+NSString *const STNPostgreSQLServerInfoIntegerDatetimes = @"integer_datetimes";
 NSString *const STNPostgreSQLServerInfoStandardConformingStrings = @"standard_conforming_strings";
 
-#pragma mark misc internal constants
+#pragma mark misc constants
 
 NSString *const STNPostgreSQLErrorMessageUserInfoKey = @"errormessage";
 NSString *const STNPostgreSQLLoadDatatypesStatement = @"SELECT oid, typname FROM pg_catalog.pg_type WHERE substring(typname from 1 for 1) != '_'";
@@ -101,7 +101,7 @@ NSString *const STNPostgreSQLSetUTF8ClientEncodingStatement = @"SET client_encod
 + (STNPostgreSQLConnection *)connectionWithURL:(NSURL *)url
 {
     STNPostgreSQLConnection *conn = [STNPostgreSQLConnection connection];
-    [conn setConnectionURL:conn];
+    [conn setConnectionURL:url];
     return conn;
 }
 
@@ -166,6 +166,7 @@ NSString *const STNPostgreSQLSetUTF8ClientEncodingStatement = @"SET client_encod
     [self setUser:[url user]];
     [self setPassword:[url password]];
     [self setHost:[url host]];
+    [self setPort:[[url port] stringValue]];
     [self setDatabaseName:[[url path] substringFromIndex:1]];
 }
 
@@ -307,9 +308,9 @@ NSString *const STNPostgreSQLSetUTF8ClientEncodingStatement = @"SET client_encod
     while (key = [csenum nextObject]) {
         value = [self escapeParameterValue:[_connectionattributes objectForKey:key]];
         
-        if ([value length] == 0) {
+        /*if ([value length] == 0) {
             value = @"''";
-        }
+        }*/
         
         [connectionstring appendFormat:@"%@='%@' ", key, value];
     }
@@ -474,8 +475,17 @@ NSString *const STNPostgreSQLSetUTF8ClientEncodingStatement = @"SET client_encod
     NSString *key;
     
     while (key = [keyenum nextObject]) {
-        NSString *value = [NSString stringWithCString:PQparameterStatus([self PgConn], [key cStringUsingEncoding:NSASCIIStringEncoding])
-                                             encoding:NSASCIIStringEncoding];
+        NSString *value;
+        const char *cvalue = PQparameterStatus([self PgConn], [key cStringUsingEncoding:NSASCIIStringEncoding]);
+        
+        if (cvalue == NULL) {
+            value = [NSString string];
+            NSLog(@"Value == NULL for key: %@", key);
+        } else {
+            value = [NSString stringWithCString:cvalue
+                                       encoding:NSASCIIStringEncoding];
+        }
+         
         [serverInfo setValue:value forKey:key];
     }
     
